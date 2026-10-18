@@ -1,270 +1,357 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RIENG Narong | System Network Administration & Cybersecurity Student</title>
-<meta name="description" content="Portfolio of RIENG Narong, first-year System Network Administration and Cybersecurity student at Passerelles Numériques Cambodia.">
-<style>
-:root{--navy:#0a1628;--navy2:#10223d;--blue:#2f80ed;--sky:#6db3ff;--white:#fff;--gray:#eef2f7;--ink:#1b2a41;--mute:#5a6b82;--r:14px}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--white);line-height:1.65}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
-.wrap{width:100%;max-width:none;margin:0;padding:0 clamp(20px,4vw,64px)}
-section{padding:84px 0}
-.alt{background:var(--gray)}
-h2{font-size:clamp(1.7rem,3.5vw,2.3rem);color:var(--navy);margin-bottom:10px;line-height:1.2}
-h2::after{content:"";display:block;width:56px;height:4px;background:var(--blue);border-radius:4px;margin-top:12px}
-.lead{color:var(--mute);max-width:62ch;margin:18px 0 34px}
-svg.i{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-/* nav */
-nav{position:fixed;inset:0 0 auto;z-index:20;background:rgba(10,22,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(109,179,255,.18)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:700;color:#fff;text-decoration:none;letter-spacing:.3px}
-.logo b{color:var(--sky)}
-nav ul{display:flex;gap:6px;list-style:none;padding:0}
-nav ul a{color:#cfdcf0;text-decoration:none;padding:8px 12px;border-radius:8px;font-size:.95rem;transition:.2s}
-nav ul a:hover,nav ul a.on{background:rgba(47,128,237,.2);color:#fff}
-#menu{display:none;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 10px;font-size:1.1rem;cursor:pointer}
-/* hero */
-#home{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--navy) 0%,#0d2547 100%);color:#fff;padding:110px 0 70px;overflow:hidden}
-#net{position:absolute;inset:0;width:100%;height:100%}
-#home .wrap{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
-.hi{color:var(--sky);font-size:1.1rem;margin-bottom:6px}
-h1{font-size:clamp(2.2rem,5.4vw,3.7rem);line-height:1.1;margin-bottom:14px}
-.role{font-size:clamp(1.05rem,2.2vw,1.35rem);color:#9fc6f5;margin-bottom:18px;font-weight:600}
-.intro{color:#c3d3ea;max-width:56ch;margin-bottom:28px}
-.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--blue);transition:.2s;cursor:pointer;font-size:1rem;font-family:inherit}
-.btn.p{background:var(--blue);color:#fff}
-.btn.p:hover{background:#1f6fdc;transform:translateY(-2px);box-shadow:0 8px 22px rgba(47,128,237,.4)}
-.btn.s{color:#fff;margin-left:10px}
-.btn.s:hover{background:rgba(47,128,237,.2);transform:translateY(-2px)}
-.photo{justify-self:center;width:min(340px,78vw);aspect-ratio:1;border-radius:28px;padding:6px;background:linear-gradient(145deg,var(--blue),var(--sky));box-shadow:0 0 0 8px rgba(47,128,237,.12),0 0 70px rgba(47,128,237,.45);position:relative}
-.photo>div{width:100%;height:100%;border-radius:23px;overflow:hidden;background:var(--navy2);display:grid;place-items:center}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo span{font-size:5rem;font-weight:700;color:var(--sky)}
-/* about */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.card{background:#fff;border:1px solid #dde5f0;border-radius:var(--r);padding:22px;transition:.25s}
-.card:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 12px 28px rgba(16,34,61,.1)}
-.card .ic{width:46px;height:46px;border-radius:12px;background:#e6f0ff;color:var(--blue);display:grid;place-items:center;margin-bottom:12px}
-.card h3{font-size:1.05rem;color:var(--navy)}
-/* skills */
-.skill{display:flex;flex-direction:column;gap:6px}
-.skill .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.tag{font-size:.78rem;font-weight:600;padding:2px 10px;border-radius:20px;background:#e6f0ff;color:#1856b0}
-.bar{height:8px;background:#e3e9f2;border-radius:8px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--sky));border-radius:8px;transition:width 1.1s ease}
-/* timeline */
-.tl{position:relative;padding-left:34px}
-.tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:#bcd0ea}
-.tl article{position:relative;margin-bottom:26px;background:#fff;border:1px solid #dde5f0;border-radius:var(--r);padding:18px 22px}
-.tl article::before{content:"";position:absolute;left:-33px;top:22px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--blue)}
-.tl article.now{border-color:var(--blue);box-shadow:0 8px 24px rgba(47,128,237,.15)}
-.tl h3{color:var(--navy);font-size:1.08rem}
-.tl small{color:var(--blue);font-weight:600}
-.tl p{color:var(--mute);font-size:.95rem}
-/* projects */
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.proj{display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--blue)}
-.proj p{color:var(--mute);font-size:.95rem;flex:1}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{font-size:.78rem;background:var(--gray);color:var(--navy);padding:3px 10px;border-radius:6px}
-/* goals */
-#goals{background:var(--navy);color:#fff}
-#goals h2{color:#fff}
-#goals .lead{color:#b5c6de}
-.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;list-style:none;padding:0;margin-bottom:46px}
-.gl li{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(109,179,255,.2);border-radius:12px;padding:16px;transition:.25s}
-.gl li:hover{background:rgba(47,128,237,.18);transform:translateY(-3px)}
-.gl svg{flex:none;color:var(--sky);width:22px;height:22px;margin-top:2px}
-.road{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.road b{background:var(--blue);padding:10px 18px;border-radius:30px;font-size:.95rem;font-weight:600}
-.road b:last-child{background:#fff;color:var(--navy)}
-.road em{color:var(--sky);font-style:normal;font-size:1.3rem}
-/* contact */
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-form{display:grid;gap:14px}
-label{font-weight:600;font-size:.92rem;color:var(--navy)}
-input,textarea{width:100%;margin-top:5px;padding:12px 14px;border:1.5px solid #c5d2e3;border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
-input:focus,textarea:focus{border-color:var(--blue);outline:3px solid rgba(47,128,237,.25)}
-textarea{min-height:130px;resize:vertical}
-#fs{color:#17703a;font-weight:600;min-height:1.4em}
-.links{display:grid;gap:12px;margin-top:6px}
-.links a{display:flex;align-items:center;gap:12px;text-decoration:none;background:#fff;border:1px solid #dde5f0;border-radius:12px;padding:13px 16px;transition:.2s}
-.links a:hover{border-color:var(--blue);transform:translateX(4px)}
-.links svg{color:var(--blue)}
-.links small{color:var(--mute);display:block;line-height:1.2}
-/* footer */
-footer{background:var(--navy);color:#b5c6de;text-align:center;padding:34px 0}
-footer p:first-child{color:#fff;font-weight:600}
-.soc{display:flex;justify-content:center;gap:12px;margin-top:14px}
-.soc a{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(109,179,255,.35);color:var(--sky);transition:.2s}
-.soc a:hover{background:var(--blue);color:#fff}
-.soc svg{width:20px;height:20px}
-.rv{opacity:0;transform:translateY(18px);transition:.7s}
-.rv.in{opacity:1;transform:none}
-@media(max-width:820px){
-#menu{display:block}
-nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--navy);padding:10px 22px 16px}
-nav ul.open{display:flex}
-#home .wrap,.cg{grid-template-columns:1fr}
-.photo{order:-1;width:min(240px,64vw)}
-section{padding:64px 0}
-.btn.s{margin-left:0;margin-top:10px}
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
-</style>
-</head>
-<body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-<defs>
-<symbol id="net" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M11 7.3 6 16.8M13 7.3l5 9.5M7.5 19h9"/></symbol>
-<symbol id="term" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
-<symbol id="srv" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></symbol>
-<symbol id="shd" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
-<symbol id="db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
-<symbol id="cld" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5 4.3 4.3 0 0 1 17.5 18z"/></symbol>
-<symbol id="web" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
-<symbol id="git" viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5m12 4.5v-3.2c0-1 .1-1.4-.5-2 2.8-.3 5.500-1.400 5.500-6a4.600 4.600 0 0 0-1.300-3.200 4.200 4.200 0 0 0-.1-3.200s-1-.3-3.400 1.300a11.600 11.600 0 0 0-6 0C6.800 2.800 5.800 3.100 5.800 3.100a4.200 4.200 0 0 0-.1 3.200A4.600 4.600 0 0 0 4.400 9.500c0 4.600 2.700 5.700 5.500 6-.6.600-.6 1.200-.5 2V21"/></symbol>
-<symbol id="cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.900 4.900 7 7M17 17l2.100 2.100M4.900 19.100 7 17M17 7l2.100-2.100"/></symbol>
-<symbol id="usr" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.600-7 8-7s8 3 8 7"/></symbol>
-<symbol id="bk" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
-<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
-<symbol id="in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></symbol>
-<symbol id="tg" viewBox="0 0 24 24"><path d="m21 4-18 7 5 2 2 6 3-4 5 4z"/><path d="m8 13 9-6"/></symbol>
-<symbol id="ck" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
-</defs>
-</svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      RIENG Narong | System Network Administration & Cybersecurity Student
+    </title>
+    <meta
+      name="description"
+      content="Portfolio of RIENG Narong, first-year System Network Administration and Cybersecurity student at Passerelles Numériques Cambodia."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="net" viewBox="0 0 24 24">
+          <circle cx="12" cy="5" r="2.5" />
+          <circle cx="5" cy="19" r="2.5" />
+          <circle cx="19" cy="19" r="2.5" />
+          <path d="M11 7.3 6 16.8M13 7.3l5 9.5M7.5 19h9" />
+        </symbol>
+        <symbol id="term" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <path d="m7 9 3 3-3 3M13 15h4" />
+        </symbol>
+        <symbol id="srv" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="6" rx="1.5" />
+          <rect x="3" y="14" width="18" height="6" rx="1.5" />
+          <path d="M7 7h.01M7 17h.01" />
+        </symbol>
+        <symbol id="shd" viewBox="0 0 24 24">
+          <path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z" />
+          <path d="m9 12 2 2 4-4" />
+        </symbol>
+        <symbol id="db" viewBox="0 0 24 24">
+          <ellipse cx="12" cy="6" rx="8" ry="3" />
+          <path
+            d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"
+          />
+        </symbol>
+        <symbol id="cld" viewBox="0 0 24 24">
+          <path
+            d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5 4.3 4.3 0 0 1 17.5 18z"
+          />
+        </symbol>
+        <symbol id="web" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
+        </symbol>
+        <symbol id="git" viewBox="0 0 24 24">
+          <path
+            d="M9 19c-4 1.3-4-2-6-2.5m12 4.5v-3.2c0-1 .1-1.4-.5-2 2.8-.3 5.500-1.400 5.500-6a4.600 4.600 0 0 0-1.300-3.200 4.200 4.200 0 0 0-.1-3.200s-1-.3-3.400 1.300a11.600 11.600 0 0 0-6 0C6.800 2.800 5.800 3.100 5.800 3.100a4.200 4.200 0 0 0-.1 3.200A4.600 4.600 0 0 0 4.400 9.500c0 4.600 2.700 5.700 5.500 6-.6.600-.6 1.200-.5 2V21"
+          />
+        </symbol>
+        <symbol id="cog" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M12 2v3M12 19v3M2 12h3M19 12h3M4.900 4.900 7 7M17 17l2.100 2.100M4.900 19.100 7 17M17 7l2.100-2.100"
+          />
+        </symbol>
+        <symbol id="usr" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 3.600-7 8-7s8 3 8 7" />
+        </symbol>
+        <symbol id="bk" viewBox="0 0 24 24">
+          <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5" />
+        </symbol>
+        <symbol id="mail" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3 7 9 6 9-6" />
+        </symbol>
+        <symbol id="in" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="3" />
+          <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" />
+        </symbol>
+        <symbol id="tg" viewBox="0 0 24 24">
+          <path d="m21 4-18 7 5 2 2 6 3-4 5 4z" />
+          <path d="m8 13 9-6" />
+        </symbol>
+        <symbol id="ck" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7" /></symbol>
+      </defs>
+    </svg>
 
-<nav aria-label="Main">
-<div class="wrap">
-<a class="logo" href="#home">RIENG <b>Narong</b></a>
-<button id="menu" aria-label="Toggle menu" aria-expanded="false">☰</button>
-<ul id="links">
-<li><a href="#home">Home</a></li><li><a href="#about">About Me</a></li><li><a href="#skills">Skills</a></li><li><a href="#education">Education</a></li><li><a href="#projects">Projects</a></li><li><a href="#goals">Goals</a></li><li><a href="#contact">Contact</a></li>
-</ul>
-</div>
-</nav>
+    <nav aria-label="Main">
+      <div class="wrap">
+        <a class="logo" href="#home">Narong<b>RIENG</b></a>
+        <button id="menu" aria-label="Toggle menu" aria-expanded="false">
+          ☰
+        </button>
+        <ul id="links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#goals">Goals</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<header id="home">
-<canvas id="net" aria-hidden="true"></canvas>
-<div class="wrap">
-<div>
-<p class="hi">Hello, I'm</p>
-<h1>RIENG Narong</h1>
-<p class="role">System Network Administration &amp; Cybersecurity Student</p>
-<p class="intro">I am a first-year student at Passerelles Numériques Cambodia, studying System Network Administration and Cybersecurity. I am interested in networking, Linux, servers, cybersecurity, cloud computing, and web hosting.</p>
-<a class="btn p" href="#projects">View My Projects</a><a class="btn s" href="#contact">Contact Me</a>
-</div>
-<div class="photo"><div>
-<img src="MY%20PIC.png" alt="Portrait of RIENG Narong" onerror="this.remove()">
-<span aria-hidden="true">RN</span>
-</div></div>
-</div>
-</header>
+    <header id="home">
+      <canvas id="net" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div>
+          <p class="hi">Hello, I'm</p>
+          <h1>Narong RIENG</h1>
+          <p class="role">
+            System Network Administration &amp; Cybersecurity Student
+          </p>
+          <p class="intro">
+            I am a first-year student at Passerelles Numériques Cambodia,
+            studying System Network Administration and Cybersecurity. I am
+            interested in networking, Linux, servers, cybersecurity, cloud
+            computing, and web hosting.
+          </p>
+          <a class="btn p" href="#projects">View My Projects</a
+          ><a class="btn s" href="#contact">Contact Me</a>
+        </div>
+        <div class="photo">
+          <div>
+            <img
+              src="MY%20PIC.png"
+              alt="Portrait of RIENG Narong"
+              onerror="this.remove()"
+            />
+            <span aria-hidden="true">RN</span>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<section id="about"><div class="wrap rv">
-<h2>About Me</h2>
-<p class="lead">I am a student who is building my knowledge and practical skills in IT. I enjoy learning how computer networks, servers, operating systems, databases, cloud services, and cybersecurity work. My goal is to continue learning, gain practical experience, and become a professional IT specialist.</p>
-<div class="cards">
-<div class="card"><div class="ic"><svg class="i"><use href="#bk"/></svg></div><h3>Student</h3></div>
-<div class="card"><div class="ic"><svg class="i"><use href="#term"/></svg></div><h3>IT Learner</h3></div>
-<div class="card"><div class="ic"><svg class="i"><use href="#net"/></svg></div><h3>Network Enthusiast</h3></div>
-<div class="card"><div class="ic"><svg class="i"><use href="#shd"/></svg></div><h3>Cybersecurity Learner</h3></div>
-</div></div></section>
+    <section id="about">
+      <div class="wrap rv">
+        <h2>About Me</h2>
+        <p class="lead">
+          I am a student who is building my knowledge and practical skills in
+          IT. I enjoy learning how computer networks, servers, operating
+          systems, databases, cloud services, and cybersecurity work. My goal is
+          to continue learning, gain practical experience, and become a
+          professional IT specialist.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <div class="ic">
+              <svg class="i"><use href="#bk" /></svg>
+            </div>
+            <h3>Student</h3>
+          </div>
+          <div class="card">
+            <div class="ic">
+              <svg class="i"><use href="#term" /></svg>
+            </div>
+            <h3>IT Learner</h3>
+          </div>
+          <div class="card">
+            <div class="ic">
+              <svg class="i"><use href="#net" /></svg>
+            </div>
+            <h3>Network Enthusiast</h3>
+          </div>
+          <div class="card">
+            <div class="ic">
+              <svg class="i"><use href="#shd" /></svg>
+            </div>
+            <h3>Cybersecurity Learner</h3>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="skills" class="alt"><div class="wrap rv">
-<h2>Skills</h2>
-<p class="lead">I am still early in my journey. These bars show where I honestly am today.</p>
-<div class="cards" id="sk"></div>
-</div></section>
+    <section id="skills" class="alt">
+      <div class="wrap rv">
+        <h2>Skills</h2>
+        <p class="lead">
+          I am still early in my journey. These bars show where I honestly am
+          today.
+        </p>
+        <div class="cards" id="sk"></div>
+      </div>
+    </section>
 
-<section id="education"><div class="wrap rv">
-<h2>Education</h2>
-<p class="lead"></p>
-<div class="tl">
-<article class="now"><h3>Passerelles Numériques Cambodia (PNC)</h3><small>2026 – Present</small><p>System Network Administration and Cybersecurity<br>First Year Student</p></article>
-<article><h3>Rovieng High School</h3><small>2022 – 2025</small><p>General Knowledge</p></article>
-<article><h3>Reaksmey Rikreay Secondary School</h3><small>2019 – 2022</small></article>
-<article><h3>Rikreay Primary School</h3><small>2013 – 2019</small></article>
-</div></div></section>
+    <section id="education">
+      <div class="wrap rv">
+        <h2>Education</h2>
+        <p class="lead"></p>
+        <div class="tl">
+          <article class="now">
+            <h3>Passerelles Numériques Cambodia (PNC)</h3>
+            <small>2026 – Present</small>
+            <p>
+              System Network Administration and Cybersecurity<br />First Year
+              Student
+            </p>
+          </article>
+          <article>
+            <h3>Rovieng High School</h3>
+            <small>2022 – 2025</small>
+            <p>General Knowledge</p>
+          </article>
+          <article>
+            <h3>Reaksmey Rikreay Secondary School</h3>
+            <small>2019 – 2022</small>
+          </article>
+          <article>
+            <h3>Rikreay Primary School</h3>
+            <small>2013 – 2019</small>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section id="projects" class="alt"><div class="wrap rv">
-<h2>Projects</h2>
-<p class="lead">Learning projects and practice work from my first year.</p>
-<div class="pg">
-<div class="card proj"><div class="ic"><svg class="i"><use href="#web"/></svg></div><h3>Web Hosting</h3><p>A learning website that explains different methods of hosting websites, including local hosting, GitHub, Netlify, Vercel, VPS, and cloud hosting.</p><div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub</span><span>Web Hosting</span></div></div>
-<div class="card proj"><div class="ic"><svg class="i"><use href="#term"/></svg></div><h3>Linux Server Practice</h3><p>Practical learning and experiments with Linux commands, users, permissions, services, networking, and server administration.</p><div class="chips"><span>Linux</span><span>Bash</span><span>SSH</span><span>System Administration</span></div></div>
-<div class="card proj"><div class="ic"><svg class="i"><use href="#net"/></svg></div><h3>Networking Practice</h3><p>Networking practice using Cisco Packet Tracer, IP addressing, DHCP, routing, switching, and SSH.</p><div class="chips"><span>Cisco Packet Tracer</span><span>CCNA</span><span>Networking</span></div></div>
-<div class="card proj"><div class="ic"><svg class="i"><use href="#cld"/></svg></div><h3>Cloud &amp; AWS Learning</h3><p>Learning how cloud servers work and how websites and applications can be hosted using cloud infrastructure.</p><div class="chips"><span>AWS</span><span>Cloud Computing</span><span>Linux</span></div></div>
-</div></div></section>
+    <section id="projects" class="alt">
+      <div class="wrap rv">
+        <h2>Projects</h2>
+        <p class="lead">
+          Learning projects and practice work from my first year.
+        </p>
+        <div class="pg">
+          <div class="card proj">
+            <div class="ic">
+              <svg class="i"><use href="#web" /></svg>
+            </div>
+            <h3>Web Hosting</h3>
+            <p>
+              A learning website that explains different methods of hosting
+              websites, including local hosting, GitHub, Netlify, Vercel, VPS,
+              and cloud hosting.
+            </p>
+            <div class="chips">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span
+              ><span>GitHub</span><span>Web Hosting</span>
+            </div>
+          </div>
+          <div class="card proj">
+            <div class="ic">
+              <svg class="i"><use href="#term" /></svg>
+            </div>
+            <h3>Linux Server Practice</h3>
+            <p>
+              Practical learning and experiments with Linux commands, users,
+              permissions, services, networking, and server administration.
+            </p>
+            <div class="chips">
+              <span>Linux</span><span>Bash</span><span>SSH</span
+              ><span>System Administration</span>
+            </div>
+          </div>
+          <div class="card proj">
+            <div class="ic">
+              <svg class="i"><use href="#net" /></svg>
+            </div>
+            <h3>Networking Practice</h3>
+            <p>
+              Networking practice using Cisco Packet Tracer, IP addressing,
+              DHCP, routing, switching, and SSH.
+            </p>
+            <div class="chips">
+              <span>Cisco Packet Tracer</span><span>CCNA</span
+              ><span>Networking</span>
+            </div>
+          </div>
+          <div class="card proj">
+            <div class="ic">
+              <svg class="i"><use href="#cld" /></svg>
+            </div>
+            <h3>Cloud &amp; AWS Learning</h3>
+            <p>
+              Learning how cloud servers work and how websites and applications
+              can be hosted using cloud infrastructure.
+            </p>
+            <div class="chips">
+              <span>AWS</span><span>Cloud Computing</span><span>Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="goals"><div class="wrap rv">
-<h2>My Career Goals</h2>
-<p class="lead">Where I want to go, and the path I plan to take.</p>
-<ul class="gl" id="gl"></ul>
-<div class="road" aria-label="Roadmap"><b>Learn</b><em>→</em><b>Practice</b><em>→</em><b>Build Projects</b><em>→</em><b>Gain Experience</b><em>→</em><b>Become an IT Professional</b></div>
-</div></section>
+    <section id="goals">
+      <div class="wrap rv">
+        <h2>My Career Goals</h2>
+        <p class="lead">Where I want to go, and the path I plan to take.</p>
+        <ul class="gl" id="gl"></ul>
+        <div class="road" aria-label="Roadmap">
+          <b>Learn</b><em>→</em><b>Practice</b><em>→</em><b>Build Projects</b
+          ><em>→</em><b>Gain Experience</b><em>→</em
+          ><b>Become an IT Professional</b>
+        </div>
+      </div>
+    </section>
 
-<section id="contact"><div class="wrap rv">
-<h2>Let's Connect</h2>
-<p class="lead">I am always interested in learning, connecting with other IT students and professionals, and discovering new opportunities.</p>
-<div class="cg">
-<form id="f" novalidate>
-<label for="n">Name<input id="n" required autocomplete="name"></label>
-<label for="e">Email<input id="e" type="email" required autocomplete="email"></label>
-<label for="m">Message<textarea id="m" required></textarea></label>
-<button class="btn p" type="submit">Send Message</button>
-<p id="fs" role="status"></p>
-</form>
-<div class="links">
-<a href="mailto:your-email@example.com"><svg class="i"><use href="#mail"/></svg><span><small>Email</small>your-email@example.com</span></a>
-<a href="#"><svg class="i"><use href="#git"/></svg><span><small>GitHub</small>github.com/your-username</span></a>
-<a href="#"><svg class="i"><use href="#in"/></svg><span><small>LinkedIn</small>linkedin.com/in/your-name</span></a>
-<a href="#"><svg class="i"><use href="#tg"/></svg><span><small>Telegram</small>@your-username</span></a>
-</div></div></div></section>
+    <section id="contact">
+      <div class="wrap rv">
+        <h2>Let's Connect</h2>
+        <p class="lead">
+          I am always interested in learning, connecting with other IT students
+          and professionals, and discovering new opportunities.
+        </p>
+        <div class="cg">
+          <form id="f" novalidate>
+            <label for="n"
+              >Name<input id="n" required autocomplete="name"
+            /></label>
+            <label for="e"
+              >Email<input id="e" type="email" required autocomplete="email"
+            /></label>
+            <label for="m">Message<textarea id="m" required></textarea></label>
+            <button class="btn p" type="submit">Send Message</button>
+            <p id="fs" role="status"></p>
+          </form>
+          <div class="links">
+            <a href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
+              ><svg class="i"><use href="#mail" /></svg
+              ><span><small>Email</small>riengnarong@gmail.com</span></a
+            >
+            <a href="https://github.com/dashboard" target="_blank" rel="noreferrer"
+              ><svg class="i"><use href="#git" /></svg
+              ><span><small>GitHub</small>github.com</span></a
+            >
+            <a href="https://www.linkedin.com/feed/"
+              ><svg class="i"><use href="#in" /></svg
+              ><span><small>LinkedIn</small>Rieng Narong</span></a
+            >
+            <a href="https://t.me/RONG_RONGzzz"
+              ><svg class="i"><use href="#tg" /></svg
+              ><span><small>Telegram</small>Narong RIENG</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-<p>© 2026 RIENG Narong</p>
-<p>System Network Administration and Cybersecurity Student</p>
-<div class="soc">
-<a href="#" aria-label="GitHub"><svg class="i"><use href="#git"/></svg></a>
-<a href="#" aria-label="LinkedIn"><svg class="i"><use href="#in"/></svg></a>
-<a href="#" aria-label="Telegram"><svg class="i"><use href="#tg"/></svg></a>
-<a href="mailto:your-email@example.com" aria-label="Email"><svg class="i"><use href="#mail"/></svg></a>
-</div>
-</footer>
+    <footer>
+      <p>© 2026 Narong RIENG</p>
+      <p>System Network Administration and Cybersecurity Student</p>
+      <div class="soc">
+        <a href="https://github.com/dashboard" target="_blank" rel="noreferrer" aria-label="GitHub"
+          ><svg class="i"><use href="#git" /></svg
+        ></a>
+        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+          ><svg class="i"><use href="#in" /></svg
+        ></a>
+        <a href="https://t.me/RONG_RONGzzz" aria-label="Telegram"
+          ><svg class="i"><use href="#tg" /></svg
+        ></a>
+        <a href="https://myaccount.google.com/?utm_source=chrome-profile-chooser" aria-label="Email"
+          ><svg class="i"><use href="#mail" /></svg
+        ></a>
+      </div>
+    </footer>
 
-<script>
-const $=s=>document.querySelector(s);
-const S=[["Computer Networking","net","Developing",55],["CCNA Fundamentals","net","Learning",40],["Linux","term","Developing",50],["Windows Server","srv","Beginner",30],["System Administration","cog","Developing",45],["Cybersecurity Fundamentals","shd","Learning",35],["Database Fundamentals","db","Beginner",30],["Cloud Computing","cld","Learning",30],["Web Hosting","web","Developing",50],["GitHub","git","Developing",45],["AWS","cld","Beginner",25],["Server Management","srv","Learning",35]];
-$("#sk").innerHTML=S.map(s=>`<div class="card skill"><div class="top"><div class="ic" style="margin:0;width:40px;height:40px"><svg class="i"><use href="#${s[1]}"/></svg></div><span class="tag">${s[2]}</span></div><h3>${s[0]}</h3><div class="bar" role="progressbar" aria-label="${s[0]}: ${s[2]}" aria-valuenow="${s[3]}" aria-valuemin="0" aria-valuemax="100"><i data-w="${s[3]}"></i></div></div>`).join("");
-$("#gl").innerHTML=["Become a skilled IT professional","Improve my networking skills","Improve Linux and system administration skills","Learn more about cybersecurity","Gain real-world IT experience","Learn cloud technologies","Build useful IT projects","Get a good job and support my family"].map(t=>`<li><svg class="i"><use href="#ck"/></svg>${t}</li>`).join("");
-// reveal
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");e.target.querySelectorAll(".bar i").forEach(b=>b.style.width=b.dataset.w+"%");io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll(".rv").forEach(x=>io.observe(x));
-// nav
-const mb=$("#menu"),ul=$("#links");
-mb.onclick=()=>{const o=ul.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
-ul.onclick=e=>{if(e.target.tagName==="A")ul.classList.remove("open")};
-const secs=[...document.querySelectorAll("header,section")],as=[...ul.querySelectorAll("a")];
-addEventListener("scroll",()=>{let c=secs[0].id;secs.forEach(s=>{if(s.getBoundingClientRect().top<120)c=s.id});as.forEach(a=>a.classList.toggle("on",a.hash==="#"+c))},{passive:true});
-// form (no backend: opens the visitor's email app)
-$("#f").onsubmit=e=>{e.preventDefault();const n=$("#n").value.trim(),m=$("#m").value.trim(),em=$("#e");
-if(!n||!m||!em.checkValidity()||!em.value){$("#fs").style.color="#b42318";$("#fs").textContent="Please fill in your name, a valid email, and a message.";return}
-$("#fs").style.color="#17703a";$("#fs").textContent="Opening your email app…";
-location.href="mailto:your-email@example.com?subject="+encodeURIComponent("Portfolio message from "+n)+"&body="+encodeURIComponent(m+"\n\n"+n+" ("+em.value+")")};
-// network canvas
-(()=>{const c=$("#net"),x=c.getContext("2d");let w,h,P=[];
-const rs=()=>{w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;const n=Math.min(60,Math.floor(w*h/22000));P=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3}))};
-const dr=()=>{x.clearRect(0,0,w,h);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1});
-for(let i=0;i<P.length;i++){for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);if(d<140){x.strokeStyle=`rgba(109,179,255,${.25*(1-d/140)})`;x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke()}}
-x.fillStyle="rgba(109,179,255,.7)";x.beginPath();x.arc(P[i].x,P[i].y,2,0,7);x.fill()}};
-rs();addEventListener("resize",rs);
-if(matchMedia("(prefers-reduced-motion:reduce)").matches)dr();else(function l(){dr();requestAnimationFrame(l)})();})();
-</script>
-</body>
+    <script src="javascript.js" defer></script>
+  </body>
 </html>
