@@ -79,50 +79,83 @@
           <path d="m21 4-18 7 5 2 2 6 3-4 5 4z" />
           <path d="m8 13 9-6" />
         </symbol>
+        <symbol id="sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+        </symbol>
+        <symbol id="moon" viewBox="0 0 24 24">
+          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+        </symbol>
         <symbol id="ck" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7" /></symbol>
       </defs>
     </svg>
 
-    <nav aria-label="Main">
+    <nav aria-label="Main navigation" data-i18n-aria="nav.main">
       <div class="wrap">
-        <a class="logo" href="#home">Narong<b>RIENG</b></a>
-        <button id="menu" aria-label="Toggle menu" aria-expanded="false">
-          ☰
-        </button>
-        <ul id="links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#goals">Goals</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <a class="logo" href="#home" aria-label="Home" data-i18n-aria="nav.home">
+          <img src="brand-logo.svg" alt="" />
+        </a>
+        <ul id="links" aria-label="Main navigation">
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#about" data-i18n="nav.about">About Me</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#education" data-i18n="nav.education">Education</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#goals" data-i18n="nav.goals">Goals</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
+        <div class="nav-actions">
+          <div class="language-switch" role="group" aria-label="Choose language" data-i18n-aria="language.label">
+            <button class="language-option active" type="button" data-language="en" aria-pressed="true"><img src="flag-en.svg" alt="" /><span>EN</span></button>
+            <span class="language-divider" aria-hidden="true">/</span>
+            <button class="language-option" type="button" data-language="km" aria-pressed="false"><img src="Cambodia%20flag.webp" alt="" /><span>KH</span></button>
+          </div>
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode"
+            aria-pressed="false"
+          >
+            <svg class="i" aria-hidden="true"><use href="#sun" /></svg>
+          </button>
+          <button id="menu" aria-label="Toggle menu" aria-expanded="false" data-i18n-aria="menu.toggle">
+            ☰
+          </button>
+        </div>
       </div>
     </nav>
 
     <header id="home">
       <canvas id="net" aria-hidden="true"></canvas>
+      <svg class="cloud cloud-one" viewBox="0 0 200 110" aria-hidden="true">
+        <path d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"/>
+      </svg>
+      <svg class="cloud cloud-two" viewBox="0 0 200 110" aria-hidden="true">
+        <path d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"/>
+      </svg>
+      <svg class="cloud cloud-three" viewBox="0 0 200 110" aria-hidden="true">
+        <path d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"/>
+      </svg>
       <div class="wrap">
         <div>
-          <p class="hi">Hello, I'm</p>
+          <p class="hi" data-i18n="hero.hello">Hello, I'm</p>
           <h1>Narong RIENG</h1>
-          <p class="role">
+          <p class="role" data-i18n="hero.role">
             System Network Administration &amp; Cybersecurity Student
           </p>
-          <p class="intro">
+          <p class="intro" data-i18n="hero.intro">
             I am a first-year student at Passerelles Numériques Cambodia,
             studying System Network Administration and Cybersecurity. I am
             interested in networking, Linux, servers, cybersecurity, cloud
             computing, and web hosting.
           </p>
-          <a class="btn p" href="#projects">View My Projects</a
-          ><a class="btn s" href="#contact">Contact Me</a>
+          <a class="btn p" href="#projects" data-i18n="hero.projects">View My Projects</a
+          ><a class="btn s" href="#contact" data-i18n="hero.contact">Contact Me</a>
         </div>
         <div class="photo">
           <div>
             <img
-              src="MY%20PIC.png"
+              src="my-photo.jpg"
               alt="Portrait of RIENG Narong"
               onerror="this.remove()"
             />
@@ -134,8 +167,8 @@
 
     <section id="about">
       <div class="wrap rv">
-        <h2>About Me</h2>
-        <p class="lead">
+        <h2 data-i18n="about.title">About Me</h2>
+        <p class="lead" data-i18n="about.intro">
           I am a student who is building my knowledge and practical skills in
           IT. I enjoy learning how computer networks, servers, operating
           systems, databases, cloud services, and cybersecurity work. My goal is
@@ -147,25 +180,25 @@
             <div class="ic">
               <svg class="i"><use href="#bk" /></svg>
             </div>
-            <h3>Student</h3>
+            <h3 data-i18n="about.student">Student</h3>
           </div>
           <div class="card">
             <div class="ic">
               <svg class="i"><use href="#term" /></svg>
             </div>
-            <h3>IT Learner</h3>
+            <h3 data-i18n="about.learner">IT Learner</h3>
           </div>
           <div class="card">
             <div class="ic">
               <svg class="i"><use href="#net" /></svg>
             </div>
-            <h3>Network Enthusiast</h3>
+            <h3 data-i18n="about.network">Network Enthusiast</h3>
           </div>
           <div class="card">
             <div class="ic">
               <svg class="i"><use href="#shd" /></svg>
             </div>
-            <h3>Cybersecurity Learner</h3>
+            <h3 data-i18n="about.security">Cybersecurity Learner</h3>
           </div>
         </div>
       </div>
@@ -173,8 +206,8 @@
 
     <section id="skills" class="alt">
       <div class="wrap rv">
-        <h2>Skills</h2>
-        <p class="lead">
+        <h2 data-i18n="skills.title">Skills</h2>
+        <p class="lead" data-i18n="skills.intro">
           I am still early in my journey. These bars show where I honestly am
           today.
         </p>
@@ -184,13 +217,13 @@
 
     <section id="education">
       <div class="wrap rv">
-        <h2>Education</h2>
+        <h2 data-i18n="education.title">Education</h2>
         <p class="lead"></p>
         <div class="tl">
           <article class="now">
             <h3>Passerelles Numériques Cambodia (PNC)</h3>
-            <small>2026 – Present</small>
-            <p>
+            <small data-i18n="education.present">2026 – Present</small>
+            <p data-i18n="education.program">
               System Network Administration and Cybersecurity<br />First Year
               Student
             </p>
@@ -198,7 +231,7 @@
           <article>
             <h3>Rovieng High School</h3>
             <small>2022 – 2025</small>
-            <p>General Knowledge</p>
+            <p data-i18n="education.general">General Knowledge</p>
           </article>
           <article>
             <h3>Reaksmey Rikreay Secondary School</h3>
@@ -214,8 +247,8 @@
 
     <section id="projects" class="alt">
       <div class="wrap rv">
-        <h2>Projects</h2>
-        <p class="lead">
+        <h2 data-i18n="projects.title">Projects</h2>
+        <p class="lead" data-i18n="projects.intro">
           Learning projects and practice work from my first year.
         </p>
         <div class="pg">
@@ -223,56 +256,56 @@
             <div class="ic">
               <svg class="i"><use href="#web" /></svg>
             </div>
-            <h3>Web Hosting</h3>
-            <p>
+            <h3 data-i18n="projects.hosting">Web Hosting</h3>
+            <p data-i18n="projects.hostingDescription">
               A learning website that explains different methods of hosting
               websites, including local hosting, GitHub, Netlify, Vercel, VPS,
               and cloud hosting.
             </p>
             <div class="chips">
               <span>HTML</span><span>CSS</span><span>JavaScript</span
-              ><span>GitHub</span><span>Web Hosting</span>
+              ><span>GitHub</span><span data-i18n="projects.hosting">Web Hosting</span>
             </div>
           </div>
           <div class="card proj">
             <div class="ic">
               <svg class="i"><use href="#term" /></svg>
             </div>
-            <h3>Linux Server Practice</h3>
-            <p>
+            <h3 data-i18n="projects.linux">Linux Server Practice</h3>
+            <p data-i18n="projects.linuxDescription">
               Practical learning and experiments with Linux commands, users,
               permissions, services, networking, and server administration.
             </p>
             <div class="chips">
               <span>Linux</span><span>Bash</span><span>SSH</span
-              ><span>System Administration</span>
+              ><span data-i18n="chips.system">System Administration</span>
             </div>
           </div>
           <div class="card proj">
             <div class="ic">
               <svg class="i"><use href="#net" /></svg>
             </div>
-            <h3>Networking Practice</h3>
-            <p>
+            <h3 data-i18n="projects.network">Networking Practice</h3>
+            <p data-i18n="projects.networkDescription">
               Networking practice using Cisco Packet Tracer, IP addressing,
               DHCP, routing, switching, and SSH.
             </p>
             <div class="chips">
               <span>Cisco Packet Tracer</span><span>CCNA</span
-              ><span>Networking</span>
+              ><span data-i18n="chips.network">Networking</span>
             </div>
           </div>
           <div class="card proj">
             <div class="ic">
               <svg class="i"><use href="#cld" /></svg>
             </div>
-            <h3>Cloud &amp; AWS Learning</h3>
-            <p>
+            <h3 data-i18n="projects.cloud">Cloud &amp; AWS Learning</h3>
+            <p data-i18n="projects.cloudDescription">
               Learning how cloud servers work and how websites and applications
               can be hosted using cloud infrastructure.
             </p>
             <div class="chips">
-              <span>AWS</span><span>Cloud Computing</span><span>Linux</span>
+              <span>AWS</span><span data-i18n="chips.cloud">Cloud Computing</span><span>Linux</span>
             </div>
           </div>
         </div>
@@ -281,40 +314,40 @@
 
     <section id="goals">
       <div class="wrap rv">
-        <h2>My Career Goals</h2>
-        <p class="lead">Where I want to go, and the path I plan to take.</p>
+        <h2 data-i18n="goals.title">My Career Goals</h2>
+        <p class="lead" data-i18n="goals.intro">Where I want to go, and the path I plan to take.</p>
         <ul class="gl" id="gl"></ul>
-        <div class="road" aria-label="Roadmap">
-          <b>Learn</b><em>→</em><b>Practice</b><em>→</em><b>Build Projects</b
-          ><em>→</em><b>Gain Experience</b><em>→</em
-          ><b>Become an IT Professional</b>
+        <div class="road" aria-label="Roadmap" data-i18n-aria="goals.roadmap">
+          <b data-i18n="goals.learn">Learn</b><em>→</em><b data-i18n="goals.practice">Practice</b><em>→</em><b data-i18n="goals.build">Build Projects</b
+          ><em>→</em><b data-i18n="goals.experience">Gain Experience</b><em>→</em
+          ><b data-i18n="goals.professional">Become an IT Professional</b>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="wrap rv">
-        <h2>Let's Connect</h2>
-        <p class="lead">
+        <h2 data-i18n="contact.title">Let's Connect</h2>
+        <p class="lead" data-i18n="contact.intro">
           I am always interested in learning, connecting with other IT students
           and professionals, and discovering new opportunities.
         </p>
         <div class="cg">
           <form id="f" novalidate>
             <label for="n"
-              >Name<input id="n" required autocomplete="name"
+              ><span data-i18n="contact.name">Name</span><input id="n" required autocomplete="name"
             /></label>
             <label for="e"
-              >Email<input id="e" type="email" required autocomplete="email"
+              ><span data-i18n="contact.email">Email</span><input id="e" type="email" required autocomplete="email"
             /></label>
-            <label for="m">Message<textarea id="m" required></textarea></label>
-            <button class="btn p" type="submit">Send Message</button>
+            <label for="m"><span data-i18n="contact.message">Message</span><textarea id="m" required></textarea></label>
+            <button class="btn p" type="submit" data-i18n="contact.send">Send Message</button>
             <p id="fs" role="status"></p>
           </form>
           <div class="links">
             <a href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
               ><svg class="i"><use href="#mail" /></svg
-              ><span><small>Email</small>riengnarong@gmail.com</span></a
+              ><span><small data-i18n="contact.email">Email</small>riengnarong@gmail.com</span></a
             >
             <a href="https://github.com/dashboard" target="_blank" rel="noreferrer"
               ><svg class="i"><use href="#git" /></svg
@@ -322,11 +355,11 @@
             >
             <a href="https://www.linkedin.com/feed/"
               ><svg class="i"><use href="#in" /></svg
-              ><span><small>LinkedIn</small>Rieng Narong</span></a
+              ><span><small data-i18n="contact.linkedin">LinkedIn</small>Rieng Narong</span></a
             >
             <a href="https://t.me/RONG_RONGzzz"
               ><svg class="i"><use href="#tg" /></svg
-              ><span><small>Telegram</small>Narong RIENG</span></a
+              ><span><small data-i18n="contact.telegram">Telegram</small>Narong RIENG</span></a
             >
           </div>
         </div>
@@ -335,7 +368,7 @@
 
     <footer>
       <p>© 2026 Narong RIENG</p>
-      <p>System Network Administration and Cybersecurity Student</p>
+      <p data-i18n="footer.role">System Network Administration and Cybersecurity Student</p>
       <div class="soc">
         <a href="https://github.com/dashboard" target="_blank" rel="noreferrer" aria-label="GitHub"
           ><svg class="i"><use href="#git" /></svg
