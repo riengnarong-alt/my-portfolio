@@ -21,6 +21,24 @@
           <circle cx="19" cy="19" r="2.5" />
           <path d="M11 7.3 6 16.8M13 7.3l5 9.5M7.5 19h9" />
         </symbol>
+        <symbol id="network-project" viewBox="0 0 24 24">
+          <path d="M12 8V5m-2.5 5L6 8m8.5 2L18 8M12 16v3" />
+          <rect x="8" y="9" width="8" height="7" rx="2" />
+          <circle cx="12" cy="12.5" r=".8" />
+          <circle cx="12" cy="3.5" r="1.5" />
+          <circle cx="4.5" cy="7" r="1.5" />
+          <circle cx="19.5" cy="7" r="1.5" />
+          <path d="M9 21h6m-3-2v2" />
+        </symbol>
+        <symbol id="ccna" viewBox="0 0 24 24">
+          <circle cx="5" cy="5" r="2" />
+          <circle cx="19" cy="5" r="2" />
+          <circle cx="5" cy="19" r="2" />
+          <circle cx="19" cy="19" r="2" />
+          <path d="m6.5 6.5 4 4m7-4-4 4m-7 7 4-4m7 4-4-4" />
+          <rect x="9" y="9" width="6" height="6" rx="1.5" />
+          <path d="M10.8 12h.01M13.2 12h.01" />
+        </symbol>
         <symbol id="term" viewBox="0 0 24 24">
           <rect x="3" y="4" width="18" height="16" rx="2" />
           <path d="m7 9 3 3-3 3M13 15h4" />
@@ -81,7 +99,9 @@
         </symbol>
         <symbol id="sun" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+          />
         </symbol>
         <symbol id="moon" viewBox="0 0 24 24">
           <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
@@ -92,23 +112,48 @@
 
     <nav aria-label="Main navigation" data-i18n-aria="nav.main">
       <div class="wrap">
-        <a class="logo" href="#home" aria-label="Home" data-i18n-aria="nav.home">
-          <img src="brand-logo.svg" alt="" />
+        <a
+          class="logo"
+          href="#home"
+          aria-label="Home"
+          data-i18n-aria="nav.home"
+        >
+          <img src="Image/Designer%20(1).png" alt="RIENG Narong logo" />
         </a>
         <ul id="links" aria-label="Main navigation">
           <li><a href="#home" data-i18n="nav.home">Home</a></li>
           <li><a href="#about" data-i18n="nav.about">About Me</a></li>
           <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
-          <li><a href="#education" data-i18n="nav.education">Education</a></li>
+          <li><a href="#education" data-i18n="nav.education">My Journey</a></li>
           <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
           <li><a href="#goals" data-i18n="nav.goals">Goals</a></li>
+          <li><a href="#certificates" data-i18n="nav.certificates">Certificates</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
         <div class="nav-actions">
-          <div class="language-switch" role="group" aria-label="Choose language" data-i18n-aria="language.label">
-            <button class="language-option active" type="button" data-language="en" aria-pressed="true"><img src="flag-en.svg" alt="" /><span>EN</span></button>
+          <div
+            class="language-switch"
+            role="group"
+            aria-label="Choose language"
+            data-i18n-aria="language.label"
+          >
+            <button
+              class="language-option active"
+              type="button"
+              data-language="en"
+              aria-pressed="true"
+            >
+              <img src="flag-en.svg" alt="" /><span>EN</span>
+            </button>
             <span class="language-divider" aria-hidden="true">/</span>
-            <button class="language-option" type="button" data-language="km" aria-pressed="false"><img src="Cambodia%20flag.webp" alt="" /><span>KH</span></button>
+            <button
+              class="language-option"
+              type="button"
+              data-language="km"
+              aria-pressed="false"
+            >
+              <img src="Cambodia%20flag.webp" alt="" /><span>KH</span>
+            </button>
           </div>
           <button
             id="theme-toggle"
@@ -118,7 +163,12 @@
           >
             <svg class="i" aria-hidden="true"><use href="#sun" /></svg>
           </button>
-          <button id="menu" aria-label="Toggle menu" aria-expanded="false" data-i18n-aria="menu.toggle">
+          <button
+            id="menu"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            data-i18n-aria="menu.toggle"
+          >
             ☰
           </button>
         </div>
@@ -126,15 +176,21 @@
     </nav>
 
     <header id="home">
-      <canvas id="net" aria-hidden="true"></canvas>
+      <canvas id="network-canvas" aria-hidden="true"></canvas>
       <svg class="cloud cloud-one" viewBox="0 0 200 110" aria-hidden="true">
-        <path d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"/>
+        <path
+          d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"
+        />
       </svg>
       <svg class="cloud cloud-two" viewBox="0 0 200 110" aria-hidden="true">
-        <path d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"/>
+        <path
+          d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"
+        />
       </svg>
       <svg class="cloud cloud-three" viewBox="0 0 200 110" aria-hidden="true">
-        <path d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"/>
+        <path
+          d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"
+        />
       </svg>
       <div class="wrap">
         <div>
@@ -149,17 +205,43 @@
             interested in networking, Linux, servers, cybersecurity, cloud
             computing, and web hosting.
           </p>
-          <a class="btn p" href="#projects" data-i18n="hero.projects">View My Projects</a
-          ><a class="btn s" href="#contact" data-i18n="hero.contact">Contact Me</a>
+          <a class="btn p" href="#projects" data-i18n="hero.projects"
+            >View My Projects</a
+          ><a class="btn s" href="#contact" data-i18n="hero.contact"
+            >Contact Me</a
+          >
         </div>
         <div class="photo">
-          <div>
-            <img
-              src="my-photo.jpg"
-              alt="Portrait of RIENG Narong"
-              onerror="this.remove()"
-            />
-            <span aria-hidden="true">RN</span>
+          <div class="orbit-ring" aria-hidden="true"></div>
+          <div class="orbit-path orbit-path-one" aria-hidden="true">
+            <span class="orbit-satellite">
+              <svg class="i"><use href="#web" /></svg>
+            </span>
+          </div>
+          <div class="orbit-path orbit-path-two" aria-hidden="true">
+            <span class="orbit-satellite">
+              <svg class="i"><use href="#term" /></svg>
+            </span>
+          </div>
+          <div class="orbit-path orbit-path-three" aria-hidden="true">
+            <span class="orbit-satellite">
+              <svg class="i"><use href="#srv" /></svg>
+            </span>
+          </div>
+          <div class="orbit-path orbit-path-four" aria-hidden="true">
+            <span class="orbit-satellite">
+              <svg class="i"><use href="#shd" /></svg>
+            </span>
+          </div>
+          <div class="portrait">
+            <div class="portrait-image">
+              <img
+                src="my-photo.jpg"
+                alt="Portrait of RIENG Narong"
+                onerror="this.remove()"
+              />
+              <span aria-hidden="true">RN</span>
+            </div>
           </div>
         </div>
       </div>
@@ -212,12 +294,19 @@
           today.
         </p>
         <div class="cards" id="sk"></div>
+        <h3 class="soft-skills-title" data-i18n="skills.softTitle">Soft Skills</h3>
+        <ul class="soft-skills">
+          <li data-i18n="skills.communication">Communication</li>
+          <li data-i18n="skills.teamwork">Teamwork</li>
+          <li data-i18n="skills.problemSolving">Problem-solving</li>
+          <li data-i18n="skills.adaptability">Adaptability</li>
+        </ul>
       </div>
     </section>
 
     <section id="education">
       <div class="wrap rv">
-        <h2 data-i18n="education.title">Education</h2>
+        <h2 data-i18n="education.title">My Journey</h2>
         <p class="lead"></p>
         <div class="tl">
           <article class="now">
@@ -236,10 +325,12 @@
           <article>
             <h3>Reaksmey Rikreay Secondary School</h3>
             <small>2019 – 2022</small>
+            <p data-i18n="education.general">General Knowledge</p>
           </article>
           <article>
             <h3>Rikreay Primary School</h3>
             <small>2013 – 2019</small>
+            <p data-i18n="education.general">General Knowledge</p>
           </article>
         </div>
       </div>
@@ -263,37 +354,46 @@
               and cloud hosting.
             </p>
             <div class="chips">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span
-              ><span>GitHub</span><span data-i18n="projects.hosting">Web Hosting</span>
+              <span>Portfolio</span><span>Moodle</span><span>WordPress</span
+              ><span>GitHub</span><span>Vercel</span>
             </div>
+            <a
+              class="project-document-link"
+              href="Image/Server_Deployment_Project.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="projects.viewDocument"
+            >View Document</a>
           </div>
           <div class="card proj">
             <div class="ic">
               <svg class="i"><use href="#term" /></svg>
             </div>
-            <h3 data-i18n="projects.linux">Linux Server Practice</h3>
+            <h3 data-i18n="projects.linux">Ubuntu Server Practice</h3>
             <p data-i18n="projects.linuxDescription">
-              Practical learning and experiments with Linux commands, users,
+              Practical learning and experiments with Ubuntu commands, users,
               permissions, services, networking, and server administration.
             </p>
             <div class="chips">
-              <span>Linux</span><span>Bash</span><span>SSH</span
+              <span>Ubuntu</span><span>Bash</span><span>SSH</span
               ><span data-i18n="chips.system">System Administration</span>
             </div>
+            <button class="project-document-link" type="button" data-i18n="projects.viewDocument">View Document</button>
           </div>
           <div class="card proj">
-            <div class="ic">
-              <svg class="i"><use href="#net" /></svg>
+            <div class="ic network-icon">
+              <svg class="i"><use href="#network-project" /></svg>
             </div>
             <h3 data-i18n="projects.network">Networking Practice</h3>
             <p data-i18n="projects.networkDescription">
-              Networking practice using Cisco Packet Tracer, IP addressing,
-              DHCP, routing, switching, and SSH.
+              Networking practice using GNS3, Cisco Packet Tracer, IP
+              addressing, DHCP, routing, switching, and SSH.
             </p>
             <div class="chips">
-              <span>Cisco Packet Tracer</span><span>CCNA</span
-              ><span data-i18n="chips.network">Networking</span>
+              <span>GNS3</span><span>Cisco Packet Tracer</span><span>CCNA</span
+              ><span data-i18n="chips.network">Logical Network Architecture</span>
             </div>
+            <button class="project-document-link" type="button" data-i18n="projects.viewDocument">View Document</button>
           </div>
           <div class="card proj">
             <div class="ic">
@@ -305,22 +405,94 @@
               can be hosted using cloud infrastructure.
             </p>
             <div class="chips">
-              <span>AWS</span><span data-i18n="chips.cloud">Cloud Computing</span><span>Linux</span>
+              <span>AWS</span
+              ><span data-i18n="chips.cloud">Cloud Computing</span
+              ><span>Ubuntu</span>
             </div>
+            <button class="project-document-link" type="button" data-i18n="projects.viewDocument">View Document</button>
+          </div>
+          <div class="card proj">
+            <div class="ic">
+              <svg class="i"><use href="#db" /></svg>
+            </div>
+            <h3 data-i18n="projects.database">Database Fundamentals</h3>
+            <p data-i18n="projects.databaseDescription">
+              Practicing database fundamentals, including organizing information
+              into tables and using basic queries to work with data.
+            </p>
+            <div class="chips">
+              <span>SQL/MariaDB</span
+              ><span>Fundamentals</span>
+            </div>
+            <button class="project-document-link" type="button" data-i18n="projects.viewDocument">View Document</button>
           </div>
         </div>
       </div>
     </section>
 
+    <dialog id="project-document-dialog" aria-labelledby="project-document-title">
+      <div class="project-document-content">
+        <button class="project-document-close" type="button" aria-label="Close" data-i18n-aria="projects.documentClose">×</button>
+        <h2 id="project-document-title" data-i18n="projects.documentTitle">Project Document</h2>
+        <h3 id="project-document-name"></h3>
+        <p id="project-document-description"></p>
+        <h4 data-i18n="projects.documentTools">Tools and technologies</h4>
+        <ul id="project-document-tools"></ul>
+      </div>
+    </dialog>
+
     <section id="goals">
       <div class="wrap rv">
         <h2 data-i18n="goals.title">My Career Goals</h2>
-        <p class="lead" data-i18n="goals.intro">Where I want to go, and the path I plan to take.</p>
+        <p class="lead" data-i18n="goals.intro">
+          Where I want to go, and the path I plan to take.
+        </p>
         <ul class="gl" id="gl"></ul>
         <div class="road" aria-label="Roadmap" data-i18n-aria="goals.roadmap">
-          <b data-i18n="goals.learn">Learn</b><em>→</em><b data-i18n="goals.practice">Practice</b><em>→</em><b data-i18n="goals.build">Build Projects</b
-          ><em>→</em><b data-i18n="goals.experience">Gain Experience</b><em>→</em
+          <b data-i18n="goals.learn">Learn</b><em>→</em
+          ><b data-i18n="goals.practice">Practice</b><em>→</em
+          ><b data-i18n="goals.build">Build Projects</b><em>→</em
+          ><b data-i18n="goals.experience">Gain Experience</b><em>→</em
           ><b data-i18n="goals.professional">Become an IT Professional</b>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="wrap rv">
+        <p class="certificate-eyebrow" data-i18n="certificates.eyebrow">
+          Certificates
+        </p>
+        <h2 data-i18n="certificates.title">Certificates &amp; courses.</h2>
+        <div class="certificates-grid">
+          <article class="certificate-card">
+            <h3 data-i18n="certificates.redhat">
+              Getting Started with Linux Fundamentals
+            </h3>
+            <p data-i18n="certificates.redhatDetails">
+              Red Hat · September 30, 2026
+            </p>
+            <a
+              class="certificate-link"
+              href="Image/RED%20HAT%20Fundamental.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="certificates.view"
+            >View certificate</a>
+          </article>
+          <article class="certificate-card">
+            <h3 data-i18n="certificates.cisco">CCNA: Introduction to Networks</h3>
+            <p data-i18n="certificates.ciscoDetails">
+              Cisco Networking Academy · September 6, 2026
+            </p>
+            <a
+              class="certificate-link"
+              href="Image/CCNA1.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="certificates.view"
+            >View certificate</a>
+          </article>
         </div>
       </div>
     </section>
@@ -335,31 +507,51 @@
         <div class="cg">
           <form id="f" novalidate>
             <label for="n"
-              ><span data-i18n="contact.name">Name</span><input id="n" required autocomplete="name"
+              ><span data-i18n="contact.name">Name</span
+              ><input id="n" required autocomplete="name"
             /></label>
             <label for="e"
-              ><span data-i18n="contact.email">Email</span><input id="e" type="email" required autocomplete="email"
+              ><span data-i18n="contact.email">Email</span
+              ><input id="e" type="email" required autocomplete="email"
             /></label>
-            <label for="m"><span data-i18n="contact.message">Message</span><textarea id="m" required></textarea></label>
-            <button class="btn p" type="submit" data-i18n="contact.send">Send Message</button>
+            <label for="m"
+              ><span data-i18n="contact.message">Message</span
+              ><textarea id="m" required></textarea>
+            </label>
+            <button class="btn p" type="submit" data-i18n="contact.send">
+              Send Message
+            </button>
             <p id="fs" role="status"></p>
           </form>
           <div class="links">
-            <a href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
+            <a
+              href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
               ><svg class="i"><use href="#mail" /></svg
-              ><span><small data-i18n="contact.email">Email</small>riengnarong@gmail.com</span></a
+              ><span
+                ><small data-i18n="contact.email">Email</small
+                >riengnarong@gmail.com</span
+              ></a
             >
-            <a href="https://github.com/dashboard" target="_blank" rel="noreferrer"
+            <a
+              href="https://github.com/dashboard"
+              target="_blank"
+              rel="noreferrer"
               ><svg class="i"><use href="#git" /></svg
               ><span><small>GitHub</small>github.com</span></a
             >
             <a href="https://www.linkedin.com/feed/"
               ><svg class="i"><use href="#in" /></svg
-              ><span><small data-i18n="contact.linkedin">LinkedIn</small>Rieng Narong</span></a
+              ><span
+                ><small data-i18n="contact.linkedin">LinkedIn</small>Rieng
+                Narong</span
+              ></a
             >
             <a href="https://t.me/RONG_RONGzzz"
               ><svg class="i"><use href="#tg" /></svg
-              ><span><small data-i18n="contact.telegram">Telegram</small>Narong RIENG</span></a
+              ><span
+                ><small data-i18n="contact.telegram">Telegram</small>Narong
+                RIENG</span
+              ></a
             >
           </div>
         </div>
@@ -367,19 +559,46 @@
     </section>
 
     <footer>
+      <svg class="footer-cloud footer-cloud-one" viewBox="0 0 200 110" aria-hidden="true">
+        <path
+          d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"
+        />
+      </svg>
+      <svg class="footer-cloud footer-cloud-two" viewBox="0 0 200 110" aria-hidden="true">
+        <path
+          d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"
+        />
+      </svg>
+      <svg class="footer-cloud footer-cloud-three" viewBox="0 0 200 110" aria-hidden="true">
+        <path
+          d="M32 82c-15 0-27-11-27-25s12-25 27-25c5-17 20-28 38-28 16 0 30 9 36 23 5-3 11-5 18-5 18 0 33 13 36 30 15 1 27 14 27 29 0 16-13 29-30 29H34c-16 0-29-12-29-27 0-1 0-1 0-1z"
+        />
+      </svg>
       <p>© 2026 Narong RIENG</p>
-      <p data-i18n="footer.role">System Network Administration and Cybersecurity Student</p>
+      <p data-i18n="footer.role">
+        System Network Administration and Cybersecurity Student
+      </p>
       <div class="soc">
-        <a href="https://github.com/dashboard" target="_blank" rel="noreferrer" aria-label="GitHub"
+        <a
+          href="https://github.com/dashboard"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
           ><svg class="i"><use href="#git" /></svg
         ></a>
-        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+        <a
+          href="https://www.linkedin.com/feed/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
           ><svg class="i"><use href="#in" /></svg
         ></a>
         <a href="https://t.me/RONG_RONGzzz" aria-label="Telegram"
           ><svg class="i"><use href="#tg" /></svg
         ></a>
-        <a href="https://myaccount.google.com/?utm_source=chrome-profile-chooser" aria-label="Email"
+        <a
+          href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
+          aria-label="Email"
           ><svg class="i"><use href="#mail" /></svg
         ></a>
       </div>

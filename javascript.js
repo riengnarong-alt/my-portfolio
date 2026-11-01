@@ -3,10 +3,12 @@ const khmerText = {
   "nav.home": "ទំព័រដើម",
   "nav.about": "អំពីខ្ញុំ",
   "nav.skills": "ជំនាញ",
-  "nav.education": "ការសិក្សា",
+  "nav.education": "ដំណើររបស់ខ្ញុំ",
   "nav.projects": "គម្រោង",
   "nav.goals": "គោលដៅ",
+  "nav.certificates": "វិញ្ញាបនបត្រ",
   "nav.contact": "ទំនាក់ទំនង",
+  "projects.documentClose": "បិទ",
   "menu.toggle": "បើកឬបិទម៉ឺនុយ",
   "nav.main": "ម៉ឺនុយចម្បង",
   "language.label": "ជ្រើសរើសភាសា",
@@ -26,27 +28,39 @@ const khmerText = {
   "skills.title": "ជំនាញ",
   "skills.intro":
     "ខ្ញុំទើបតែចាប់ផ្តើមដំណើរនេះ។ របារទាំងនេះបង្ហាញពីកម្រិតជំនាញបច្ចុប្បន្នរបស់ខ្ញុំដោយស្មោះត្រង់។",
-  "education.title": "ការអប់រំ",
+  "skills.softTitle": "ជំនាញទន់",
+  "skills.communication": "ការប្រាស្រ័យទាក់ទង",
+  "skills.teamwork": "ការធ្វើការជាក្រុម",
+  "skills.problemSolving": "ការដោះស្រាយបញ្ហា",
+  "skills.adaptability": "ភាពបត់បែន",
+  "education.title": "ដំណើររបស់ខ្ញុំ",
   "education.present": "២០២៦ – បច្ចុប្បន្ន",
   "education.program":
     "គ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ<br />និស្សិតឆ្នាំទី១",
   "education.general": "ចំណេះដឹងទូទៅ",
   "projects.title": "គម្រោង",
   "projects.intro": "គម្រោងសិក្សា និងការអនុវត្តក្នុងឆ្នាំទី១ របស់ខ្ញុំ។",
+  "projects.viewDocument": "មើលឯកសារ",
+  "projects.documentTitle": "ឯកសារគម្រោង",
+  "projects.documentTools": "ឧបករណ៍ និងបច្ចេកវិទ្យា",
+  "projects.documentClose": "បិទ",
   "projects.hosting": "ការបង្ហោះគេហទំព័រ",
   "projects.hostingDescription":
     "គេហទំព័រសិក្សាដែលពន្យល់អំពីវិធីបង្ហោះគេហទំព័រផ្សេងៗ រួមមានការបង្ហោះក្នុងម៉ាស៊ីនផ្ទាល់ខ្លួន GitHub Netlify Vercel VPS និងសេវាកម្មពពក។",
-  "projects.linux": "ការអនុវត្តម៉ាស៊ីនមេ Linux",
+  "projects.linux": "ការអនុវត្តម៉ាស៊ីនមេ Ubuntu",
   "projects.linuxDescription":
-    "ការរៀន និងអនុវត្តពាក្យបញ្ជា Linux អ្នកប្រើប្រាស់ សិទ្ធិប្រើប្រាស់ សេវាកម្ម បណ្តាញ និងការគ្រប់គ្រងម៉ាស៊ីនមេ។",
+    "ការរៀន និងអនុវត្តពាក្យបញ្ជា Ubuntu អ្នកប្រើប្រាស់ សិទ្ធិប្រើប្រាស់ សេវាកម្ម បណ្តាញ និងការគ្រប់គ្រងម៉ាស៊ីនមេ។",
   "projects.network": "ការអនុវត្តបណ្តាញកុំព្យូទ័រ",
   "projects.networkDescription":
     "ការអនុវត្តបណ្តាញដោយប្រើ Cisco Packet Tracer ការកំណត់អាសយដ្ឋាន IP, DHCP, ការបញ្ជូនទិន្នន័យ ការប្តូរបណ្តាញ និង SSH។",
   "projects.cloud": "ការសិក្សា Cloud និង AWS",
   "projects.cloudDescription":
     "សិក្សាអំពីដំណើរការម៉ាស៊ីនមេពពក និងរបៀបបង្ហោះគេហទំព័រ និងកម្មវិធីលើហេដ្ឋារចនាសម្ព័ន្ធពពក។",
+  "projects.database": "មូលដ្ឋានគ្រឹះទិន្នន័យ",
+  "projects.databaseDescription":
+    "អនុវត្តមូលដ្ឋានគ្រឹះទិន្នន័យ រួមមានការរៀបចំព័ត៌មានជាតារាង និងការប្រើសំណួរមូលដ្ឋានដើម្បីធ្វើការជាមួយទិន្នន័យ។",
   "chips.system": "ការគ្រប់គ្រងប្រព័ន្ធ",
-  "chips.network": "បណ្តាញកុំព្យូទ័រ",
+  "chips.network": "ស្ថាបត្យកម្មបណ្តាញឡូជីខល",
   "chips.cloud": "កុំព្យូទ័រពពក",
   "goals.title": "គោលដៅអាជីពរបស់ខ្ញុំ",
   "goals.intro": "គោលដៅដែលខ្ញុំចង់សម្រេច និងផ្លូវដែលខ្ញុំគ្រោងនឹងដើរ។",
@@ -56,6 +70,14 @@ const khmerText = {
   "goals.experience": "ទទួលបទពិសោធន៍",
   "goals.professional": "ក្លាយជាអ្នកជំនាញ IT",
   "goals.roadmap": "ផែនទីផ្លូវអាជីព",
+  "certificates.eyebrow": "វិញ្ញាបនបត្រ",
+  "certificates.title": "វិញ្ញាបនបត្រ និងវគ្គសិក្សា។",
+  "certificates.redhat": "ការចាប់ផ្តើមជាមួយមូលដ្ឋានគ្រឹះ Linux",
+  "certificates.redhatDetails": "Red Hat · ថ្ងៃទី ៣០ ខែកញ្ញា ឆ្នាំ ២០២៦",
+  "certificates.cisco": "CCNA៖ ការណែនាំអំពីបណ្តាញ",
+  "certificates.ciscoDetails":
+    "Cisco Networking Academy · ថ្ងៃទី ៦ ខែកញ្ញា ឆ្នាំ ២០២៦",
+  "certificates.view": "មើលវិញ្ញាបនបត្រ",
   "contact.title": "តោះភ្ជាប់ទំនាក់ទំនង",
   "contact.intro":
     "ខ្ញុំតែងតែចាប់អារម្មណ៍ក្នុងការរៀនសូត្រ ភ្ជាប់ទំនាក់ទំនងជាមួយនិស្សិត និងអ្នកជំនាញ IT ផ្សេងទៀត ព្រមទាំងស្វែងរកឱកាសថ្មីៗ។",
@@ -92,6 +114,7 @@ const setLanguage = (language) => {
       "nav.main": "Main navigation",
       "language.label": "Choose language",
       "nav.home": "Home",
+      "projects.documentClose": "Close",
     };
     element.setAttribute(
       "aria-label",
@@ -118,7 +141,7 @@ const setLanguage = (language) => {
 
 const S = [
   ["Computer Networking", "net", "Developing", 55],
-  ["CCNA Fundamentals", "net", "Learning", 40],
+  ["CCNA Fundamentals", "ccna", "Learning", 40],
   ["Linux", "term", "Developing", 50],
   ["Windows Server", "srv", "Beginner", 30],
   ["System Administration", "cog", "Developing", 45],
@@ -149,7 +172,7 @@ function renderSkills() {
   $("#sk").innerHTML = S.map((s, index) => {
     const name = currentLanguage === "km" ? skillNamesKm[index] : s[0];
     const status = currentLanguage === "km" ? skillStatusKm[s[2]] : s[2];
-    return `<div class="card skill"><div class="top"><div class="ic" style="margin:0;width:40px;height:40px"><svg class="i"><use href="#${s[1]}"/></svg></div><span class="tag">${status}</span></div><h3>${name}</h3><div class="bar" role="progressbar" aria-label="${name}: ${status}" aria-valuenow="${s[3]}" aria-valuemin="0" aria-valuemax="100"><i data-w="${s[3]}"${$("#sk").closest(".rv").classList.contains("in") ? ` style="width:${s[3]}%"` : ""}></i></div></div>`;
+    return `<div class="card skill"><div class="top"><div class="ic${s[1] === "ccna" ? " ccna-icon" : ""}" style="margin:0;width:40px;height:40px"><svg class="i"><use href="#${s[1]}"/></svg></div><span class="tag">${status}</span></div><h3>${name}</h3><div class="bar" role="progressbar" aria-label="${name}: ${status}" aria-valuenow="${s[3]}" aria-valuemin="0" aria-valuemax="100"><i data-w="${s[3]}"${$("#sk").closest(".rv").classList.contains("in") ? ` style="width:${s[3]}%"` : ""}></i></div></div>`;
   }).join("");
 }
 const goalsEnglish = [
@@ -210,8 +233,29 @@ const io = new IntersectionObserver(
   { threshold: 0.12 },
 );
 document.querySelectorAll(".rv").forEach((x) => io.observe(x));
+const projectDocumentDialog = $("#project-document-dialog");
+document.querySelectorAll("button.project-document-link").forEach((button) => {
+  button.addEventListener("click", () => {
+    const project = button.closest(".proj");
+    $("#project-document-name").textContent = project.querySelector("h3").textContent;
+    $("#project-document-description").textContent =
+      project.querySelector("p").textContent.trim();
+    $("#project-document-tools").replaceChildren(
+      ...[...project.querySelectorAll(".chips span")].map((chip) => {
+        const item = document.createElement("li");
+        item.textContent = chip.textContent;
+        return item;
+      }),
+    );
+    projectDocumentDialog.showModal();
+  });
+});
+$(".project-document-close").addEventListener("click", () => {
+  projectDocumentDialog.close();
+});
 // nav
-const mb = $("#menu"),
+const nav = $("nav"),
+  mb = $("#menu"),
   ul = $("#links");
 mb.onclick = () => {
   const o = ul.classList.toggle("open");
@@ -252,9 +296,20 @@ ul.onclick = (e) => {
 };
 const secs = [...document.querySelectorAll("header,section")],
   as = [...ul.querySelectorAll("a")];
+let lastScrollY = window.scrollY;
 addEventListener(
   "scroll",
   () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY <= 80 || nav.contains(document.activeElement) || ul.classList.contains("open")) {
+      nav.classList.remove("nav-hidden");
+    } else if (currentScrollY > lastScrollY + 5) {
+      nav.classList.add("nav-hidden");
+    } else if (currentScrollY < lastScrollY - 5) {
+      nav.classList.remove("nav-hidden");
+    }
+    lastScrollY = currentScrollY;
+
     let c = secs[0].id;
     secs.forEach((s) => {
       if (s.getBoundingClientRect().top < 120) c = s.id;
@@ -288,55 +343,228 @@ $("#f").onsubmit = (e) => {
     "&body=" +
     encodeURIComponent(m + "\n\n" + n + " (" + em.value + ")");
 };
-// network canvas
+// Hero sky canvas
 (() => {
-  const c = $("#net"),
-    x = c.getContext("2d");
-  let w,
-    h,
-    P = [];
-  const rs = () => {
-    w = c.width = c.offsetWidth;
-    h = c.height = c.offsetHeight;
-    const n = Math.min(60, Math.floor((w * h) / 22000));
-    P = Array.from({ length: n }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
+  const canvas = $("#network-canvas");
+  const ctx = canvas.getContext("2d");
+  const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+  const frameInterval = 1000 / 30;
+  let width = 0;
+  let height = 0;
+  let pixelRatio = 1;
+  let networkNodes = [];
+  let stars = [];
+  let meteors = [];
+  let sparks = [];
+  let nextMeteorAt = 500;
+  let lastFrameAt = 0;
+  let frameId = 0;
+  let heroVisible = false;
+
+  const resize = () => {
+    const bounds = canvas.getBoundingClientRect();
+    pixelRatio = Math.min(devicePixelRatio || 1, 1.5);
+    width = bounds.width;
+    height = bounds.height;
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+    const nodeCount = Math.min(48, Math.floor((width * height) / 26000));
+    networkNodes = Array.from({ length: nodeCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 9,
+      vy: (Math.random() - 0.5) * 9,
     }));
+    const starCount = Math.min(120, Math.max(28, Math.floor((width * height) / 12500)));
+    stars = Array.from({ length: starCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.2 + 0.3,
+      phase: Math.random() * Math.PI * 2,
+      glow: Math.random() * 0.35 + 0.15,
+    }));
+    meteors = [];
+    sparks = [];
+    nextMeteorAt = 500 + Math.random() * 1200;
+
+    if (motionPreference.matches) draw(0, 0);
+    else if (heroVisible) start();
   };
-  const dr = () => {
-    x.clearRect(0, 0, w, h);
-    P.forEach((p) => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+  const addMeteor = () => {
+    if (meteors.length >= 3) return;
+    const speed = 430 + Math.random() * 430;
+    const angle = 0.38 + Math.random() * 0.32;
+    meteors.push({
+      x: width * (0.62 + Math.random() * 0.42),
+      y: -30 + Math.random() * height * 0.38,
+      vx: -Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      length: 130 + Math.random() * 190,
+      radius: 1.2 + Math.random() * 1.5,
+      hue: [188, 205, 218, 278][Math.floor(Math.random() * 4)],
+      life: 0,
+      duration: 1.7 + Math.random() * 1.2,
+      sparkAt: 0,
     });
-    for (let i = 0; i < P.length; i++) {
-      for (let j = i + 1; j < P.length; j++) {
-        const d = Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y);
-        if (d < 140) {
-          x.strokeStyle = `rgba(109,179,255,${0.25 * (1 - d / 140)})`;
-          x.beginPath();
-          x.moveTo(P[i].x, P[i].y);
-          x.lineTo(P[j].x, P[j].y);
-          x.stroke();
+  };
+
+  const drawStarsAndNetwork = (delta, time) => {
+    const lightMode = document.body.classList.contains("light-mode");
+    for (const star of stars) {
+      const twinkle = 0.72 + Math.sin(time * 0.0012 + star.phase) * 0.28;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${lightMode ? "95,155,220" : "205,229,255"},${star.glow * twinkle})`;
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    for (let i = 0; i < networkNodes.length; i++) {
+      const node = networkNodes[i];
+      node.x += node.vx * delta;
+      node.y += node.vy * delta;
+      if (node.x < 0 || node.x > width) node.vx *= -1;
+      if (node.y < 0 || node.y > height) node.vy *= -1;
+      for (let j = i + 1; j < networkNodes.length; j++) {
+        const other = networkNodes[j];
+        const distance = Math.hypot(node.x - other.x, node.y - other.y);
+        if (distance < 140) {
+          ctx.strokeStyle = `rgba(109,179,255,${0.16 * (1 - distance / 140)})`;
+          ctx.beginPath();
+          ctx.moveTo(node.x, node.y);
+          ctx.lineTo(other.x, other.y);
+          ctx.stroke();
         }
       }
-      x.fillStyle = "rgba(109,179,255,.7)";
-      x.beginPath();
-      x.arc(P[i].x, P[i].y, 2, 0, 7);
-      x.fill();
+      ctx.fillStyle = lightMode ? "rgba(57,124,246,.38)" : "rgba(109,179,255,.65)";
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
     }
   };
-  rs();
-  addEventListener("resize", rs);
-  if (matchMedia("(prefers-reduced-motion:reduce)").matches) dr();
-  else
-    (function l() {
-      dr();
-      requestAnimationFrame(l);
-    })();
+
+  const drawMeteors = (delta) => {
+    for (let index = meteors.length - 1; index >= 0; index--) {
+      const meteor = meteors[index];
+      meteor.life += delta;
+      meteor.x += meteor.vx * delta;
+      meteor.y += meteor.vy * delta;
+      const progress = meteor.life / meteor.duration;
+      const fade = Math.min(1, progress * 5, (1 - progress) * 4);
+      const tailX = meteor.x - meteor.vx * (meteor.length / Math.hypot(meteor.vx, meteor.vy));
+      const tailY = meteor.y - meteor.vy * (meteor.length / Math.hypot(meteor.vx, meteor.vy));
+      const gradient = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+      gradient.addColorStop(0, `hsla(${meteor.hue},100%,72%,0)`);
+      gradient.addColorStop(0.72, `hsla(${meteor.hue},100%,72%,${0.48 * fade})`);
+      gradient.addColorStop(1, `hsla(${meteor.hue},100%,94%,${0.96 * fade})`);
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = meteor.radius;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(meteor.x, meteor.y);
+      ctx.stroke();
+
+      const headGlow = ctx.createRadialGradient(
+        meteor.x, meteor.y, 0, meteor.x, meteor.y, 13 * meteor.radius,
+      );
+      headGlow.addColorStop(0, `hsla(${meteor.hue},100%,96%,${0.95 * fade})`);
+      headGlow.addColorStop(0.18, `hsla(${meteor.hue},100%,70%,${0.45 * fade})`);
+      headGlow.addColorStop(1, `hsla(${meteor.hue},100%,60%,0)`);
+      ctx.fillStyle = headGlow;
+      ctx.beginPath();
+      ctx.arc(meteor.x, meteor.y, 13 * meteor.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (meteor.life >= meteor.sparkAt) {
+        meteor.sparkAt = meteor.life + 0.08;
+        for (let spark = 0; spark < 2; spark++) {
+          const offset = Math.random() * meteor.length;
+          sparks.push({
+            x: meteor.x - meteor.vx * (offset / Math.hypot(meteor.vx, meteor.vy)),
+            y: meteor.y - meteor.vy * (offset / Math.hypot(meteor.vx, meteor.vy)),
+            vx: meteor.vx * 0.08 + (Math.random() - 0.5) * 55,
+            vy: meteor.vy * 0.08 + (Math.random() - 0.5) * 55,
+            life: 0,
+            duration: 0.25 + Math.random() * 0.4,
+            radius: Math.random() * 1.5 + 0.5,
+            hue: meteor.hue,
+          });
+        }
+      }
+
+      if (progress >= 1 || meteor.x < -meteor.length || meteor.y > height + meteor.length) {
+        meteors.splice(index, 1);
+      }
+    }
+
+    for (let index = sparks.length - 1; index >= 0; index--) {
+      const spark = sparks[index];
+      spark.life += delta;
+      spark.x += spark.vx * delta;
+      spark.y += spark.vy * delta;
+      const alpha = Math.max(0, 1 - spark.life / spark.duration);
+      ctx.fillStyle = `hsla(${spark.hue},100%,78%,${alpha})`;
+      ctx.beginPath();
+      ctx.arc(spark.x, spark.y, spark.radius * alpha, 0, Math.PI * 2);
+      ctx.fill();
+      if (alpha <= 0) sparks.splice(index, 1);
+    }
+  };
+
+  const draw = (time, delta) => {
+    ctx.clearRect(0, 0, width, height);
+    drawStarsAndNetwork(delta, time);
+    if (!motionPreference.matches) {
+      if (time >= nextMeteorAt) {
+        addMeteor();
+        nextMeteorAt = time + 1200 + Math.random() * 1900;
+      }
+      drawMeteors(delta);
+    }
+  };
+
+  const stop = () => {
+    if (frameId) cancelAnimationFrame(frameId);
+    frameId = 0;
+    lastFrameAt = 0;
+  };
+
+  const animate = (time) => {
+    frameId = 0;
+    if (!heroVisible || document.hidden || motionPreference.matches) return;
+    if (time - lastFrameAt >= frameInterval) {
+      const delta = lastFrameAt ? Math.min((time - lastFrameAt) / 1000, 0.05) : 0;
+      lastFrameAt = time;
+      draw(time, delta);
+    }
+    frameId = requestAnimationFrame(animate);
+  };
+
+  const start = () => {
+    if (!frameId && heroVisible && !document.hidden && !motionPreference.matches) {
+      frameId = requestAnimationFrame(animate);
+    }
+  };
+
+  const observer = new IntersectionObserver(([entry]) => {
+    heroVisible = entry.isIntersecting;
+    if (heroVisible) start();
+    else stop();
+  });
+  observer.observe($("#home"));
+
+  addEventListener("resize", resize, { passive: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else if (heroVisible) start();
+  });
+  motionPreference.addEventListener("change", () => {
+    stop();
+    if (motionPreference.matches) draw(0, 0);
+    else start();
+  });
+  resize();
 })();
