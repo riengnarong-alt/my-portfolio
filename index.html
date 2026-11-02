@@ -128,7 +128,7 @@
           <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
           <li><a href="#goals" data-i18n="nav.goals">Goals</a></li>
           <li><a href="#certificates" data-i18n="nav.certificates">Certificates</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li><a class="nav-contact" href="#contact" data-i18n="nav.contact">Let's Talk</a></li>
         </ul>
         <div class="nav-actions">
           <div
@@ -499,61 +499,99 @@
 
     <section id="contact">
       <div class="wrap rv">
-        <h2 data-i18n="contact.title">Let's Connect</h2>
-        <p class="lead" data-i18n="contact.intro">
-          I am always interested in learning, connecting with other IT students
-          and professionals, and discovering new opportunities.
-        </p>
-        <div class="cg">
-          <form id="f" novalidate>
-            <label for="n"
-              ><span data-i18n="contact.name">Name</span
-              ><input id="n" required autocomplete="name"
-            /></label>
-            <label for="e"
-              ><span data-i18n="contact.email">Email</span
-              ><input id="e" type="email" required autocomplete="email"
-            /></label>
-            <label for="m"
-              ><span data-i18n="contact.message">Message</span
-              ><textarea id="m" required></textarea>
-            </label>
-            <button class="btn p" type="submit" data-i18n="contact.send">
-              Send Message
-            </button>
-            <p id="fs" role="status"></p>
-          </form>
-          <div class="links">
-            <a
-              href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
-              ><svg class="i"><use href="#mail" /></svg
-              ><span
-                ><small data-i18n="contact.email">Email</small
-                >riengnarong@gmail.com</span
-              ></a
-            >
-            <a
-              href="https://github.com/dashboard"
-              target="_blank"
-              rel="noreferrer"
-              ><svg class="i"><use href="#git" /></svg
-              ><span><small>GitHub</small>github.com</span></a
-            >
-            <a href="https://www.linkedin.com/feed/"
-              ><svg class="i"><use href="#in" /></svg
-              ><span
-                ><small data-i18n="contact.linkedin">LinkedIn</small>Rieng
-                Narong</span
-              ></a
-            >
-            <a href="https://t.me/RONG_RONGzzz"
-              ><svg class="i"><use href="#tg" /></svg
-              ><span
-                ><small data-i18n="contact.telegram">Telegram</small>Narong
-                RIENG</span
-              ></a
-            >
+        <div class="contact-layout">
+          <div class="contact-main">
+            <h2 data-i18n="contact.title">Let's Talk</h2>
+            <p class="lead" data-i18n="contact.intro">
+              I am always interested in learning, connecting with other IT students
+              and professionals, and discovering new opportunities.
+            </p>
+            <div class="cg">
+              <form id="f" novalidate>
+                <label for="n"
+                  ><span data-i18n="contact.name">Name</span
+                  ><input id="n" required autocomplete="name"
+                /></label>
+                <label for="e"
+                  ><span data-i18n="contact.email">Email</span
+                  ><input id="e" type="email" required autocomplete="email"
+                /></label>
+                <label for="m"
+                  ><span data-i18n="contact.message">Message</span
+                  ><textarea id="m" required></textarea>
+                </label>
+                <button class="btn p" type="submit" data-i18n="contact.send">
+                  Send Message
+                </button>
+                <p id="fs" role="status"></p>
+              </form>
+            </div>
           </div>
+          <aside class="contact-aside">
+            <svg class="contact-art" viewBox="0 0 360 300" aria-hidden="true">
+              <defs>
+                <linearGradient id="contact-envelope" x1="0" x2="1" y1="0" y2="1">
+                  <stop stop-color="#a855f7" />
+                  <stop offset="1" stop-color="#6d28d9" />
+                </linearGradient>
+              </defs>
+              <circle class="art-halo" cx="180" cy="145" r="112" />
+              <circle class="art-dot art-dot-blue" cx="65" cy="86" r="7" />
+              <circle class="art-dot art-dot-pink" cx="284" cy="74" r="6" />
+              <circle class="art-dot art-dot-cyan" cx="302" cy="194" r="8" />
+              <path class="art-swoosh" d="M75 204c12 26 31 39 55 42" />
+              <rect class="art-paper" x="112" y="47" width="136" height="132" rx="12" />
+              <path class="art-paper-line" d="M137 80h85M137 101h85M137 122h65" />
+              <path class="art-envelope-back" d="M93 132h174v99H93z" />
+              <path class="art-envelope" d="M93 144 180 208l87-64v87H93z" />
+              <path class="art-envelope-flap" d="m93 144 87 64 87-64" />
+              <path class="art-plane" d="m250 111 62-34-24 69-14-23-24-12Zm24 12 20-23" />
+              <rect class="art-chat" x="42" y="111" width="66" height="42" rx="13" />
+              <circle class="art-chat-dot" cx="61" cy="132" r="3" />
+              <circle class="art-chat-dot art-chat-dot-two" cx="75" cy="132" r="3" />
+              <circle class="art-chat-dot art-chat-dot-three" cx="89" cy="132" r="3" />
+              <path class="art-spark" d="M282 35v14m-7-7h14M75 48v10m-5-5h10" />
+            </svg>
+            <div class="links">
+              <a
+                href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
+                ><img src="Image/contact-icons/gmail.png" alt=""
+                ><span
+                  ><small data-i18n="contact.email">Email</small
+                  >riengnarong@<wbr />gmail.com</span
+                ></a
+              >
+              <a
+                href="https://github.com/dashboard"
+                target="_blank"
+                rel="noreferrer"
+                ><img src="Image/contact-icons/github.png" alt=""
+                ><span><small>GitHub</small>github.com</span></a
+              >
+              <a href="https://www.linkedin.com/feed/"
+                ><img src="Image/contact-icons/linkedin.png" alt=""
+                ><span
+                  ><small data-i18n="contact.linkedin">LinkedIn</small>Rieng
+                  Narong</span
+                ></a
+              >
+              <a href="https://t.me/RONG_RONGzzz"
+                ><img src="Image/contact-icons/telegram.png" alt=""
+                ><span
+                  ><small data-i18n="contact.telegram">Telegram</small>Narong
+                  RIENG</span
+                ></a
+              >
+              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"
+                ><img src="Image/contact-icons/facebook.png" alt=""
+                ><span>Facebook</span></a
+              >
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"
+                ><img src="Image/contact-icons/instagram.png" alt=""
+                ><span>Instagram</span></a
+              >
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -579,28 +617,24 @@
         System Network Administration and Cybersecurity Student
       </p>
       <div class="soc">
-        <a
-          href="https://github.com/dashboard"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="GitHub"
-          ><svg class="i"><use href="#git" /></svg
-        ></a>
-        <a
-          href="https://www.linkedin.com/feed/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="LinkedIn"
-          ><svg class="i"><use href="#in" /></svg
-        ></a>
+        <a href="https://github.com/dashboard" target="_blank" rel="noreferrer" aria-label="GitHub"
+          ><img src="Image/contact-icons/github.png" alt=""
+        /></a>
+        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+          ><img src="Image/contact-icons/linkedin.png" alt=""
+        /></a>
         <a href="https://t.me/RONG_RONGzzz" aria-label="Telegram"
-          ><svg class="i"><use href="#tg" /></svg
-        ></a>
-        <a
-          href="https://myaccount.google.com/?utm_source=chrome-profile-chooser"
-          aria-label="Email"
-          ><svg class="i"><use href="#mail" /></svg
-        ></a>
+          ><img src="Image/contact-icons/telegram.png" alt=""
+        /></a>
+        <a href="https://myaccount.google.com/?utm_source=chrome-profile-chooser" aria-label="Email"
+          ><img src="Image/contact-icons/gmail.png" alt=""
+        /></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook"
+          ><img src="Image/contact-icons/facebook.png" alt=""
+        /></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"
+          ><img src="Image/contact-icons/instagram.png" alt=""
+        /></a>
       </div>
     </footer>
 
