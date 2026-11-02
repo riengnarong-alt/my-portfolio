@@ -77,6 +77,8 @@ const khmerText = {
   "certificates.cisco": "CCNA៖ ការណែនាំអំពីបណ្តាញ",
   "certificates.ciscoDetails":
     "Cisco Networking Academy · ថ្ងៃទី ៦ ខែកញ្ញា ឆ្នាំ ២០២៦",
+  "certificates.cybersecurity":
+    "សន្តិសុខសាយប័រ៖ ការណែនាំអំពីសន្តិសុខសាយប័រ",
   "certificates.view": "មើលវិញ្ញាបនបត្រ",
   "contact.title": "តោះភ្ជាប់ទំនាក់ទំនង",
   "contact.intro":
