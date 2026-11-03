@@ -1,6 +1,8 @@
 const $ = (s) => document.querySelector(s);
 const khmerText = {
   "nav.home": "ទំព័រដើម",
+  "intro.loading": "កំពុងរៀបចំគេហទំព័ររបស់អ្នក...",
+  "intro.skip": "រំលងការណែនាំ",
   "nav.about": "អំពីខ្ញុំ",
   "nav.skills": "ជំនាញ",
   "nav.education": "ដំណើររបស់ខ្ញុំ",
@@ -219,6 +221,44 @@ try {
 } catch (error) {
   console.warn("Could not load the saved language preference.", error);
   setLanguage("en");
+}
+const intro = $("#intro");
+if (intro) {
+  const finishIntro = () => {
+    if (intro.hidden) return;
+    clearTimeout(finishTimer);
+    intro.hidden = true;
+    intro.classList.remove("is-closing");
+    document.body.classList.remove("intro-active");
+  };
+  let finishTimer;
+  const closeIntro = () => {
+    if (intro.hidden || intro.classList.contains("is-closing")) return;
+    intro.classList.add("is-closing");
+    intro.addEventListener(
+      "transitionend",
+      (event) => {
+        if (event.target === intro) finishIntro();
+      },
+      { once: true },
+    );
+    finishTimer = setTimeout(finishIntro, 700);
+  };
+  const skipIntro = $("#intro-skip");
+  skipIntro.addEventListener("click", closeIntro);
+
+  let introWasShown = false;
+  try {
+    introWasShown = sessionStorage.getItem("portfolio-intro-seen") === "true";
+    if (!introWasShown) sessionStorage.setItem("portfolio-intro-seen", "true");
+  } catch (error) {
+    console.warn("Could not read or save the intro preference.", error);
+  }
+  if (!introWasShown) {
+    intro.hidden = false;
+    document.body.classList.add("intro-active");
+    setTimeout(closeIntro, 4400);
+  }
 }
 // reveal
 const io = new IntersectionObserver(

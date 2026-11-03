@@ -13,6 +13,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="intro-overlay" id="intro" hidden>
+      <div class="intro-content">
+        <div class="intro-scene">
+          <img
+            class="intro-image"
+            src="Image/intro-popol-kupa.png"
+            alt="A warrior and wolf charging through a snowy landscape"
+            fetchpriority="high"
+          />
+          <div class="intro-effects" aria-hidden="true">
+            <span class="intro-wolf-energy"></span>
+            <span class="intro-warrior-energy"></span>
+            <span class="intro-sword-glint"></span>
+            <span class="intro-snow-burst intro-snow-burst-one"></span>
+            <span class="intro-snow-burst intro-snow-burst-two"></span>
+          </div>
+        </div>
+        <p class="intro-caption" data-i18n="intro.loading">
+          Preparing your portfolio...
+        </p>
+        <div class="intro-progress" aria-hidden="true"><span></span></div>
+      </div>
+      <button class="intro-skip" id="intro-skip" type="button" data-i18n="intro.skip">
+        Skip intro
+      </button>
+    </div>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
       <defs>
         <symbol id="net" viewBox="0 0 24 24">

@@ -1524,7 +1524,337 @@ body.light-mode .soc a {
   border-color: var(--line);
   color: var(--blue);
 }
+.intro-overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  background: #061323;
+  opacity: 1;
+  transition: opacity 0.55s ease;
+}
+.intro-overlay[hidden] {
+  display: none;
+}
+.intro-overlay.is-closing {
+  opacity: 0;
+  pointer-events: none;
+}
+.intro-content {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+}
+.intro-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.intro-scene::before,
+.intro-scene::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+.intro-scene::before {
+  box-shadow:
+    inset 0 0 130px rgba(5, 15, 35, 0.58),
+    inset 0 0 40px rgba(56, 189, 248, 0.1);
+}
+.intro-scene::after {
+  background: linear-gradient(180deg, rgba(7, 20, 38, 0.08), transparent 25%, transparent 72%, rgba(7, 20, 38, 0.18));
+}
+.intro-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+}
+.intro-effects {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.intro-blade-halo,
+.intro-blade-trail,
+.intro-energy-arc {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.intro-blade-halo {
+  stroke: #42d9ff;
+  stroke-width: 13;
+  opacity: 0.72;
+  filter: url("#intro-energy-blur");
+  stroke-dasharray: 48 52;
+  animation: intro-blade-surge 1.4s ease-in-out infinite;
+}
+.intro-blade-trail {
+  stroke: url("#intro-blade-energy");
+  stroke-width: 4;
+  filter: drop-shadow(0 0 5px #73f5ff);
+  stroke-dasharray: 36 64;
+  animation: intro-blade-surge 1.4s ease-in-out infinite;
+}
+.intro-wolf-aura {
+  fill: url("#intro-wolf-aura");
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: intro-aura-pulse 1.8s ease-in-out infinite alternate;
+}
+.intro-wolf-eye {
+  fill: #80f5ff;
+  filter: drop-shadow(0 0 8px #46dfff);
+  opacity: 0.2;
+  animation: intro-eye-flash 2.2s ease-in-out infinite;
+}
+.intro-wolf-eye-two {
+  animation-delay: 0.12s;
+}
+.intro-eye-fire {
+  opacity: 0.98;
+}
+.intro-fire-flicker {
+  transform-box: fill-box;
+  transform-origin: center 70%;
+  animation: intro-flame-dance 0.32s ease-in-out infinite alternate;
+}
+.intro-eye-fire-two .intro-fire-flicker {
+  animation-delay: -0.16s;
+}
+.intro-eye-fire-four .intro-fire-flicker {
+  animation-delay: -0.11s;
+}
+.intro-fire-aura {
+  fill: #24bfff;
+  opacity: 0.9;
+  filter: url("#intro-fire-glow");
+  animation: intro-flame-aura 0.48s ease-in-out infinite alternate;
+}
+.intro-fire-shape {
+  fill: url("#intro-blue-fire");
+  filter: drop-shadow(0 0 5px #20cfff);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: intro-flame-dance 0.32s ease-in-out infinite alternate-reverse;
+}
+.intro-fire-core {
+  fill: #e8ffff;
+  filter: drop-shadow(0 0 4px #a5f3ff);
+  opacity: 0.9;
+}
+.intro-arm-aura {
+  fill: url("#intro-rune-aura");
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: intro-aura-pulse 1.4s ease-in-out infinite alternate-reverse;
+}
+.intro-energy-arc {
+  stroke: #77ecff;
+  stroke-width: 3;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 7px #43cbff);
+  stroke-dasharray: 8 92;
+  animation: intro-arc-flow 1.8s linear infinite;
+}
+.intro-spark {
+  fill: #e8fdff;
+  filter: drop-shadow(0 0 7px #58dfff);
+  animation: intro-spark-float 1.6s ease-in-out infinite alternate;
+}
+.intro-spark-two {
+  animation-delay: -0.5s;
+}
+.intro-spark-three {
+  animation-delay: -1s;
+}
+.intro-spark-four {
+  animation-delay: -0.8s;
+}
+.intro-caption {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: max(66px, calc(env(safe-area-inset-bottom) + 60px));
+  left: 20px;
+  color: rgba(240, 249, 255, 0.92);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  animation: intro-caption-appear 0.7s 0.4s ease both;
+}
+.intro-progress {
+  position: absolute;
+  z-index: 2;
+  bottom: max(42px, calc(env(safe-area-inset-bottom) + 36px));
+  left: 50%;
+  width: min(220px, 52vw);
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(219, 234, 254, 0.22);
+  transform: translateX(-50%);
+}
+.intro-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #67e8f9, #60a5fa, #c4b5fd);
+  box-shadow: 0 0 12px rgba(103, 232, 249, 0.8);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: intro-progress 4.5s linear both;
+}
+.intro-overlay::before,
+.intro-overlay::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+.intro-overlay::before {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(37, 99, 235, 0.12), transparent 62%),
+    linear-gradient(180deg, rgba(7, 20, 38, 0.34), transparent 28%, rgba(7, 20, 38, 0.12) 57%, rgba(5, 15, 30, 0.82)),
+    linear-gradient(90deg, rgba(7, 20, 38, 0.18), transparent 28%, transparent 72%, rgba(7, 20, 38, 0.18));
+}
+.intro-overlay::after {
+  z-index: 2;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.88) 1px, transparent 2px),
+    radial-gradient(circle, rgba(214, 239, 255, 0.72) 1.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 2px);
+  background-position: 0 0, 60px 80px, 130px 35px;
+  background-size: 150px 180px, 230px 260px, 320px 300px;
+  animation: intro-snow 7s linear infinite;
+}
+.intro-skip {
+  position: absolute;
+  z-index: 4;
+  top: max(24px, env(safe-area-inset-top));
+  right: max(24px, env(safe-area-inset-right));
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(5, 15, 30, 0.58);
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+.intro-skip:hover {
+  background: rgba(5, 15, 30, 0.82);
+}
+body.intro-active {
+  overflow: hidden;
+}
+@keyframes intro-blade-surge {
+  from {
+    opacity: 0.3;
+    stroke-dashoffset: 70;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes intro-aura-pulse {
+  from {
+    opacity: 0.35;
+    transform: scale(0.78);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+@keyframes intro-eye-flash {
+  from {
+    opacity: 0.18;
+  }
+  12%,
+  28% {
+    opacity: 1;
+  }
+  42%,
+  100% {
+    opacity: 0.3;
+  }
+}
+@keyframes intro-arc-flow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+@keyframes intro-spark-float {
+  from {
+    opacity: 0.25;
+    transform: translateY(4px) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.2);
+  }
+}
+@keyframes intro-flame-dance {
+  from {
+    transform: translateY(1px) scaleX(0.88) skewX(-4deg);
+  }
+  to {
+    transform: translateY(-2px) scaleX(1.08) skewX(4deg);
+  }
+}
+@keyframes intro-flame-aura {
+  from {
+    opacity: 0.48;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+@keyframes intro-caption-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes intro-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes intro-snow {
+  to {
+    background-position: 0 180px, 60px 340px, 130px 335px;
+  }
+}
 @media (max-width: 820px) {
+  .intro-image {
+    object-position: center;
+  }
   #menu {
     display: block;
   }
@@ -1594,5 +1924,18 @@ html[lang="km"] body {
   .rv {
     opacity: 1;
     transform: none;
+  }
+  .intro-blade-halo,
+  .intro-blade-trail,
+  .intro-wolf-aura,
+  .intro-wolf-eye,
+  .intro-fire-flicker,
+  .intro-fire-shape,
+  .intro-fire-aura,
+  .intro-arm-aura,
+  .intro-energy-arc,
+  .intro-spark,
+  .intro-progress span {
+    animation: none;
   }
 }
