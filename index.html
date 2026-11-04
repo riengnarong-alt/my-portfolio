@@ -8,7 +8,7 @@
     </title>
     <meta
       name="description"
-      content="Portfolio of RIENG Narong, first-year System Network Administration and Cybersecurity student at Passerelles Numériques Cambodia."
+      content="Portfolio of RIENG Narong, second-year System Network Administration and Cybersecurity student at Passerelles Numériques Cambodia."
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,24 +16,19 @@
     <div class="intro-overlay" id="intro" hidden>
       <div class="intro-content">
         <div class="intro-scene">
-          <img
-            class="intro-image"
-            src="Image/intro-popol-kupa.png"
-            alt="A warrior and wolf charging through a snowy landscape"
-            fetchpriority="high"
-          />
-          <div class="intro-effects" aria-hidden="true">
-            <span class="intro-wolf-energy"></span>
-            <span class="intro-warrior-energy"></span>
-            <span class="intro-sword-glint"></span>
-            <span class="intro-snow-burst intro-snow-burst-one"></span>
-            <span class="intro-snow-burst intro-snow-burst-two"></span>
-          </div>
+          <video
+            class="intro-video"
+            id="intro-video"
+            controls
+            muted
+            playsinline
+            preload="auto"
+            aria-label="Portfolio introduction video"
+          >
+            <source src="Video/Popol%20and%20kupa.mp4" type="video/mp4" />
+            Your browser does not support the introduction video.
+          </video>
         </div>
-        <p class="intro-caption" data-i18n="intro.loading">
-          Preparing your portfolio...
-        </p>
-        <div class="intro-progress" aria-hidden="true"><span></span></div>
       </div>
       <button class="intro-skip" id="intro-skip" type="button" data-i18n="intro.skip">
         Skip intro
@@ -226,7 +221,7 @@
             System Network Administration &amp; Cybersecurity Student
           </p>
           <p class="intro" data-i18n="hero.intro">
-            I am a first-year student at Passerelles Numériques Cambodia,
+            I am a second-year student at Passerelles Numériques Cambodia,
             studying System Network Administration and Cybersecurity. I am
             interested in networking, Linux, servers, cybersecurity, cloud
             computing, and web hosting.
@@ -274,39 +269,43 @@
     </header>
 
     <section id="about">
-      <div class="wrap rv">
-        <h2 data-i18n="about.title">About Me</h2>
-        <p class="lead" data-i18n="about.intro">
-          I am a student who is building my knowledge and practical skills in
-          IT. I enjoy learning how computer networks, servers, operating
-          systems, databases, cloud services, and cybersecurity work. My goal is
-          to continue learning, gain practical experience, and become a
-          professional IT specialist.
-        </p>
-        <div class="cards">
-          <div class="card">
-            <div class="ic">
-              <svg class="i"><use href="#bk" /></svg>
-            </div>
-            <h3 data-i18n="about.student">Student</h3>
+      <div class="wrap rv about-layout">
+        <div class="about-copy">
+          <h2 data-i18n="about.title">About Me</h2>
+          <p class="lead" data-i18n="about.intro">
+            I am a student who is building my knowledge and practical skills in
+            IT. I enjoy learning how computer networks, servers, operating
+            systems, databases, cloud services, and cybersecurity work. My goal
+            is to continue learning, gain practical experience, and become a
+            professional IT specialist.
+          </p>
+        </div>
+        <div class="photo about-photo">
+          <div class="orbit-ring" aria-hidden="true"></div>
+          <div class="orbit-path orbit-path-one" aria-hidden="true">
+            <span class="orbit-satellite">
+              <svg class="i"><use href="#web" /></svg>
+            </span>
           </div>
-          <div class="card">
-            <div class="ic">
+          <div class="orbit-path orbit-path-two" aria-hidden="true">
+            <span class="orbit-satellite">
               <svg class="i"><use href="#term" /></svg>
-            </div>
-            <h3 data-i18n="about.learner">IT Learner</h3>
+            </span>
           </div>
-          <div class="card">
-            <div class="ic">
-              <svg class="i"><use href="#net" /></svg>
-            </div>
-            <h3 data-i18n="about.network">Network Enthusiast</h3>
+          <div class="orbit-path orbit-path-three" aria-hidden="true">
+            <span class="orbit-satellite">
+              <svg class="i"><use href="#srv" /></svg>
+            </span>
           </div>
-          <div class="card">
-            <div class="ic">
+          <div class="orbit-path orbit-path-four" aria-hidden="true">
+            <span class="orbit-satellite">
               <svg class="i"><use href="#shd" /></svg>
+            </span>
+          </div>
+          <div class="portrait">
+            <div class="portrait-image">
+              <img src="my-photo.jpg" alt="Portrait of RIENG Narong" />
             </div>
-            <h3 data-i18n="about.security">Cybersecurity Learner</h3>
           </div>
         </div>
       </div>
@@ -339,14 +338,16 @@
             <h3>Passerelles Numériques Cambodia (PNC)</h3>
             <small data-i18n="education.present">2026 – Present</small>
             <p data-i18n="education.program">
-              System Network Administration and Cybersecurity<br />First Year
+              System Network Administration and Cybersecurity<br />Second Year
               Student
             </p>
           </article>
           <article>
             <h3>Rovieng High School</h3>
             <small>2022 – 2025</small>
-            <p data-i18n="education.general">General Knowledge</p>
+            <p data-i18n="education.highSchool">
+              General Knowledge<br />Learn Leadership
+            </p>
           </article>
           <article>
             <h3>Reaksmey Rikreay Secondary School</h3>
@@ -366,7 +367,7 @@
       <div class="wrap rv">
         <h2 data-i18n="projects.title">Projects</h2>
         <p class="lead" data-i18n="projects.intro">
-          Learning projects and practice work from my first year.
+          Learning projects and practice work from my second year.
         </p>
         <div class="pg">
           <div class="card proj">

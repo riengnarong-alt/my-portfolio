@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riengnarong-alt.github.io/my-portfolio/sitemap.xml

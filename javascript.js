@@ -1,7 +1,6 @@
 const $ = (s) => document.querySelector(s);
 const khmerText = {
   "nav.home": "ទំព័រដើម",
-  "intro.loading": "កំពុងរៀបចំគេហទំព័ររបស់អ្នក...",
   "intro.skip": "រំលងការណែនាំ",
   "nav.about": "អំពីខ្ញុំ",
   "nav.skills": "ជំនាញ",
@@ -17,7 +16,7 @@ const khmerText = {
   "hero.hello": "សួស្តី ខ្ញុំឈ្មោះ",
   "hero.role": "និស្សិតគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ",
   "hero.intro":
-    "ខ្ញុំជានិស្សិតឆ្នាំទី១ នៅអង្គការ Passerelles Numériques Cambodia ដែលកំពុងសិក្សាផ្នែកគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ។ ខ្ញុំចាប់អារម្មណ៍លើបណ្តាញកុំព្យូទ័រ Linux ម៉ាស៊ីនមេ សន្តិសុខសាយប័រ កុំព្យូទ័រពពក និងការបង្ហោះគេហទំព័រ។",
+    "ខ្ញុំជានិស្សិតឆ្នាំទី២ នៅអង្គការ Passerelles Numériques Cambodia ដែលកំពុងសិក្សាផ្នែកគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ។ ខ្ញុំចាប់អារម្មណ៍លើបណ្តាញកុំព្យូទ័រ Linux ម៉ាស៊ីនមេ សន្តិសុខសាយប័រ កុំព្យូទ័រពពក និងការបង្ហោះគេហទំព័រ។",
   "hero.projects": "មើលគម្រោងរបស់ខ្ញុំ",
   "hero.contact": "ទាក់ទងមកខ្ញុំ",
   "about.title": "អំពីខ្ញុំ",
@@ -38,10 +37,11 @@ const khmerText = {
   "education.title": "ដំណើររបស់ខ្ញុំ",
   "education.present": "២០២៦ – បច្ចុប្បន្ន",
   "education.program":
-    "គ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ<br />និស្សិតឆ្នាំទី១",
+    "គ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ<br />និស្សិតឆ្នាំទី២",
   "education.general": "ចំណេះដឹងទូទៅ",
+  "education.highSchool": "ចំណេះដឹងទូទៅ<br />រៀនពីភាពជាអ្នកដឹកនាំ",
   "projects.title": "គម្រោង",
-  "projects.intro": "គម្រោងសិក្សា និងការអនុវត្តក្នុងឆ្នាំទី១ របស់ខ្ញុំ។",
+  "projects.intro": "គម្រោងសិក្សា និងការអនុវត្តក្នុងឆ្នាំទី២ របស់ខ្ញុំ។",
   "projects.viewDocument": "មើលឯកសារ",
   "projects.documentTitle": "ឯកសារគម្រោង",
   "projects.documentTools": "ឧបករណ៍ និងបច្ចេកវិទ្យា",
@@ -79,8 +79,7 @@ const khmerText = {
   "certificates.cisco": "CCNA៖ ការណែនាំអំពីបណ្តាញ",
   "certificates.ciscoDetails":
     "Cisco Networking Academy · ថ្ងៃទី ៦ ខែកញ្ញា ឆ្នាំ ២០២៦",
-  "certificates.cybersecurity":
-    "សន្តិសុខសាយប័រ៖ ការណែនាំអំពីសន្តិសុខសាយប័រ",
+  "certificates.cybersecurity": "សន្តិសុខសាយប័រ៖ ការណែនាំអំពីសន្តិសុខសាយប័រ",
   "certificates.view": "មើលវិញ្ញាបនបត្រ",
   "contact.title": "តោះភ្ជាប់ទំនាក់ទំនង",
   "contact.intro":
@@ -105,10 +104,13 @@ const setLanguage = (language) => {
       ? "រៀង ណារ៉ុង | និស្សិតគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ"
       : "RIENG Narong | System Network Administration & Cybersecurity Student";
   document.querySelectorAll("[data-i18n]").forEach((element) => {
-    if (!originalText.has(element)) originalText.set(element, element.innerHTML);
+    if (!originalText.has(element))
+      originalText.set(element, element.innerHTML);
     const key = element.dataset.i18n;
     element.innerHTML =
-      language === "km" && khmerText[key] ? khmerText[key] : originalText.get(element);
+      language === "km" && khmerText[key]
+        ? khmerText[key]
+        : originalText.get(element);
   });
   document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
     const key = element.dataset.i18nAria;
@@ -171,7 +173,11 @@ const skillNamesKm = [
   "AWS",
   "ការគ្រប់គ្រងម៉ាស៊ីនមេ",
 ];
-const skillStatusKm = { Developing: "កំពុងអភិវឌ្ឍ", Learning: "កំពុងរៀន", Beginner: "កម្រិតដំបូង" };
+const skillStatusKm = {
+  Developing: "កំពុងអភិវឌ្ឍ",
+  Learning: "កំពុងរៀន",
+  Beginner: "កម្រិតដំបូង",
+};
 function renderSkills() {
   $("#sk").innerHTML = S.map((s, index) => {
     const name = currentLanguage === "km" ? skillNamesKm[index] : s[0];
@@ -217,13 +223,16 @@ languageButtons.forEach((button) => {
   });
 });
 try {
-  setLanguage(localStorage.getItem("portfolio-language") === "km" ? "km" : "en");
+  setLanguage(
+    localStorage.getItem("portfolio-language") === "km" ? "km" : "en",
+  );
 } catch (error) {
   console.warn("Could not load the saved language preference.", error);
   setLanguage("en");
 }
 const intro = $("#intro");
 if (intro) {
+  const introVideo = $("#intro-video");
   const finishIntro = () => {
     if (intro.hidden) return;
     clearTimeout(finishTimer);
@@ -234,6 +243,7 @@ if (intro) {
   let finishTimer;
   const closeIntro = () => {
     if (intro.hidden || intro.classList.contains("is-closing")) return;
+    introVideo.pause();
     intro.classList.add("is-closing");
     intro.addEventListener(
       "transitionend",
@@ -242,10 +252,27 @@ if (intro) {
       },
       { once: true },
     );
-    finishTimer = setTimeout(finishIntro, 700);
+    finishTimer = setTimeout(finishIntro, 950);
   };
   const skipIntro = $("#intro-skip");
   skipIntro.addEventListener("click", closeIntro);
+  introVideo.addEventListener(
+    "loadeddata",
+    () => intro.classList.add("is-ready"),
+    { once: true },
+  );
+  introVideo.addEventListener("ended", closeIntro, { once: true });
+  introVideo.addEventListener(
+    "error",
+    () => {
+      console.error(
+        "Could not load the portfolio introduction video.",
+        introVideo.error,
+      );
+      closeIntro();
+    },
+    { once: true },
+  );
 
   let introWasShown = false;
   try {
@@ -257,7 +284,9 @@ if (intro) {
   if (!introWasShown) {
     intro.hidden = false;
     document.body.classList.add("intro-active");
-    setTimeout(closeIntro, 4400);
+    introVideo.play().catch((error) => {
+      console.warn("The portfolio introduction video could not autoplay.", error);
+    });
   }
 }
 // reveal
@@ -279,9 +308,11 @@ const projectDocumentDialog = $("#project-document-dialog");
 document.querySelectorAll("button.project-document-link").forEach((button) => {
   button.addEventListener("click", () => {
     const project = button.closest(".proj");
-    $("#project-document-name").textContent = project.querySelector("h3").textContent;
-    $("#project-document-description").textContent =
-      project.querySelector("p").textContent.trim();
+    $("#project-document-name").textContent =
+      project.querySelector("h3").textContent;
+    $("#project-document-description").textContent = project
+      .querySelector("p")
+      .textContent.trim();
     $("#project-document-tools").replaceChildren(
       ...[...project.querySelectorAll(".chips span")].map((chip) => {
         const item = document.createElement("li");
@@ -316,7 +347,9 @@ const applyTheme = (theme) => {
         : "ប្តូរទៅរបៀបភ្លឺ"
       : `Switch to ${light ? "dark" : "light"} mode`,
   );
-  themeToggle.querySelector("use").setAttribute("href", light ? "#moon" : "#sun");
+  themeToggle
+    .querySelector("use")
+    .setAttribute("href", light ? "#moon" : "#sun");
 };
 try {
   applyTheme(localStorage.getItem("portfolio-theme") || "dark");
@@ -325,7 +358,9 @@ try {
   applyTheme("dark");
 }
 themeToggle.onclick = () => {
-  const theme = document.body.classList.contains("light-mode") ? "dark" : "light";
+  const theme = document.body.classList.contains("light-mode")
+    ? "dark"
+    : "light";
   applyTheme(theme);
   try {
     localStorage.setItem("portfolio-theme", theme);
@@ -343,7 +378,11 @@ addEventListener(
   "scroll",
   () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY <= 80 || nav.contains(document.activeElement) || ul.classList.contains("open")) {
+    if (
+      currentScrollY <= 80 ||
+      nav.contains(document.activeElement) ||
+      ul.classList.contains("open")
+    ) {
       nav.classList.remove("nav-hidden");
     } else if (currentScrollY > lastScrollY + 5) {
       nav.classList.add("nav-hidden");
@@ -419,7 +458,10 @@ $("#f").onsubmit = (e) => {
       vx: (Math.random() - 0.5) * 9,
       vy: (Math.random() - 0.5) * 9,
     }));
-    const starCount = Math.min(120, Math.max(28, Math.floor((width * height) / 12500)));
+    const starCount = Math.min(
+      120,
+      Math.max(28, Math.floor((width * height) / 12500)),
+    );
     stars = Array.from({ length: starCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -480,7 +522,9 @@ $("#f").onsubmit = (e) => {
           ctx.stroke();
         }
       }
-      ctx.fillStyle = lightMode ? "rgba(57,124,246,.38)" : "rgba(109,179,255,.65)";
+      ctx.fillStyle = lightMode
+        ? "rgba(57,124,246,.38)"
+        : "rgba(109,179,255,.65)";
       ctx.beginPath();
       ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
       ctx.fill();
@@ -495,11 +539,23 @@ $("#f").onsubmit = (e) => {
       meteor.y += meteor.vy * delta;
       const progress = meteor.life / meteor.duration;
       const fade = Math.min(1, progress * 5, (1 - progress) * 4);
-      const tailX = meteor.x - meteor.vx * (meteor.length / Math.hypot(meteor.vx, meteor.vy));
-      const tailY = meteor.y - meteor.vy * (meteor.length / Math.hypot(meteor.vx, meteor.vy));
-      const gradient = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+      const tailX =
+        meteor.x -
+        meteor.vx * (meteor.length / Math.hypot(meteor.vx, meteor.vy));
+      const tailY =
+        meteor.y -
+        meteor.vy * (meteor.length / Math.hypot(meteor.vx, meteor.vy));
+      const gradient = ctx.createLinearGradient(
+        tailX,
+        tailY,
+        meteor.x,
+        meteor.y,
+      );
       gradient.addColorStop(0, `hsla(${meteor.hue},100%,72%,0)`);
-      gradient.addColorStop(0.72, `hsla(${meteor.hue},100%,72%,${0.48 * fade})`);
+      gradient.addColorStop(
+        0.72,
+        `hsla(${meteor.hue},100%,72%,${0.48 * fade})`,
+      );
       gradient.addColorStop(1, `hsla(${meteor.hue},100%,94%,${0.96 * fade})`);
       ctx.strokeStyle = gradient;
       ctx.lineWidth = meteor.radius;
@@ -510,10 +566,18 @@ $("#f").onsubmit = (e) => {
       ctx.stroke();
 
       const headGlow = ctx.createRadialGradient(
-        meteor.x, meteor.y, 0, meteor.x, meteor.y, 13 * meteor.radius,
+        meteor.x,
+        meteor.y,
+        0,
+        meteor.x,
+        meteor.y,
+        13 * meteor.radius,
       );
       headGlow.addColorStop(0, `hsla(${meteor.hue},100%,96%,${0.95 * fade})`);
-      headGlow.addColorStop(0.18, `hsla(${meteor.hue},100%,70%,${0.45 * fade})`);
+      headGlow.addColorStop(
+        0.18,
+        `hsla(${meteor.hue},100%,70%,${0.45 * fade})`,
+      );
       headGlow.addColorStop(1, `hsla(${meteor.hue},100%,60%,0)`);
       ctx.fillStyle = headGlow;
       ctx.beginPath();
@@ -525,8 +589,12 @@ $("#f").onsubmit = (e) => {
         for (let spark = 0; spark < 2; spark++) {
           const offset = Math.random() * meteor.length;
           sparks.push({
-            x: meteor.x - meteor.vx * (offset / Math.hypot(meteor.vx, meteor.vy)),
-            y: meteor.y - meteor.vy * (offset / Math.hypot(meteor.vx, meteor.vy)),
+            x:
+              meteor.x -
+              meteor.vx * (offset / Math.hypot(meteor.vx, meteor.vy)),
+            y:
+              meteor.y -
+              meteor.vy * (offset / Math.hypot(meteor.vx, meteor.vy)),
             vx: meteor.vx * 0.08 + (Math.random() - 0.5) * 55,
             vy: meteor.vy * 0.08 + (Math.random() - 0.5) * 55,
             life: 0,
@@ -537,7 +605,11 @@ $("#f").onsubmit = (e) => {
         }
       }
 
-      if (progress >= 1 || meteor.x < -meteor.length || meteor.y > height + meteor.length) {
+      if (
+        progress >= 1 ||
+        meteor.x < -meteor.length ||
+        meteor.y > height + meteor.length
+      ) {
         meteors.splice(index, 1);
       }
     }
@@ -578,7 +650,9 @@ $("#f").onsubmit = (e) => {
     frameId = 0;
     if (!heroVisible || document.hidden || motionPreference.matches) return;
     if (time - lastFrameAt >= frameInterval) {
-      const delta = lastFrameAt ? Math.min((time - lastFrameAt) / 1000, 0.05) : 0;
+      const delta = lastFrameAt
+        ? Math.min((time - lastFrameAt) / 1000, 0.05)
+        : 0;
       lastFrameAt = time;
       draw(time, delta);
     }
@@ -586,7 +660,12 @@ $("#f").onsubmit = (e) => {
   };
 
   const start = () => {
-    if (!frameId && heroVisible && !document.hidden && !motionPreference.matches) {
+    if (
+      !frameId &&
+      heroVisible &&
+      !document.hidden &&
+      !motionPreference.matches
+    ) {
       frameId = requestAnimationFrame(animate);
     }
   };
