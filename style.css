@@ -755,6 +755,17 @@ h1 {
   border: 1px solid rgba(14, 116, 144, 0.18);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 5px 14px rgba(37, 99, 235, 0.12);
 }
+.card .ic.skill-logo-icon {
+  background: transparent;
+}
+.card .ic.windows-server-icon {
+  background: #fff;
+}
+.card .ic.skill-logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 .card .ic.network-icon {
   color: #0369a1;
   background: linear-gradient(145deg, #cffafe, #dbeafe 55%, #e0e7ff);

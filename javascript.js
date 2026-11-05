@@ -147,11 +147,11 @@ const setLanguage = (language) => {
 
 const S = [
   ["Computer Networking", "net", "Developing", 55],
-  ["CCNA Fundamentals", "ccna", "Learning", 40],
-  ["Linux", "term", "Developing", 50],
-  ["Windows Server", "srv", "Beginner", 30],
+  ["CCNA Fundamentals", "ccna", "Learning", 40, "Image/ccna-logo-transparent.png", "CCNA logo"],
+  ["Linux", "term", "Developing", 50, "Image/linux-logo-transparent.png", "Linux Tux logo"],
+  ["Windows Server", "srv", "Beginner", 30, "Image/image%20copy%207.png", "Windows logo"],
   ["System Administration", "cog", "Developing", 45],
-  ["Cybersecurity Fundamentals", "shd", "Learning", 20],
+  ["Cybersecurity Fundamentals", "shd", "Learning", 20, "Image/linux-logo-transparent.png", "Linux Tux logo"],
   ["Database Fundamentals", "db", "Beginner", 30],
   ["Cloud Computing", "cld", "Learning", 30],
   ["Web Hosting", "web", "Developing", 50],
@@ -182,7 +182,15 @@ function renderSkills() {
   $("#sk").innerHTML = S.map((s, index) => {
     const name = currentLanguage === "km" ? skillNamesKm[index] : s[0];
     const status = currentLanguage === "km" ? skillStatusKm[s[2]] : s[2];
-    return `<div class="card skill"><div class="top"><div class="ic${s[1] === "ccna" ? " ccna-icon" : ""}" style="margin:0;width:40px;height:40px"><svg class="i"><use href="#${s[1]}"/></svg></div><span class="tag">${status}</span></div><h3>${name}</h3><div class="bar" role="progressbar" aria-label="${name}: ${status}" aria-valuenow="${s[3]}" aria-valuemin="0" aria-valuemax="100"><i data-w="${s[3]}"${$("#sk").closest(".rv").classList.contains("in") ? ` style="width:${s[3]}%"` : ""}></i></div></div>`;
+    const icon = s[4]
+      ? `<img src="${s[4]}" alt="${s[5]}" />`
+      : `<svg class="i"><use href="#${s[1]}"/></svg>`;
+    const iconSize = s[0] === "CCNA Fundamentals" ? 48 : s[4] ? 56 : 40;
+    const iconClass = s[4]
+      ? ` skill-logo-icon${s[0] === "Windows Server" ? " windows-server-icon" : ""}`
+      : "";
+    const iconStyle = s[4] ? iconClass : s[1] === "ccna" ? " ccna-icon" : "";
+    return `<div class="card skill"><div class="top"><div class="ic${iconStyle}" style="margin:0;width:${iconSize}px;height:${iconSize}px">${icon}</div><span class="tag">${status}</span></div><h3>${name}</h3><div class="bar" role="progressbar" aria-label="${name}: ${status}" aria-valuenow="${s[3]}" aria-valuemin="0" aria-valuemax="100"><i data-w="${s[3]}"${$("#sk").closest(".rv").classList.contains("in") ? ` style="width:${s[3]}%"` : ""}></i></div></div>`;
   }).join("");
 }
 const goalsEnglish = [
@@ -399,7 +407,7 @@ addEventListener(
   },
   { passive: true },
 );
-// form (no backend: opens the visitor's email app)
+// Open a prefilled Gmail compose window; sending still requires the visitor's confirmation.
 $("#f").onsubmit = (e) => {
   e.preventDefault();
   const n = $("#n").value.trim(),
@@ -416,13 +424,17 @@ $("#f").onsubmit = (e) => {
   $("#fs").style.color = "#2f80ed";
   $("#fs").textContent =
     currentLanguage === "km"
-      ? "កំពុងបើកកម្មវិធីអ៊ីមែលរបស់អ្នក…"
-      : "Opening your email app…";
-  location.href =
-    "mailto:your-email@example.com?subject=" +
-    encodeURIComponent("Portfolio message from " + n) +
-    "&body=" +
-    encodeURIComponent(m + "\n\n" + n + " (" + em.value + ")");
+      ? "កំពុងបើក Gmail…"
+      : "Opening Gmail…";
+  const gmailCompose = new URL("https://mail.google.com/mail/");
+  gmailCompose.search = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: "riengnarong@gmail.com",
+    su: "Portfolio message from " + n,
+    body: m + "\n\n" + n + " (" + em.value + ")",
+  }).toString();
+  location.href = gmailCompose.toString();
 };
 // Hero sky canvas
 (() => {
