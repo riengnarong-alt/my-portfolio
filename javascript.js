@@ -312,6 +312,14 @@ const io = new IntersectionObserver(
   { threshold: 0.12 },
 );
 document.querySelectorAll(".rv").forEach((x) => io.observe(x));
+document.querySelectorAll(".contact-bloom-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const petals = button.querySelector(".contact-bloom-petals");
+    petals.classList.remove("is-blooming");
+    void petals.getBoundingClientRect();
+    petals.classList.add("is-blooming");
+  });
+});
 const projectDocumentDialog = $("#project-document-dialog");
 document.querySelectorAll("button.project-document-link").forEach((button) => {
   button.addEventListener("click", () => {

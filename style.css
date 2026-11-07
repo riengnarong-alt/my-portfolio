@@ -526,6 +526,67 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 8px 22px rgba(47, 128, 237, 0.4);
 }
+.hero-projects {
+  position: relative;
+  isolation: isolate;
+}
+.hero-projects::before,
+.hero-projects::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.hero-projects::before {
+  inset: -10px -8px -13px;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 50% 100%, #22d3ee 0, #2563eb 34%, transparent 72%);
+  filter: blur(12px);
+}
+.hero-projects::after {
+  inset: -7px;
+  background: linear-gradient(110deg, #2563eb 0%, #2f80ed 34%, #38bdf8 68%, #67e8f9 100%);
+  background-size: 180% 180%;
+  clip-path: polygon(
+    0 18%, 5% 18%, 8% 2%, 12% 18%, 21% 18%, 25% 0, 29% 18%, 40% 18%,
+    44% 4%, 48% 18%, 60% 18%, 64% 0, 68% 18%, 80% 18%, 84% 3%, 88% 18%,
+    100% 18%, 100% 78%, 96% 82%, 92% 100%, 88% 82%, 78% 82%, 74% 98%,
+    70% 82%, 58% 82%, 54% 100%, 50% 82%, 39% 82%, 35% 97%, 31% 82%,
+    20% 82%, 16% 100%, 12% 82%, 4% 82%, 0 94%
+  );
+  filter: drop-shadow(0 0 7px rgba(34, 211, 238, 0.9));
+}
+.hero-projects:hover::before,
+.hero-projects:focus-visible::before {
+  opacity: 0.9;
+  animation: project-fire-glow 900ms ease-in-out infinite alternate;
+}
+.hero-projects:hover::after,
+.hero-projects:focus-visible::after {
+  opacity: 0.95;
+  animation: project-fire-flicker 420ms ease-in-out infinite alternate;
+}
+.hero-projects:hover,
+.hero-projects:focus-visible {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+@keyframes project-fire-glow {
+  to {
+    transform: scale(1.08, 0.9);
+    filter: blur(16px);
+  }
+}
+@keyframes project-fire-flicker {
+  to {
+    background-position: 100% 100%;
+    filter: drop-shadow(0 0 12px rgba(34, 211, 238, 1)) brightness(1.25);
+  }
+}
 .btn.s {
   color: #fff;
   margin-left: 10px;
@@ -1099,6 +1160,93 @@ h1 {
   width: 64px;
   background: linear-gradient(90deg, var(--blue), var(--teal));
 }
+.contact-bloom-button {
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.contact-bloom-button:focus-visible {
+  outline: 3px solid #a855f7;
+  outline-offset: 3px;
+}
+.contact-bloom {
+  display: block;
+  width: 58px;
+  height: 58px;
+  margin: 4px 0 8px;
+  overflow: visible;
+}
+.bloom-stem {
+  fill: none;
+  stroke: #22a879;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+.bloom-leaf {
+  fill: #86efac;
+}
+.contact-flower-sway {
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+  animation: contact-flower-sway 3.4s ease-in-out infinite;
+}
+.contact-breeze {
+  fill: none;
+  stroke: #a78bfa;
+  stroke-linecap: round;
+  stroke-width: 1.5;
+  opacity: 0;
+  animation: contact-breeze-drift 3.4s ease-in-out infinite;
+}
+.contact-bloom-petals {
+  fill: #e879f9;
+  stroke: #fff;
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.contact-bloom-petals.is-blooming {
+  animation: contact-bloom-open 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.bloom-center {
+  fill: #fbbf24;
+  stroke: none;
+}
+@keyframes contact-bloom-open {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes contact-flower-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+@keyframes contact-breeze-drift {
+  15% {
+    opacity: 0.75;
+  }
+  70% {
+    opacity: 0.45;
+    transform: translateX(12px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+}
 .contact-main .lead {
   max-width: 48ch;
   margin: 18px 0 26px;
@@ -1137,7 +1285,7 @@ textarea {
   resize: vertical;
 }
 #contact .btn.p {
-  justify-self: start;
+  justify-self: center;
   min-width: 190px;
   padding: 11px 24px;
   border: 0;
