@@ -82,6 +82,10 @@ const khmerText = {
   "certificates.cybersecurity": "សន្តិសុខសាយប័រ៖ ការណែនាំអំពីសន្តិសុខសាយប័រ",
   "certificates.view": "មើលវិញ្ញាបនបត្រ",
   "contact.title": "តោះភ្ជាប់ទំនាក់ទំនង",
+  "contact.bloom": "ឱ្យផ្ការីក",
+  "contact.namePlaceholder": "បញ្ចូលឈ្មោះរបស់អ្នក",
+  "contact.emailPlaceholder": "បញ្ចូលអ៊ីមែលរបស់អ្នក",
+  "contact.messagePlaceholder": "សរសេរសារដើម្បីទាក់ទង ឬផ្តល់មតិយោបល់មកខ្ញុំ",
   "contact.intro":
     "ខ្ញុំតែងតែចាប់អារម្មណ៍ក្នុងការរៀនសូត្រ ភ្ជាប់ទំនាក់ទំនងជាមួយនិស្សិត និងអ្នកជំនាញ IT ផ្សេងទៀត ព្រមទាំងស្វែងរកឱកាសថ្មីៗ។",
   "contact.name": "ឈ្មោះ",
@@ -111,6 +115,21 @@ const setLanguage = (language) => {
       language === "km" && khmerText[key]
         ? khmerText[key]
         : originalText.get(element);
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.dataset.i18nPlaceholder;
+    const englishPlaceholders = {
+      "contact.namePlaceholder": "Your name",
+      "contact.emailPlaceholder": "Your email",
+      "contact.messagePlaceholder":
+        "Write your message here to contact me or share feedback.",
+    };
+    element.setAttribute(
+      "placeholder",
+      language === "km"
+        ? khmerText[key] || englishPlaceholders[key]
+        : englishPlaceholders[key],
+    );
   });
   document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
     const key = element.dataset.i18nAria;
@@ -314,10 +333,12 @@ const io = new IntersectionObserver(
 document.querySelectorAll(".rv").forEach((x) => io.observe(x));
 document.querySelectorAll(".contact-bloom-button").forEach((button) => {
   button.addEventListener("click", () => {
-    const petals = button.querySelector(".contact-bloom-petals");
-    petals.classList.remove("is-blooming");
-    void petals.getBoundingClientRect();
-    petals.classList.add("is-blooming");
+    const flower = button
+      .closest(".contact-bloom-control")
+      .querySelector(".contact-bloom");
+    flower.classList.remove("is-blooming");
+    void flower.getBoundingClientRect();
+    flower.classList.add("is-blooming");
   });
 });
 const projectDocumentDialog = $("#project-document-dialog");

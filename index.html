@@ -560,20 +560,89 @@
         <div class="contact-layout">
           <div class="contact-main">
             <h2 data-i18n="contact.title">Let's Talk</h2>
-            <svg class="contact-bloom" viewBox="0 0 72 72" aria-hidden="true">
-              <path class="bloom-stem" d="M36 35c0 11-2 19-1 29" />
-              <path class="bloom-leaf" d="M35 51c-10-1-14-6-15-13 9 0 15 4 15 13Z" />
-              <path class="bloom-leaf" d="M35 58c8-8 14-8 19-6-3 8-9 11-19 6Z" />
-              <g class="contact-bloom-petals">
-                <circle cx="36" cy="13" r="8" />
-                <circle cx="47" cy="20" r="8" />
-                <circle cx="47" cy="33" r="8" />
-                <circle cx="36" cy="39" r="8" />
-                <circle cx="25" cy="33" r="8" />
-                <circle cx="25" cy="20" r="8" />
-                <circle class="bloom-center" cx="36" cy="26" r="5" />
-              </g>
-            </svg>
+            <div class="contact-bloom-control">
+              <svg class="contact-bloom" viewBox="0 0 72 72" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bloom-petal-gradient" x1="20" y1="8" x2="49" y2="43" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#f0abfc" />
+                    <stop offset="1" stop-color="#a855f7" />
+                  </linearGradient>
+                  <linearGradient id="bloom-leaf-gradient" x1="22" y1="41" x2="52" y2="62" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#86efac" />
+                    <stop offset="1" stop-color="#14b8a6" />
+                  </linearGradient>
+                  <linearGradient id="bloom-stem-gradient" x1="34" y1="38" x2="36" y2="65" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#34d399" />
+                    <stop offset="1" stop-color="#0f9f83" />
+                  </linearGradient>
+                  <radialGradient id="bloom-halo-gradient">
+                    <stop stop-color="#e9d5ff" stop-opacity=".8" />
+                    <stop offset="1" stop-color="#e9d5ff" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <circle class="bloom-halo" cx="36" cy="26" r="23" />
+                <path class="contact-breeze" d="M1 22c5-3 10-3 15 0" />
+                <path class="contact-breeze contact-breeze-two" d="M3 36c5-2 9-2 13 0" />
+                <path class="contact-breeze contact-breeze-three" d="M8 49c4-2 7-2 11 0" />
+                <path class="bloom-heart-outline" d="M36 62C29 55 5 39 5 23 5 13 12 7 21 7c7 0 12 5 15 12 3-7 8-12 15-12 9 0 16 6 16 16 0 16-24 32-31 39Z" />
+                <g class="bloom-burst" aria-hidden="true">
+                  <g class="bloom-spark" style="--bloom-x: 0px; --bloom-y: -8px; --bloom-delay: 0ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: 4px; --bloom-y: -16px; --bloom-delay: 35ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: 18px; --bloom-y: -16px; --bloom-delay: 70ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: 27px; --bloom-y: -7px; --bloom-delay: 105ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: 18px; --bloom-y: 8px; --bloom-delay: 140ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: 4px; --bloom-y: 22px; --bloom-delay: 175ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: 0px; --bloom-y: 29px; --bloom-delay: 210ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: -4px; --bloom-y: 22px; --bloom-delay: 245ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: -18px; --bloom-y: 8px; --bloom-delay: 280ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: -27px; --bloom-y: -7px; --bloom-delay: 315ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: -18px; --bloom-y: -16px; --bloom-delay: 350ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                  <g class="bloom-spark" style="--bloom-x: -4px; --bloom-y: -16px; --bloom-delay: 385ms">
+                    <circle cx="36" cy="23" r="1.7" /><circle cx="38.6" cy="25.2" r="1.7" /><circle cx="37.6" cy="28.4" r="1.7" /><circle cx="34.4" cy="28.4" r="1.7" /><circle cx="33.4" cy="25.2" r="1.7" /><circle class="bloom-spark-center" cx="36" cy="26" r="1.2" />
+                  </g>
+                </g>
+                <g class="contact-flower-sway">
+                  <path class="bloom-stem" d="M36 35c0 11-2 19-1 29" />
+                  <path class="bloom-leaf" d="M35 51c-10-1-14-6-15-13 9 0 15 4 15 13Z" />
+                  <path class="bloom-leaf" d="M35 58c8-8 14-8 19-6-3 8-9 11-19 6Z" />
+                  <g class="contact-bloom-petals">
+                    <ellipse cx="36" cy="16" rx="5.8" ry="9" />
+                    <ellipse cx="44.7" cy="21" rx="5.8" ry="9" transform="rotate(60 44.7 21)" />
+                    <ellipse cx="44.7" cy="31" rx="5.8" ry="9" transform="rotate(120 44.7 31)" />
+                    <ellipse cx="36" cy="36" rx="5.8" ry="9" transform="rotate(180 36 36)" />
+                    <ellipse cx="27.3" cy="31" rx="5.8" ry="9" transform="rotate(240 27.3 31)" />
+                    <ellipse cx="27.3" cy="21" rx="5.8" ry="9" transform="rotate(300 27.3 21)" />
+                    <circle class="bloom-center" cx="36" cy="26" r="4.3" />
+                    <circle class="bloom-center-highlight" cx="34.8" cy="24.5" r="1.2" />
+                  </g>
+                </g>
+              </svg>
+              <button class="contact-bloom-button" type="button" data-i18n="contact.bloom">
+                Bloom
+              </button>
+            </div>
             <p class="lead" data-i18n="contact.intro">
               I am always interested in learning, connecting with other IT students
               and professionals, and discovering new opportunities.
@@ -582,15 +651,15 @@
               <form id="f" autocomplete="on" novalidate>
                 <label for="n"
                   ><span data-i18n="contact.name">Name</span
-                  ><input id="n" name="name" type="text" required autocomplete="name"
+                  ><input id="n" name="name" type="text" required autocomplete="name" placeholder="Your name" data-i18n-placeholder="contact.namePlaceholder"
                 /></label>
                 <label for="e"
                   ><span data-i18n="contact.email">Email</span
-                  ><input id="e" name="email" type="email" required autocomplete="email"
+                  ><input id="e" name="email" type="email" required autocomplete="email" placeholder="Your email" data-i18n-placeholder="contact.emailPlaceholder"
                 /></label>
                 <label for="m"
                   ><span data-i18n="contact.message">Message</span
-                  ><textarea id="m" required></textarea>
+                  ><textarea id="m" required placeholder="Write your message here to contact me or share feedback." data-i18n-placeholder="contact.messagePlaceholder"></textarea>
                 </label>
                 <button class="btn p" type="submit" data-i18n="contact.send">
                   Send Message
