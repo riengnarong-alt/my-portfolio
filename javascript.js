@@ -1,7 +1,11 @@
+const SPEED = 40;
+const GAP = 20;
+const RESUME_DELAY = 1500;
+const DIRECTION = 1;
+
 const $ = (s) => document.querySelector(s);
 const khmerText = {
   "nav.home": "ទំព័រដើម",
-  "intro.skip": "រំលងការណែនាំ",
   "nav.about": "អំពីខ្ញុំ",
   "nav.skills": "ជំនាញ",
   "nav.education": "ដំណើររបស់ខ្ញុំ",
@@ -100,6 +104,15 @@ const originalText = new Map();
 const languageButtons = [...document.querySelectorAll("[data-language]")];
 let currentLanguage = "en";
 
+const renderTranslation = (element, text) => {
+  const fragment = document.createDocumentFragment();
+  text.split(/<br\s*\/?>/i).forEach((part, index) => {
+    if (index) fragment.append(document.createElement("br"));
+    fragment.append(document.createTextNode(part));
+  });
+  element.replaceChildren(fragment);
+};
+
 const setLanguage = (language) => {
   currentLanguage = language;
   document.documentElement.lang = language;
@@ -108,21 +121,28 @@ const setLanguage = (language) => {
       ? "រៀង ណារ៉ុង | និស្សិតគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ"
       : "RIENG Narong | System Network Administration & Cybersecurity Student";
   document.querySelectorAll("[data-i18n]").forEach((element) => {
-    if (!originalText.has(element))
-      originalText.set(element, element.innerHTML);
+    if (!originalText.has(element)) {
+      originalText.set(
+        element,
+        [...element.childNodes].map((node) => node.cloneNode(true)),
+      );
+    }
     const key = element.dataset.i18n;
-    element.innerHTML =
-      language === "km" && khmerText[key]
-        ? khmerText[key]
-        : originalText.get(element);
+    const translation = language === "km" ? khmerText[key] : "";
+    if (translation) {
+      renderTranslation(element, translation);
+    } else {
+      element.replaceChildren(
+        ...originalText.get(element).map((node) => node.cloneNode(true)),
+      );
+    }
   });
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
     const key = element.dataset.i18nPlaceholder;
     const englishPlaceholders = {
-      "contact.namePlaceholder": "Your name",
-      "contact.emailPlaceholder": "Your email",
-      "contact.messagePlaceholder":
-        "Write your message here to contact me or share feedback.",
+      "contact.namePlaceholder": "Enter Name",
+      "contact.emailPlaceholder": "Enter G-Mail",
+      "contact.messagePlaceholder": "Enter Your Message",
     };
     element.setAttribute(
       "placeholder",
@@ -198,19 +218,69 @@ const skillStatusKm = {
   Beginner: "កម្រិតដំបូង",
 };
 function renderSkills() {
-  $("#sk").innerHTML = S.map((s, index) => {
+  const container = $("#sk");
+  const revealed = container.closest(".rv").classList.contains("in");
+  const fragment = document.createDocumentFragment();
+  S.forEach((s, index) => {
     const name = currentLanguage === "km" ? skillNamesKm[index] : s[0];
     const status = currentLanguage === "km" ? skillStatusKm[s[2]] : s[2];
-    const icon = s[4]
-      ? `<img src="${s[4]}" alt="${s[5]}" />`
-      : `<svg class="i"><use href="#${s[1]}"/></svg>`;
     const iconSize = s[0] === "CCNA Fundamentals" ? 48 : s[4] ? 56 : 40;
+    const icon = document.createElement("div");
     const iconClass = s[4]
-      ? ` skill-logo-icon${s[0] === "Windows Server" ? " windows-server-icon" : ""}`
-      : "";
-    const iconStyle = s[4] ? iconClass : s[1] === "ccna" ? " ccna-icon" : "";
-    return `<div class="card skill"><div class="top"><div class="ic${iconStyle}" style="margin:0;width:${iconSize}px;height:${iconSize}px">${icon}</div><span class="tag">${status}</span></div><h3>${name}</h3><div class="bar" role="progressbar" aria-label="${name}: ${status}" aria-valuenow="${s[3]}" aria-valuemin="0" aria-valuemax="100"><i data-w="${s[3]}"${$("#sk").closest(".rv").classList.contains("in") ? ` style="width:${s[3]}%"` : ""}></i></div></div>`;
-  }).join("");
+      ? `skill-logo-icon${s[0] === "Windows Server" ? " windows-server-icon" : ""}`
+      : s[1] === "ccna"
+        ? "ccna-icon"
+        : "";
+    icon.className = `ic${iconClass ? ` ${iconClass}` : ""}`;
+    icon.style.margin = "0";
+    icon.style.width = `${iconSize}px`;
+    icon.style.height = `${iconSize}px`;
+
+    if (s[4]) {
+      const image = document.createElement("img");
+      image.src = s[4];
+      image.alt = s[5];
+      image.width = iconSize;
+      image.height = iconSize;
+      image.loading = "lazy";
+      image.decoding = "async";
+      icon.append(image);
+    } else {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+      svg.classList.add("i");
+      svg.setAttribute("aria-hidden", "true");
+      use.setAttribute("href", `#${s[1]}`);
+      svg.append(use);
+      icon.append(svg);
+    }
+
+    const card = document.createElement("div");
+    card.className = "card skill";
+    const top = document.createElement("div");
+    top.className = "top";
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = status;
+    top.append(icon, tag);
+
+    const heading = document.createElement("h3");
+    heading.textContent = name;
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-label", `${name}: ${status}`);
+    bar.setAttribute("aria-valuenow", String(s[3]));
+    bar.setAttribute("aria-valuemin", "0");
+    bar.setAttribute("aria-valuemax", "100");
+    const progress = document.createElement("i");
+    progress.dataset.w = String(s[3]);
+    if (revealed) progress.style.width = `${s[3]}%`;
+    bar.append(progress);
+    card.append(top, heading, bar);
+    fragment.append(card);
+  });
+  container.replaceChildren(fragment);
 }
 const goalsEnglish = [
   "Become a skilled IT professional",
@@ -234,9 +304,19 @@ const goalsKhmer = [
 ];
 function renderGoals() {
   const goals = currentLanguage === "km" ? goalsKhmer : goalsEnglish;
-  $("#gl").innerHTML = goals
-    .map((text) => `<li><svg class="i"><use href="#ck"/></svg>${text}</li>`)
-    .join("");
+  const fragment = document.createDocumentFragment();
+  goals.forEach((text) => {
+    const item = document.createElement("li");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    svg.classList.add("i");
+    svg.setAttribute("aria-hidden", "true");
+    use.setAttribute("href", "#ck");
+    svg.append(use);
+    item.append(svg, document.createTextNode(text));
+    fragment.append(item);
+  });
+  $("#gl").replaceChildren(fragment);
 }
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -244,78 +324,24 @@ languageButtons.forEach((button) => {
     setLanguage(language);
     try {
       localStorage.setItem("portfolio-language", language);
-    } catch (error) {
-      console.warn("Could not save the language preference.", error);
-    }
+    } catch {}
   });
 });
 try {
   setLanguage(
     localStorage.getItem("portfolio-language") === "km" ? "km" : "en",
   );
-} catch (error) {
-  console.warn("Could not load the saved language preference.", error);
+} catch {
   setLanguage("en");
 }
-const intro = $("#intro");
-if (intro) {
-  const introVideo = $("#intro-video");
-  const finishIntro = () => {
-    if (intro.hidden) return;
-    clearTimeout(finishTimer);
-    intro.hidden = true;
-    intro.classList.remove("is-closing");
-    document.body.classList.remove("intro-active");
-  };
-  let finishTimer;
-  const closeIntro = () => {
-    if (intro.hidden || intro.classList.contains("is-closing")) return;
-    introVideo.pause();
-    intro.classList.add("is-closing");
-    intro.addEventListener(
-      "transitionend",
-      (event) => {
-        if (event.target === intro) finishIntro();
-      },
-      { once: true },
-    );
-    finishTimer = setTimeout(finishIntro, 950);
-  };
-  const skipIntro = $("#intro-skip");
-  skipIntro.addEventListener("click", closeIntro);
-  introVideo.addEventListener(
-    "loadeddata",
-    () => intro.classList.add("is-ready"),
-    { once: true },
-  );
-  introVideo.addEventListener("ended", closeIntro, { once: true });
-  introVideo.addEventListener(
-    "error",
-    () => {
-      console.error(
-        "Could not load the portfolio introduction video.",
-        introVideo.error,
-      );
-      closeIntro();
-    },
-    { once: true },
-  );
-
-  let introWasShown = false;
-  try {
-    introWasShown = sessionStorage.getItem("portfolio-intro-seen") === "true";
-    if (!introWasShown) sessionStorage.setItem("portfolio-intro-seen", "true");
-  } catch (error) {
-    console.warn("Could not read or save the intro preference.", error);
+document.querySelectorAll("img").forEach((image) => {
+  const removeBrokenImage = () => image.remove();
+  if (image.complete && image.naturalWidth === 0) {
+    removeBrokenImage();
+  } else {
+    image.addEventListener("error", removeBrokenImage, { once: true });
   }
-  if (!introWasShown) {
-    intro.hidden = false;
-    document.body.classList.add("intro-active");
-    introVideo.play().catch((error) => {
-      console.warn("The portfolio introduction video could not autoplay.", error);
-    });
-  }
-}
+});
 // reveal
 const io = new IntersectionObserver(
   (es) =>
@@ -364,13 +390,13 @@ $(".project-document-close").addEventListener("click", () => {
   projectDocumentDialog.close();
 });
 // nav
-const nav = $("nav"),
-  mb = $("#menu"),
-  ul = $("#links");
-mb.onclick = () => {
+const nav = $("nav");
+const mb = $("#menu");
+const ul = $("#links");
+mb.addEventListener("click", () => {
   const o = ul.classList.toggle("open");
-  mb.setAttribute("aria-expanded", o);
-};
+  mb.setAttribute("aria-expanded", String(o));
+});
 const themeToggle = $("#theme-toggle");
 const applyTheme = (theme) => {
   const light = theme === "light";
@@ -388,56 +414,108 @@ const applyTheme = (theme) => {
     .querySelector("use")
     .setAttribute("href", light ? "#moon" : "#sun");
 };
+let hasSavedTheme = false;
 try {
-  applyTheme(localStorage.getItem("portfolio-theme") || "dark");
-} catch (error) {
-  console.warn("Could not load the saved theme preference.", error);
-  applyTheme("dark");
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  hasSavedTheme = savedTheme === "light" || savedTheme === "dark";
+  applyTheme(
+    hasSavedTheme
+      ? savedTheme
+      : matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark",
+  );
+} catch {
+  applyTheme(matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
 }
-themeToggle.onclick = () => {
+const colorSchemePreference = matchMedia("(prefers-color-scheme: light)");
+colorSchemePreference.addEventListener("change", (event) => {
+  if (!hasSavedTheme) applyTheme(event.matches ? "light" : "dark");
+});
+themeToggle.addEventListener("click", () => {
   const theme = document.body.classList.contains("light-mode")
     ? "dark"
     : "light";
   applyTheme(theme);
+  hasSavedTheme = true;
   try {
     localStorage.setItem("portfolio-theme", theme);
-  } catch (error) {
-    console.warn("Could not save the theme preference.", error);
+  } catch {}
+});
+ul.addEventListener("click", (event) => {
+  const target = event.target;
+  const link = target instanceof Element ? target.closest("a") : null;
+  if (link) {
+    ul.classList.remove("open");
+    mb.setAttribute("aria-expanded", "false");
   }
-};
-ul.onclick = (e) => {
-  if (e.target.tagName === "A") ul.classList.remove("open");
-};
-const secs = [...document.querySelectorAll("header,section")],
-  as = [...ul.querySelectorAll("a")];
-let lastScrollY = window.scrollY;
-addEventListener(
-  "scroll",
-  () => {
-    const currentScrollY = window.scrollY;
-    if (
-      currentScrollY <= 80 ||
-      nav.contains(document.activeElement) ||
-      ul.classList.contains("open")
-    ) {
-      nav.classList.remove("nav-hidden");
-    } else if (currentScrollY > lastScrollY + 5) {
-      nav.classList.add("nav-hidden");
-    } else if (currentScrollY < lastScrollY - 5) {
-      nav.classList.remove("nav-hidden");
-    }
-    lastScrollY = currentScrollY;
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && ul.classList.contains("open")) {
+    ul.classList.remove("open");
+    mb.setAttribute("aria-expanded", "false");
+    mb.focus();
+  }
+});
+const sections = [...document.querySelectorAll("main > header[id], main > section[id]")];
+const navLinks = [...ul.querySelectorAll("a")];
+const updateActiveSection = () => {
+  const center = window.innerHeight / 2;
+  const activeSection = sections.reduce((nearest, section) => {
+    const bounds = section.getBoundingClientRect();
+    const distance =
+      center < bounds.top
+        ? bounds.top - center
+        : center > bounds.bottom
+          ? center - bounds.bottom
+          : 0;
+    return distance < nearest.distance ? { section, distance } : nearest;
+  }, { section: sections[0], distance: Infinity }).section;
 
-    let c = secs[0].id;
-    secs.forEach((s) => {
-      if (s.getBoundingClientRect().top < 120) c = s.id;
-    });
-    as.forEach((a) => a.classList.toggle("on", a.hash === "#" + c));
-  },
-  { passive: true },
-);
+  document.body.dataset.theme = activeSection.id;
+  navLinks.forEach((link) => {
+    const active = link.hash === `#${activeSection.id}`;
+    link.classList.toggle("on", active);
+    if (active) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+};
+let activeSectionObserver;
+const observeActiveSections = () => {
+  if (activeSectionObserver) activeSectionObserver.disconnect();
+  const topInset = Math.round(window.innerHeight * 0.42);
+  const bottomInset = Math.round(window.innerHeight * 0.48);
+  activeSectionObserver = new IntersectionObserver(updateActiveSection, {
+    rootMargin: `-${topInset}px 0px -${bottomInset}px 0px`,
+    threshold: 0,
+  });
+  sections.forEach((section) => activeSectionObserver.observe(section));
+};
+observeActiveSections();
+window.addEventListener("resize", observeActiveSections, { passive: true });
+let lastScrollY = window.scrollY;
+let navUpdateFrame = 0;
+const updateNavVisibility = () => {
+  navUpdateFrame = 0;
+  const currentScrollY = window.scrollY;
+  if (
+    currentScrollY <= 80 ||
+    nav.contains(document.activeElement) ||
+    ul.classList.contains("open")
+  ) {
+    nav.classList.remove("nav-hidden");
+  } else if (currentScrollY > lastScrollY + 5) {
+    nav.classList.add("nav-hidden");
+  } else if (currentScrollY < lastScrollY - 5) {
+    nav.classList.remove("nav-hidden");
+  }
+  lastScrollY = currentScrollY;
+};
+window.addEventListener("scroll", () => {
+  if (!navUpdateFrame) navUpdateFrame = requestAnimationFrame(updateNavVisibility);
+}, { passive: true });
 // Open a prefilled Gmail compose window; sending still requires the visitor's confirmation.
-$("#f").onsubmit = (e) => {
+$("#f").addEventListener("submit", (e) => {
   e.preventDefault();
   const n = $("#n").value.trim(),
     m = $("#m").value.trim(),
@@ -464,7 +542,7 @@ $("#f").onsubmit = (e) => {
     body: m + "\n\n" + n + " (" + em.value + ")",
   }).toString();
   location.href = gmailCompose.toString();
-};
+});
 // Hero sky canvas
 (() => {
   const canvas = $("#network-canvas");
@@ -729,4 +807,302 @@ $("#f").onsubmit = (e) => {
     else start();
   });
   resize();
+})();
+
+(() => {
+  const carousel = $("#series-carousel");
+  const track = $("#series-track");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const courses = [
+    {
+      avatar: "⌘",
+      title: "The JavaScript Workshop",
+      author: "With Alex Morgan",
+      episodes: "24 Episodes",
+      level: "Beginner",
+      category: "Programming",
+    },
+    {
+      avatar: "🐍",
+      title: "Python for Practical Projects",
+      author: "With Taylor Kim",
+      episodes: "18 Episodes",
+      level: "Beginner",
+      category: "Development",
+    },
+    {
+      avatar: "⚛",
+      title: "React: Build Real Interfaces",
+      author: "With Jordan Lee",
+      episodes: "32 Episodes",
+      level: "Intermediate",
+      category: "Web Apps",
+    },
+    {
+      avatar: "☕",
+      title: "Java Fundamentals",
+      author: "With Sam Rivera",
+      episodes: "21 Episodes",
+      level: "Beginner",
+      category: "Programming",
+    },
+    {
+      avatar: "🐘",
+      title: "SQL and Database Design",
+      author: "With Casey Patel",
+      episodes: "16 Episodes",
+      level: "Intermediate",
+      category: "Databases",
+    },
+    {
+      avatar: "⌁",
+      title: "CSS Layouts from Scratch",
+      author: "With Morgan Chen",
+      episodes: "14 Episodes",
+      level: "Beginner",
+      category: "Web Design",
+    },
+    {
+      avatar: "🔧",
+      title: "Git: Everyday Workflows",
+      author: "With Jamie Park",
+      episodes: "12 Episodes",
+      level: "Intermediate",
+      category: "Tooling",
+    },
+    {
+      avatar: "▣",
+      title: "TypeScript in Depth",
+      author: "With Drew Wilson",
+      episodes: "28 Episodes",
+      level: "Advanced",
+      category: "Programming",
+    },
+  ];
+
+  const createMetaRow = (iconText, label) => {
+    const row = document.createElement("li");
+    const icon = document.createElement("span");
+    icon.className = "series-meta-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = iconText;
+
+    const text = document.createElement("span");
+    text.textContent = label;
+    row.append(icon, text);
+    return row;
+  };
+
+  const createCourseCard = (course) => {
+    const item = document.createElement("li");
+    item.className = "series-item";
+
+    const card = document.createElement("article");
+    card.className = "series-card";
+
+    const avatar = document.createElement("span");
+    avatar.className = "series-avatar";
+    avatar.setAttribute("aria-hidden", "true");
+    avatar.textContent = course.avatar;
+
+    const title = document.createElement("h3");
+    title.className = "series-title";
+    title.textContent = course.title;
+
+    const author = document.createElement("p");
+    author.className = "series-author";
+    author.textContent = course.author;
+
+    const divider = document.createElement("div");
+    divider.className = "series-divider";
+    divider.setAttribute("aria-hidden", "true");
+
+    const meta = document.createElement("ul");
+    meta.className = "series-meta";
+    meta.append(
+      createMetaRow("▤", course.episodes),
+      createMetaRow("◈", course.level),
+      createMetaRow("▣", course.category),
+    );
+
+    card.append(avatar, title, author, divider, meta);
+    item.append(card);
+    return item;
+  };
+
+  const originalItems = courses.map(createCourseCard);
+  track.replaceChildren(...originalItems);
+  track.style.setProperty("--series-gap", `${GAP}px`);
+
+  let loopWidth = 0;
+  let hovering = false;
+  let pointerDown = false;
+  let touching = false;
+  let touchResumeTimer = 0;
+  let interactionTimer = 0;
+  let animationFrame = 0;
+  let previousFrameTime = 0;
+
+  const clearInteractionTimer = () => {
+    if (!interactionTimer) return;
+    clearTimeout(interactionTimer);
+    interactionTimer = 0;
+  };
+
+  const isPaused = () =>
+    reducedMotion.matches ||
+    document.hidden ||
+    hovering ||
+    pointerDown ||
+    touching ||
+    touchResumeTimer !== 0 ||
+    interactionTimer !== 0;
+
+  const updateAnimation = () => {
+    if (isPaused()) {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
+      previousFrameTime = 0;
+    } else if (!animationFrame) {
+      animationFrame = requestAnimationFrame(animate);
+    }
+  };
+
+  const normalizeScrollPosition = () => {
+    if (!loopWidth) return;
+
+    if (DIRECTION > 0 && carousel.scrollLeft >= loopWidth) {
+      carousel.scrollLeft %= loopWidth;
+    } else if (DIRECTION < 0 && carousel.scrollLeft <= 0) {
+      carousel.scrollLeft =
+        loopWidth - ((-carousel.scrollLeft) % loopWidth);
+    }
+  };
+
+  function animate(time) {
+    animationFrame = 0;
+    if (isPaused()) {
+      previousFrameTime = 0;
+      return;
+    }
+
+    if (previousFrameTime) {
+      const deltaSeconds = (time - previousFrameTime) / 1000;
+      carousel.scrollLeft += SPEED * DIRECTION * deltaSeconds;
+      normalizeScrollPosition();
+    }
+    previousFrameTime = time;
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  const refreshClones = () => {
+    const oldProgress = loopWidth
+      ? (((carousel.scrollLeft % loopWidth) + loopWidth) % loopWidth) /
+        loopWidth
+      : 0;
+
+    track
+      .querySelectorAll("[data-series-clone]")
+      .forEach((clone) => clone.remove());
+
+    const firstItem = originalItems[0];
+    const lastItem = originalItems[originalItems.length - 1];
+    loopWidth =
+      lastItem.offsetLeft -
+      firstItem.offsetLeft +
+      lastItem.getBoundingClientRect().width;
+
+    const totalSets = Math.ceil(carousel.clientWidth / loopWidth) + 1;
+    for (let set = 1; set < totalSets; set += 1) {
+      originalItems.forEach((original) => {
+        const clone = original.cloneNode(true);
+        clone.dataset.seriesClone = "true";
+        clone.setAttribute("aria-hidden", "true");
+        clone.inert = true;
+        track.append(clone);
+      });
+    }
+
+    carousel.scrollLeft =
+      DIRECTION < 0 ? (oldProgress || 1) * loopWidth : oldProgress * loopWidth;
+    normalizeScrollPosition();
+  };
+
+  const scheduleInteractionResume = () => {
+    clearInteractionTimer();
+    interactionTimer = window.setTimeout(() => {
+      interactionTimer = 0;
+      updateAnimation();
+    }, RESUME_DELAY);
+    updateAnimation();
+  };
+
+  refreshClones();
+  new ResizeObserver(refreshClones).observe(carousel);
+
+  carousel.addEventListener("scroll", normalizeScrollPosition, {
+    passive: true,
+  });
+  carousel.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "touch") return;
+    hovering = true;
+    updateAnimation();
+  });
+  carousel.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "touch") return;
+    hovering = false;
+    clearInteractionTimer();
+    updateAnimation();
+  });
+  carousel.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch") return;
+    pointerDown = true;
+    updateAnimation();
+  });
+  window.addEventListener("pointerup", () => {
+    pointerDown = false;
+    updateAnimation();
+  });
+  window.addEventListener("pointercancel", () => {
+    pointerDown = false;
+    updateAnimation();
+  });
+
+  carousel.addEventListener(
+    "touchstart",
+    () => {
+      if (touchResumeTimer) clearTimeout(touchResumeTimer);
+      touchResumeTimer = 0;
+      touching = true;
+      updateAnimation();
+    },
+    { passive: true },
+  );
+  const finishTouch = () => {
+    touching = false;
+    if (touchResumeTimer) clearTimeout(touchResumeTimer);
+    touchResumeTimer = window.setTimeout(() => {
+      touchResumeTimer = 0;
+      updateAnimation();
+    }, RESUME_DELAY);
+    updateAnimation();
+  };
+  carousel.addEventListener("touchend", finishTouch, { passive: true });
+  carousel.addEventListener("touchcancel", finishTouch, { passive: true });
+
+  carousel.addEventListener(
+    "wheel",
+    (event) => {
+      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+        carousel.scrollLeft += event.deltaY;
+        event.preventDefault();
+      }
+      scheduleInteractionResume();
+    },
+    { passive: false },
+  );
+  carousel.addEventListener("keydown", scheduleInteractionResume);
+  document.addEventListener("visibilitychange", updateAnimation);
+  reducedMotion.addEventListener("change", updateAnimation);
+  updateAnimation();
 })();

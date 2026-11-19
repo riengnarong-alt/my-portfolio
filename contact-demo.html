@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A simple contact form that runs entirely in your browser."
+    />
+    <title>Contact me · Demo</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family:
+          Inter, Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: #242033;
+        background: #f8f6fc;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        --purple: #8b3ee8;
+        --field: #f4f1f8;
+        --border: #e7e1ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px 16px;
+        background:
+          radial-gradient(ellipse at 12% 10%, #f0e9fb 0, transparent 40%),
+          linear-gradient(145deg, #fff 4%, #f7f4fc 54%, #f0ebf9 100%);
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid rgba(139, 62, 232, 0.32);
+        outline-offset: 3px;
+      }
+
+      .contact-card {
+        width: min(100%, 620px);
+        padding: clamp(24px, 6vw, 48px);
+        overflow: hidden;
+        border: 1px solid rgba(224, 217, 236, 0.9);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow:
+          0 28px 80px rgba(62, 38, 96, 0.11),
+          0 4px 14px rgba(62, 38, 96, 0.05);
+      }
+
+      h1 {
+        margin: 0;
+        color: #252033;
+        letter-spacing: -0.035em;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+        font-size: clamp(1.7rem, 5vw, 2.1rem);
+      }
+
+      .field {
+        margin-bottom: 17px;
+      }
+
+      .field label {
+        display: block;
+        margin: 0 0 7px;
+        color: #666273;
+        font-size: 0.95rem;
+        font-weight: 650;
+      }
+
+      .field input,
+      .field textarea {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--border);
+        background: var(--field);
+        color: #292438;
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          background-color 160ms ease;
+      }
+
+      .field input {
+        min-height: 54px;
+        padding: 0 19px;
+        border-radius: 999px;
+      }
+
+      .field textarea {
+        min-height: 124px;
+        padding: 15px 19px;
+        border-radius: 24px;
+        resize: vertical;
+      }
+
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: #aaa4b5;
+        opacity: 1;
+      }
+
+      .field input:focus,
+      .field textarea:focus {
+        border-color: #b278f1;
+        outline: none;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+      }
+
+      .field [aria-invalid="true"] {
+        border-color: #d34b60;
+      }
+
+      .field-error {
+        display: block;
+        min-height: 1.2em;
+        margin: 5px 8px 0;
+        color: #b4233b;
+        font-size: 0.82rem;
+      }
+
+      .primary-button {
+        display: inline-flex;
+        min-height: 50px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid transparent;
+        font-weight: 750;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          background-color 160ms ease;
+      }
+
+      .primary-button {
+        min-width: 210px;
+        margin: 3px auto 0;
+        padding: 0 26px;
+        border-radius: 999px;
+        background: linear-gradient(105deg, #a855f7, #6d28d9);
+        box-shadow: 0 12px 25px rgba(124, 58, 237, 0.24);
+        color: #fff;
+      }
+
+      .primary-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(124, 58, 237, 0.31);
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: center;
+      }
+
+      .toast {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+        z-index: 3;
+        width: fit-content;
+        max-width: min(440px, calc(100vw - 32px));
+        margin: auto;
+        padding: 13px 18px;
+        transform: translateY(12px);
+        border-radius: 14px;
+        background: #292238;
+        box-shadow: 0 12px 35px rgba(28, 20, 42, 0.22);
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 180ms ease,
+          transform 180ms ease;
+      }
+
+      .toast.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      @media (max-width: 480px) {
+        .contact-card {
+          border-radius: 23px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="contact-card" id="contact-app">
+      <section aria-labelledby="contact-title">
+        <h1 id="contact-title" tabindex="-1">Contact me</h1>
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="contact-name">Name</label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+              aria-describedby="name-error"
+            />
+            <span class="field-error" id="name-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="contact-email">Email</label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              placeholder="Your email"
+              autocomplete="email"
+              required
+              aria-describedby="email-error"
+            />
+            <span class="field-error" id="email-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              placeholder="Write your message here to contact me or share feedback."
+              required
+              aria-describedby="message-error"
+            ></textarea>
+            <span
+              class="field-error"
+              id="message-error"
+              aria-live="polite"
+            ></span>
+          </div>
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Send Message</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const toast = document.querySelector("#toast");
+      let toastTimer = 0;
+
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add("visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(
+          () => toast.classList.remove("visible"),
+          3400,
+        );
+      };
+
+      const setFieldError = (input, message) => {
+        const error = document.getElementById(
+          input.getAttribute("aria-describedby"),
+        );
+        if (error) error.textContent = message;
+        input.setAttribute("aria-invalid", String(Boolean(message)));
+      };
+
+      const contactForm = document.querySelector("#contact-form");
+      const nameInput = document.querySelector("#contact-name");
+      const emailInput = document.querySelector("#contact-email");
+      const messageInput = document.querySelector("#contact-message");
+
+      [nameInput, emailInput, messageInput].forEach((input) => {
+        input.addEventListener("input", () => setFieldError(input, ""));
+      });
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const validName = nameInput.value.trim().length > 0;
+        const validEmail =
+          emailInput.value.trim().length > 0 && emailInput.validity.valid;
+        const validMessage = messageInput.value.trim().length > 0;
+
+        setFieldError(nameInput, validName ? "" : "Please enter your name.");
+        setFieldError(
+          emailInput,
+          validEmail ? "" : "Please enter a valid email address.",
+        );
+        setFieldError(
+          messageInput,
+          validMessage ? "" : "Please write a message.",
+        );
+
+        if (!validName || !validEmail || !validMessage) {
+          const firstInvalid = [nameInput, emailInput, messageInput].find(
+            (input) => input.getAttribute("aria-invalid") === "true",
+          );
+          firstInvalid?.focus();
+          return;
+        }
+
+        showToast(
+          "Thanks! Your message is ready. This frontend demo does not send it.",
+        );
+        contactForm.reset();
+      });
+    </script>
+  </body>
+</html>

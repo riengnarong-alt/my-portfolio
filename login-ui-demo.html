@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A visual-only sign-in UI demo that does not collect credentials."
+    />
+    <title>Welcome back · UI demo</title>
+    <style>
+      @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+      }
+
+      :root {
+        color-scheme: dark;
+        font-family:
+          "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+        color: #f7f5fc;
+        background: #07070b;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        --purple: #a78bfa;
+        --muted: #9c99a9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        min-width: 320px;
+        min-height: 100vh;
+        place-items: center;
+        margin: 0;
+        padding: 24px 16px;
+        background-color: #07070b;
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.06) 0.8px, transparent 0.9px),
+          radial-gradient(ellipse at 50% 45%, rgba(107, 54, 185, 0.13), transparent 58%);
+        background-size:
+          24px 24px,
+          100% 100%;
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      a {
+        color: #c4a8ff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #e4d7ff;
+        text-decoration: underline;
+      }
+
+      :focus-visible {
+        outline: 2px solid #c4a8ff;
+        outline-offset: 4px;
+      }
+
+      .login-card {
+        position: relative;
+        isolation: isolate;
+        width: min(100%, 360px);
+        padding: 30px 28px 24px;
+        overflow: visible;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        background:
+          linear-gradient(rgba(15, 15, 22, 0.98), rgba(15, 15, 22, 0.98))
+            padding-box,
+          linear-gradient(
+              135deg,
+              rgba(167, 139, 250, 0.34),
+              rgba(255, 255, 255, 0.08) 48%,
+              rgba(167, 139, 250, 0.2)
+            )
+            border-box;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+      }
+
+      .login-card::before,
+      .login-card::after {
+        position: absolute;
+        z-index: -1;
+        inset: -1px;
+        padding: 1.5px;
+        border-radius: inherit;
+        background: conic-gradient(
+          from var(--angle, 0deg),
+          transparent 0 70%,
+          #a78bfa 85%,
+          #fff 92%,
+          transparent 100%
+        );
+        content: "";
+        pointer-events: none;
+        animation: orbit-light 4s linear infinite;
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+
+      .login-card::before {
+        inset: -8px;
+        padding: 2px;
+        filter: blur(12px);
+        opacity: 0.6;
+      }
+
+      .login-card:focus-within::before,
+      .login-card:focus-within::after {
+        animation-duration: 2s;
+      }
+
+      .login-card:focus-within::before {
+        opacity: 0.95;
+      }
+
+      @keyframes orbit-light {
+        to {
+          --angle: 360deg;
+        }
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: #c4a8ff;
+        font-size: 0.72rem;
+        font-weight: 750;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.65rem;
+        font-weight: 750;
+        letter-spacing: -0.045em;
+      }
+
+      .subtitle {
+        margin: 8px 0 22px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.55;
+      }
+
+      .demo-note {
+        margin: 0 0 19px;
+        padding: 9px 11px;
+        border: 1px solid rgba(167, 139, 250, 0.2);
+        border-radius: 10px;
+        background: rgba(124, 58, 237, 0.08);
+        color: #c8b7ed;
+        font-size: 0.72rem;
+        line-height: 1.45;
+      }
+
+      .field {
+        margin-bottom: 15px;
+      }
+
+      .label-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 7px;
+      }
+
+      .label-row label {
+        color: #bcb9c7;
+        font-size: 0.76rem;
+        font-weight: 650;
+      }
+
+      .lost-link {
+        font-size: 0.7rem;
+      }
+
+      .mock-field {
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 12px;
+        background: #0a0a10;
+        color: #ddd9e8;
+        font-size: 0.79rem;
+      }
+
+      .mock-field:focus-visible {
+        outline: none;
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+      }
+
+      .mock-field-text {
+        min-width: 0;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .field-icon {
+        width: 15px;
+        height: 15px;
+        flex: 0 0 15px;
+        fill: none;
+        stroke: #898596;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.7;
+      }
+
+      .valid-badge {
+        display: grid;
+        width: 17px;
+        height: 17px;
+        flex: 0 0 17px;
+        place-items: center;
+        border-radius: 50%;
+        background: #8b5cf6;
+        color: #100b19;
+        font-size: 0.68rem;
+        font-weight: 900;
+      }
+
+      .hint {
+        margin: 7px 0 0;
+        color: #928da0;
+        font-size: 0.68rem;
+      }
+
+      .password-hint {
+        margin: 0;
+      }
+
+      .button-track {
+        position: relative;
+        display: flex;
+        min-height: 62px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        border: 1px dashed rgba(167, 139, 250, 0.35);
+        border-radius: 999px;
+        background: rgba(7, 7, 11, 0.65);
+      }
+
+      .track-node {
+        position: absolute;
+        left: 18px;
+        display: grid;
+        width: 22px;
+        height: 22px;
+        place-items: center;
+        border: 1px solid rgba(196, 168, 255, 0.5);
+        border-radius: 50%;
+        color: #c4a8ff;
+      }
+
+      .track-node svg {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+      }
+
+      .continue-button {
+        position: relative;
+        z-index: 1;
+        min-width: 126px;
+        min-height: 42px;
+        padding: 0 20px;
+        transform: rotate(-8deg);
+        border: 1px solid rgba(167, 139, 250, 0.6);
+        border-radius: 999px;
+        background: #20202b;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        color: #f9f7ff;
+        font-size: 0.78rem;
+        font-weight: 700;
+        transition:
+          transform 220ms ease,
+          border-color 220ms ease,
+          background-color 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .continue-button:hover {
+        border-color: #c4a8ff;
+        background: #2a2637;
+      }
+
+      .continue-button:active {
+        transform: rotate(-4deg) scale(0.98);
+      }
+
+      .continue-button[disabled] {
+        cursor: wait;
+        opacity: 0.88;
+      }
+
+      .spinner {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-right: 7px;
+        vertical-align: -2px;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 650ms linear infinite;
+      }
+
+      .spinner[hidden] {
+        display: none;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .status {
+        min-height: 1.35em;
+        margin: 12px 0 0;
+        color: #c4a8ff;
+        font-size: 0.78rem;
+        text-align: center;
+      }
+
+      .divider {
+        height: 1px;
+        margin: 21px 0 16px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .footer {
+        margin: 0;
+        color: #9793a2;
+        font-size: 0.73rem;
+        text-align: center;
+      }
+
+      .footer a {
+        font-weight: 650;
+      }
+
+      @supports not (mask-composite: exclude) {
+        .login-card {
+          border-color: rgba(167, 139, 250, 0.3);
+          box-shadow:
+            0 0 20px rgba(139, 92, 246, 0.2),
+            0 24px 80px rgba(0, 0, 0, 0.48);
+        }
+
+        .login-card::before,
+        .login-card::after {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .login-card::before,
+        .login-card::after {
+          animation: none;
+          opacity: 0.55;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="login-card">
+      <p class="eyebrow">Demo preview</p>
+      <h1>Welcome back</h1>
+      <p class="subtitle">
+        Enter your details. Until then, good luck catching the button.
+      </p>
+      <p class="demo-note" id="demo-note">
+        Demo mode — fields are read-only. Do not enter real credentials.
+      </p>
+
+      <div class="field">
+        <div class="label-row">
+          <label id="email-label">Work email</label>
+        </div>
+        <div
+          class="mock-field"
+          role="textbox"
+          aria-labelledby="email-label"
+          aria-readonly="true"
+          tabindex="0"
+        >
+          <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m4 7 8 6 8-6" />
+          </svg>
+          <span class="mock-field-text">visitor@example.test</span>
+          <span class="valid-badge" aria-label="Valid demo email">✓</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="label-row">
+          <label id="password-label">Password</label>
+          <a class="lost-link" href="#demo-note">Lost it?</a>
+        </div>
+        <div
+          class="mock-field"
+          role="textbox"
+          aria-labelledby="password-label"
+          aria-readonly="true"
+          tabindex="0"
+        >
+          <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="10" width="16" height="11" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+          </svg>
+          <span class="mock-field-text" aria-label="Eight demo characters"
+            >••••••••</span
+          >
+          <span class="hint password-hint">Min. 8 characters</span>
+        </div>
+      </div>
+
+      <div class="button-track">
+        <span class="track-node" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4" />
+          </svg>
+        </span>
+        <button class="continue-button" id="continue-button" type="button">
+          <span class="spinner" id="spinner" hidden aria-hidden="true"></span>
+          <span id="button-label">Continue demo</span>
+        </button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+
+      <div class="divider" aria-hidden="true"></div>
+      <p class="footer">
+        Don't have an account?
+        <a href="#demo-note">Sign up free</a>
+      </p>
+    </main>
+
+    <script>
+      const continueButton = document.querySelector("#continue-button");
+      const buttonLabel = document.querySelector("#button-label");
+      const spinner = document.querySelector("#spinner");
+      const status = document.querySelector("#status");
+
+      continueButton.addEventListener("click", () => {
+        if (continueButton.disabled) return;
+
+        continueButton.disabled = true;
+        spinner.hidden = false;
+        buttonLabel.textContent = "Checking demo…";
+        status.textContent = "This is a visual-only demo. No sign-in is performed.";
+
+        window.setTimeout(() => {
+          spinner.hidden = true;
+          buttonLabel.textContent = "Continue demo";
+          status.textContent = "Signed in — demo";
+          continueButton.disabled = false;
+        }, 700);
+      });
+    </script>
+  </body>
+</html>
