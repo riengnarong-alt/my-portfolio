@@ -1,8 +1,3 @@
-const SPEED = 40;
-const GAP = 20;
-const RESUME_DELAY = 1500;
-const DIRECTION = 1;
-
 const $ = (s) => document.querySelector(s);
 const khmerText = {
   "nav.home": "ទំព័រដើម",
@@ -84,6 +79,9 @@ const khmerText = {
   "certificates.ciscoDetails":
     "Cisco Networking Academy · ថ្ងៃទី ៦ ខែកញ្ញា ឆ្នាំ ២០២៦",
   "certificates.cybersecurity": "សន្តិសុខសាយប័រ៖ ការណែនាំអំពីសន្តិសុខសាយប័រ",
+  "certificates.modernAi": "ការណែនាំអំពី AI ទំនើប",
+  "certificates.modernAiDetails":
+    "Cisco Networking Academy · ថ្ងៃទី ២៥ ខែកញ្ញា ឆ្នាំ ២០២៦",
   "certificates.view": "មើលវិញ្ញាបនបត្រ",
   "contact.title": "តោះភ្ជាប់ទំនាក់ទំនង",
   "contact.bloom": "ឱ្យផ្ការីក",
@@ -101,7 +99,10 @@ const khmerText = {
   "footer.role": "និស្សិតគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ",
 };
 const originalText = new Map();
+const languageMenu = $("#language-menu");
 const languageButtons = [...document.querySelectorAll("[data-language]")];
+const languageFlag = $("#language-flag");
+const languageName = $("#language-name");
 let currentLanguage = "en";
 
 const renderTranslation = (element, text) => {
@@ -116,6 +117,14 @@ const renderTranslation = (element, text) => {
 const setLanguage = (language) => {
   currentLanguage = language;
   document.documentElement.lang = language;
+  languageName.textContent = language === "km" ? "ខ្មែរ" : "English";
+  languageFlag.src =
+    language === "km" ? "Cambodia%20flag.webp" : "UK%20flag.svg";
+  languageButtons.forEach((button) => {
+    const selected = button.dataset.language === language;
+    button.classList.toggle("active", selected);
+    button.setAttribute("aria-pressed", String(selected));
+  });
   document.title =
     language === "km"
       ? "រៀង ណារ៉ុង | និស្សិតគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ"
@@ -165,11 +174,6 @@ const setLanguage = (language) => {
       "aria-label",
       language === "km" ? khmerText[key] || key : englishLabels[key] || key,
     );
-  });
-  languageButtons.forEach((button) => {
-    const selected = button.dataset.language === language;
-    button.classList.toggle("active", selected);
-    button.setAttribute("aria-pressed", String(selected));
   });
   const lightMode = document.body.classList.contains("light-mode");
   $("#theme-toggle").setAttribute(
@@ -321,11 +325,20 @@ function renderGoals() {
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const language = button.dataset.language;
+    languageMenu.open = false;
     setLanguage(language);
     try {
       localStorage.setItem("portfolio-language", language);
     } catch {}
   });
+});
+document.addEventListener("click", (event) => {
+  if (!languageMenu.contains(event.target)) languageMenu.open = false;
+});
+languageMenu.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !languageMenu.open) return;
+  languageMenu.open = false;
+  languageMenu.querySelector("summary").focus();
 });
 try {
   setLanguage(
@@ -357,6 +370,20 @@ const io = new IntersectionObserver(
   { threshold: 0.12 },
 );
 document.querySelectorAll(".rv").forEach((x) => io.observe(x));
+
+const timeline = document.querySelector(".tl");
+if (timeline) {
+  const timelineObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      timeline.classList.add("is-visible");
+      timelineObserver.unobserve(timeline);
+    },
+    { threshold: 0.18 },
+  );
+  timelineObserver.observe(timeline);
+}
+
 document.querySelectorAll(".contact-bloom-button").forEach((button) => {
   button.addEventListener("click", () => {
     const flower = button
@@ -810,9 +837,7 @@ $("#f").addEventListener("submit", (e) => {
 })();
 
 (() => {
-  const carousel = $("#series-carousel");
   const track = $("#series-track");
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const courses = [
     {
       avatar: "⌘",
@@ -931,178 +956,11 @@ $("#f").addEventListener("submit", (e) => {
   };
 
   const originalItems = courses.map(createCourseCard);
-  track.replaceChildren(...originalItems);
-  track.style.setProperty("--series-gap", `${GAP}px`);
-
-  let loopWidth = 0;
-  let hovering = false;
-  let pointerDown = false;
-  let touching = false;
-  let touchResumeTimer = 0;
-  let interactionTimer = 0;
-  let animationFrame = 0;
-  let previousFrameTime = 0;
-
-  const clearInteractionTimer = () => {
-    if (!interactionTimer) return;
-    clearTimeout(interactionTimer);
-    interactionTimer = 0;
-  };
-
-  const isPaused = () =>
-    reducedMotion.matches ||
-    document.hidden ||
-    hovering ||
-    pointerDown ||
-    touching ||
-    touchResumeTimer !== 0 ||
-    interactionTimer !== 0;
-
-  const updateAnimation = () => {
-    if (isPaused()) {
-      if (animationFrame) cancelAnimationFrame(animationFrame);
-      animationFrame = 0;
-      previousFrameTime = 0;
-    } else if (!animationFrame) {
-      animationFrame = requestAnimationFrame(animate);
-    }
-  };
-
-  const normalizeScrollPosition = () => {
-    if (!loopWidth) return;
-
-    if (DIRECTION > 0 && carousel.scrollLeft >= loopWidth) {
-      carousel.scrollLeft %= loopWidth;
-    } else if (DIRECTION < 0 && carousel.scrollLeft <= 0) {
-      carousel.scrollLeft =
-        loopWidth - ((-carousel.scrollLeft) % loopWidth);
-    }
-  };
-
-  function animate(time) {
-    animationFrame = 0;
-    if (isPaused()) {
-      previousFrameTime = 0;
-      return;
-    }
-
-    if (previousFrameTime) {
-      const deltaSeconds = (time - previousFrameTime) / 1000;
-      carousel.scrollLeft += SPEED * DIRECTION * deltaSeconds;
-      normalizeScrollPosition();
-    }
-    previousFrameTime = time;
-    animationFrame = requestAnimationFrame(animate);
-  }
-
-  const refreshClones = () => {
-    const oldProgress = loopWidth
-      ? (((carousel.scrollLeft % loopWidth) + loopWidth) % loopWidth) /
-        loopWidth
-      : 0;
-
-    track
-      .querySelectorAll("[data-series-clone]")
-      .forEach((clone) => clone.remove());
-
-    const firstItem = originalItems[0];
-    const lastItem = originalItems[originalItems.length - 1];
-    loopWidth =
-      lastItem.offsetLeft -
-      firstItem.offsetLeft +
-      lastItem.getBoundingClientRect().width;
-
-    const totalSets = Math.ceil(carousel.clientWidth / loopWidth) + 1;
-    for (let set = 1; set < totalSets; set += 1) {
-      originalItems.forEach((original) => {
-        const clone = original.cloneNode(true);
-        clone.dataset.seriesClone = "true";
-        clone.setAttribute("aria-hidden", "true");
-        clone.inert = true;
-        track.append(clone);
-      });
-    }
-
-    carousel.scrollLeft =
-      DIRECTION < 0 ? (oldProgress || 1) * loopWidth : oldProgress * loopWidth;
-    normalizeScrollPosition();
-  };
-
-  const scheduleInteractionResume = () => {
-    clearInteractionTimer();
-    interactionTimer = window.setTimeout(() => {
-      interactionTimer = 0;
-      updateAnimation();
-    }, RESUME_DELAY);
-    updateAnimation();
-  };
-
-  refreshClones();
-  new ResizeObserver(refreshClones).observe(carousel);
-
-  carousel.addEventListener("scroll", normalizeScrollPosition, {
-    passive: true,
+  const clonedItems = courses.map(createCourseCard);
+  clonedItems.forEach((item) => {
+    item.dataset.seriesClone = "true";
+    item.setAttribute("aria-hidden", "true");
+    item.inert = true;
   });
-  carousel.addEventListener("pointerenter", (event) => {
-    if (event.pointerType === "touch") return;
-    hovering = true;
-    updateAnimation();
-  });
-  carousel.addEventListener("pointerleave", (event) => {
-    if (event.pointerType === "touch") return;
-    hovering = false;
-    clearInteractionTimer();
-    updateAnimation();
-  });
-  carousel.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "touch") return;
-    pointerDown = true;
-    updateAnimation();
-  });
-  window.addEventListener("pointerup", () => {
-    pointerDown = false;
-    updateAnimation();
-  });
-  window.addEventListener("pointercancel", () => {
-    pointerDown = false;
-    updateAnimation();
-  });
-
-  carousel.addEventListener(
-    "touchstart",
-    () => {
-      if (touchResumeTimer) clearTimeout(touchResumeTimer);
-      touchResumeTimer = 0;
-      touching = true;
-      updateAnimation();
-    },
-    { passive: true },
-  );
-  const finishTouch = () => {
-    touching = false;
-    if (touchResumeTimer) clearTimeout(touchResumeTimer);
-    touchResumeTimer = window.setTimeout(() => {
-      touchResumeTimer = 0;
-      updateAnimation();
-    }, RESUME_DELAY);
-    updateAnimation();
-  };
-  carousel.addEventListener("touchend", finishTouch, { passive: true });
-  carousel.addEventListener("touchcancel", finishTouch, { passive: true });
-
-  carousel.addEventListener(
-    "wheel",
-    (event) => {
-      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-        carousel.scrollLeft += event.deltaY;
-        event.preventDefault();
-      }
-      scheduleInteractionResume();
-    },
-    { passive: false },
-  );
-  carousel.addEventListener("keydown", scheduleInteractionResume);
-  document.addEventListener("visibilitychange", updateAnimation);
-  reducedMotion.addEventListener("change", updateAnimation);
-  updateAnimation();
+  track.replaceChildren(...originalItems, ...clonedItems);
 })();

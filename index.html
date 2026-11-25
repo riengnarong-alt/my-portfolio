@@ -155,30 +155,49 @@
           <li><a class="nav-contact" href="#contact" data-i18n="nav.contact">Let's Talk</a></li>
         </ul>
         <div class="nav-actions">
-          <div
-            class="language-switch"
-            role="group"
-            aria-label="Choose language"
-            data-i18n-aria="language.label"
-          >
-            <button
-              class="language-option active"
-              type="button"
-              data-language="en"
-              aria-pressed="true"
+          <details class="language-switch" id="language-menu">
+            <summary
+              class="language-current"
+              data-i18n-aria="language.label"
+              aria-label="Choose language"
             >
-              <img src="UK%20flag.svg" alt="" width="20" height="14" /><span>EN</span>
-            </button>
-            <span class="language-divider" aria-hidden="true">/</span>
-            <button
-              class="language-option"
-              type="button"
-              data-language="km"
-              aria-pressed="false"
-            >
-              <img src="Cambodia%20flag.webp" alt="" width="20" height="14" /><span>KH</span>
-            </button>
-          </div>
+              <img
+                id="language-flag"
+                src="UK%20flag.svg"
+                alt=""
+                aria-hidden="true"
+                width="20"
+                height="14"
+              />
+              <span id="language-name">English</span>
+            </summary>
+            <div class="language-options" role="group" aria-label="Languages">
+              <button
+                class="language-option active"
+                type="button"
+                data-language="en"
+                aria-pressed="true"
+              >
+                <img src="UK%20flag.svg" alt="" aria-hidden="true" />
+                <span>English</span>
+                <svg class="language-check" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m5 12 4 4L19 6" />
+                </svg>
+              </button>
+              <button
+                class="language-option"
+                type="button"
+                data-language="km"
+                aria-pressed="false"
+              >
+                <img src="Cambodia%20flag.webp" alt="" aria-hidden="true" />
+                <span>ខ្មែរ</span>
+                <svg class="language-check" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m5 12 4 4L19 6" />
+                </svg>
+              </button>
+            </div>
+          </details>
           <button
             id="theme-toggle"
             type="button"
@@ -331,30 +350,50 @@
       <div class="wrap rv">
         <h2 data-i18n="education.title">My Journey</h2>
         <div class="tl">
-          <article class="now">
-            <h3>Passerelles Numériques Cambodia (PNC)</h3>
-            <small data-i18n="education.present">2026 – Present</small>
-            <p data-i18n="education.program">
-              System Network Administration and Cybersecurity<br />Second Year
-              Student
-            </p>
+          <div class="timeline-progress" aria-hidden="true"></div>
+          <article class="now timeline-item" tabindex="0">
+            <div class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 10l9-5 9 5-9 5-9-5Zm4 3v4c3 2 7 2 10 0v-4M21 10v6" /></svg>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-status">Current chapter</span>
+              <h3>Passerelles Numériques Cambodia (PNC)</h3>
+              <small data-i18n="education.present">2026 – Present</small>
+              <p data-i18n="education.program">System Network Administration and Cybersecurity<br />Second Year Student</p>
+            </div>
           </article>
-          <article>
-            <h3>Rovieng High School</h3>
-            <small>2022 – 2025</small>
-            <p data-i18n="education.highSchool">
-              General Knowledge<br />Learn Leadership
-            </p>
+          <article class="timeline-item" tabindex="0">
+            <div class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 10l9-5 9 5-9 5-9-5Zm4 3v4c3 2 7 2 10 0v-4M21 10v6" /></svg>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-status">Milestone 03</span>
+              <h3>Rovieng High School</h3>
+              <small>2022 – 2025</small>
+              <p data-i18n="education.highSchool">General Knowledge<br />Learn Leadership</p>
+            </div>
           </article>
-          <article>
-            <h3>Reaksmey Rikreay Secondary School</h3>
-            <small>2019 – 2022</small>
-            <p data-i18n="education.general">General Knowledge</p>
+          <article class="timeline-item" tabindex="0">
+            <div class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 10l9-5 9 5-9 5-9-5Zm4 3v4c3 2 7 2 10 0v-4M21 10v6" /></svg>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-status">Milestone 02</span>
+              <h3>Reaksmey Rikreay Secondary School</h3>
+              <small>2019 – 2022</small>
+              <p data-i18n="education.general">General Knowledge</p>
+            </div>
           </article>
-          <article>
-            <h3>Rikreay Primary School</h3>
-            <small>2013 – 2019</small>
-            <p data-i18n="education.general">General Knowledge</p>
+          <article class="timeline-item" tabindex="0">
+            <div class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 10l9-5 9 5-9 5-9-5Zm4 3v4c3 2 7 2 10 0v-4M21 10v6" /></svg>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-status">Milestone 01</span>
+              <h3>Rikreay Primary School</h3>
+              <small>2013 – 2019</small>
+              <p data-i18n="education.general">General Knowledge</p>
+            </div>
           </article>
         </div>
       </div>
@@ -525,6 +564,21 @@
             <a
               class="certificate-link"
               href="Image/Introduction_to_Cybersecurity_certificate_Narong_RIENG.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="certificates.view"
+            >View certificate</a>
+          </article>
+          <article class="certificate-card">
+            <h3 data-i18n="certificates.modernAi">
+              Introduction to Modern AI
+            </h3>
+            <p data-i18n="certificates.modernAiDetails">
+              Cisco Networking Academy · November 25, 2026
+            </p>
+            <a
+              class="certificate-link"
+              href="Image/Introduction%20to%20Modern%20AI.png"
               target="_blank"
               rel="noopener noreferrer"
               data-i18n="certificates.view"
