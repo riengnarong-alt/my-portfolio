@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <meta
+      name="description"
+      content="A public snapshot of Narong RIENG's IT learning progress, projects, skills, and cybersecurity practice."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Narong RIENG | Learning Dashboard" />
+    <meta
+      property="og:description"
+      content="A public snapshot of Narong RIENG's IT learning progress, projects, skills, and cybersecurity practice."
+    />
+    <meta
+      property="og:url"
+      content="https://narong-rieng-portfolio.vercel.app/dashboard.html"
+    />
+    <meta
+      property="og:image"
+      content="https://narong-rieng-portfolio.vercel.app/my-logo.png"
+    />
+    <meta name="theme-color" content="#080d18" />
+    <title>Narong RIENG | Learning Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand-row">
+          <a class="brand-link" href="/" aria-label="Narong RIENG">
+            <span class="brand-mark" aria-hidden="true">NR</span>
+            <span class="brand-copy">
+              <strong data-ui="brandTitle">SNAC</strong>
+              <small data-ui="brandSubtitle">LEARNING LAB</small>
+            </span>
+          </a>
+          <button
+            class="sidebar-toggle"
+            id="sidebar-toggle"
+            type="button"
+            aria-label="Collapse sidebar"
+            aria-expanded="true"
+            aria-controls="dashboard-nav"
+            title="Collapse sidebar"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m14 5-7 7 7 7" />
+            </svg>
+          </button>
+        </div>
+        <nav class="sidebar-nav" id="dashboard-nav" data-ui-aria="sidebarNavLabel">
+          <p class="nav-group-label" data-ui="navGroup"></p>
+          <a class="nav-link" href="#overview" aria-current="location">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="5" rx="1.5" /><rect x="13" y="10" width="8" height="11" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /></svg>
+            <span data-ui="navOverview">Overview</span>
+          </a>
+          <a class="nav-link" href="#skills">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-7" /></svg>
+            <span data-ui="navSkills">Skills</span>
+          </a>
+          <a class="nav-link" href="#certificates">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-3Z" /><path d="m9 12 2 2 4-4" /></svg>
+            <span data-ui="navCertificates">Certificates</span>
+          </a>
+          <a class="nav-link" href="#projects">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M8 9h8M8 13h8M8 17h4" /></svg>
+            <span data-ui="navProjects">Projects</span>
+          </a>
+          <a class="nav-link" href="#roadmap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2" /><circle cx="18" cy="6" r="2" /><path d="M8 18h3a3 3 0 0 0 3-3v-3a3 3 0 0 1 3-3h1" /></svg>
+            <span data-ui="navRoadmap">Roadmap</span>
+          </a>
+          <a class="nav-link" href="#topology">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="5" rx="1" /><rect x="2" y="16" width="8" height="5" rx="1" /><rect x="14" y="16" width="8" height="5" rx="1" /><path d="M12 8v4M6 16v-3h12v3" /></svg>
+            <span data-ui="navTopology">Lab topology</span>
+          </a>
+          <a class="nav-link" href="#hardening">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2" /></svg>
+            <span data-ui="navHardening">Hardening</span>
+          </a>
+        </nav>
+        <div class="sidebar-status">
+          <span class="status-light" aria-hidden="true"></span>
+          <span>
+            <strong data-ui="sampleLabel">Sample data</strong>
+            <small data-ui="sidebarNote">Learning snapshot · Read-only</small>
+          </span>
+        </div>
+      </aside>
+
+      <div class="main-panel">
+        <header class="site-header">
+          <div class="header-context">
+            <span class="header-kicker" data-ui="headerKicker">Student workspace</span>
+            <strong data-ui="headerTitle">Learning overview</strong>
+          </div>
+          <div class="header-actions">
+            <a class="back-link" href="/">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m14.5 5-7 7 7 7M8 12h13" />
+              </svg>
+              <span data-ui="back">Back to Portfolio</span>
+            </a>
+            <nav class="language-switch" aria-label="Language" data-ui-aria="languageLabel">
+              <button type="button" data-language="en" aria-pressed="true">EN</button>
+              <button type="button" data-language="km" aria-pressed="false">ខ្មែរ</button>
+            </nav>
+          </div>
+        </header>
+
+        <main class="dashboard-main">
+          <section class="intro" id="overview" aria-labelledby="page-title">
+            <p class="eyebrow" data-ui="eyebrow">Learning in public</p>
+            <h1 id="page-title">Learning Dashboard</h1>
+            <p class="intro-copy" data-ui="intro"></p>
+          </section>
+
+          <p class="load-status" id="load-status" role="status" aria-live="polite">
+            Loading dashboard…
+          </p>
+
+          <div class="dashboard-content" id="dashboard-content" hidden>
+            <section class="kpi-grid" id="kpi-grid" aria-label="Key learning indicators"></section>
+
+            <div class="content-grid">
+              <section class="glass-card" id="skills" aria-labelledby="skills-title">
+                <div class="section-heading">
+                  <p class="eyebrow" data-ui="skillsEyebrow"></p>
+                  <h2 id="skills-title" data-heading="skills"></h2>
+                </div>
+                <div class="skills-list" id="skills-list"></div>
+              </section>
+
+              <section class="glass-card" id="certificates" aria-labelledby="certificates-title">
+                <div class="section-heading">
+                  <p class="eyebrow" data-ui="certificatesEyebrow"></p>
+                  <h2 id="certificates-title" data-heading="certificates"></h2>
+                </div>
+                <ol class="timeline" id="certificates-list"></ol>
+              </section>
+
+              <section class="glass-card wide-card" id="projects" aria-labelledby="projects-title">
+                <div class="section-heading">
+                  <p class="eyebrow" data-ui="projectsEyebrow"></p>
+                  <h2 id="projects-title" data-heading="projects"></h2>
+                </div>
+                <div class="project-grid" id="projects-grid"></div>
+              </section>
+
+              <section class="glass-card wide-card" id="roadmap" aria-labelledby="roadmap-title">
+                <div class="section-heading">
+                  <p class="eyebrow" data-ui="roadmapEyebrow"></p>
+                  <h2 id="roadmap-title" data-heading="roadmap"></h2>
+                </div>
+                <ol class="roadmap" id="roadmap-list"></ol>
+              </section>
+
+              <section class="glass-card wide-card" id="topology" aria-labelledby="topology-title">
+                <div class="section-heading">
+                  <p class="eyebrow" data-ui="topologyEyebrow"></p>
+                  <h2 id="topology-title" data-heading="topology"></h2>
+                </div>
+                <p class="card-copy" id="topology-copy"></p>
+                <figure class="topology-figure" id="topology-figure"></figure>
+              </section>
+
+              <section class="glass-card wide-card" id="hardening" aria-labelledby="hardening-title">
+                <div class="section-heading">
+                  <p class="eyebrow" data-ui="hardeningEyebrow"></p>
+                  <h2 id="hardening-title" data-heading="hardening"></h2>
+                </div>
+                <p class="card-copy" id="hardening-copy"></p>
+                <ul class="checklist" id="hardening-list"></ul>
+              </section>
+            </div>
+          </div>
+        </main>
+
+        <footer class="page-footer">
+          <p data-ui="footer"></p>
+        </footer>
+      </div>
+    </div>
+
+    <noscript>
+      <p class="noscript-message">Enable JavaScript to view the dashboard.</p>
+    </noscript>
+  </body>
+</html>

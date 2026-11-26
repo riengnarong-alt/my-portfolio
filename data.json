@@ -1,0 +1,573 @@
+{
+  "pageTitle": {
+    "en": "Narong RIENG | Learning Dashboard",
+    "km": "រៀង ណារ៉ុង | ផ្ទាំងគ្រប់គ្រងការសិក្សា"
+  },
+  "metaDescription": {
+    "en": "A public snapshot of Narong RIENG's IT learning progress, projects, skills, and cybersecurity practice.",
+    "km": "ទិដ្ឋភាពសាធារណៈសង្ខេបអំពីវឌ្ឍនភាពសិក្សា គម្រោង ជំនាញ និងការអនុវត្តសន្តិសុខសាយប័ររបស់ រៀង ណារ៉ុង។"
+  },
+  "ui": {
+    "brandTitle": {
+      "en": "SNAC",
+      "km": "SNAC"
+    },
+    "brandSubtitle": {
+      "en": "LEARNING LAB",
+      "km": "មន្ទីរពិសោធន៍ការសិក្សា"
+    },
+    "navGroup": {
+      "en": "Workspace",
+      "km": "កន្លែងសិក្សា"
+    },
+    "sidebarNavLabel": {
+      "en": "Dashboard sections",
+      "km": "ផ្នែកនៃផ្ទាំងគ្រប់គ្រង"
+    },
+    "navOverview": {
+      "en": "Overview",
+      "km": "ទិដ្ឋភាពទូទៅ"
+    },
+    "navSkills": {
+      "en": "Skills",
+      "km": "ជំនាញ"
+    },
+    "navCertificates": {
+      "en": "Certificates",
+      "km": "វិញ្ញាបនបត្រ"
+    },
+    "navProjects": {
+      "en": "Projects",
+      "km": "គម្រោង"
+    },
+    "navRoadmap": {
+      "en": "Career roadmap",
+      "km": "ផែនទីផ្លូវអាជីព"
+    },
+    "navTopology": {
+      "en": "Lab topology",
+      "km": "គំនូសបណ្តាញសាកល្បង"
+    },
+    "navHardening": {
+      "en": "Hardening",
+      "km": "ការពង្រឹងសុវត្ថិភាព"
+    },
+    "sampleLabel": {
+      "en": "SAMPLE DATA",
+      "km": "ទិន្នន័យគំរូ"
+    },
+    "sidebarNote": {
+      "en": "Learning snapshot · Read-only",
+      "km": "ទិដ្ឋភាពសិក្សា · អាចមើលបានតែប៉ុណ្ណោះ"
+    },
+    "headerKicker": {
+      "en": "STUDENT WORKSPACE",
+      "km": "កន្លែងសិក្សារបស់និស្សិត"
+    },
+    "headerTitle": {
+      "en": "Learning overview",
+      "km": "ទិដ្ឋភាពសង្ខេបការសិក្សា"
+    },
+    "collapseSidebar": {
+      "en": "Collapse sidebar",
+      "km": "បង្រួមរបារចំហៀង"
+    },
+    "expandSidebar": {
+      "en": "Expand sidebar",
+      "km": "ពង្រីករបារចំហៀង"
+    },
+    "back": {
+      "en": "Back to Portfolio",
+      "km": "ត្រឡប់ទៅទំព័រផ្ទាល់ខ្លួន"
+    },
+    "languageLabel": {
+      "en": "Choose language",
+      "km": "ជ្រើសរើសភាសា"
+    },
+    "eyebrow": {
+      "en": "Learning in public",
+      "km": "ចែករំលែកការសិក្សា"
+    },
+    "title": {
+      "en": "Learning Dashboard",
+      "km": "ផ្ទាំងគ្រប់គ្រងការសិក្សា"
+    },
+    "intro": {
+      "en": "A student-level snapshot of skills, practice, and progress. Learning metrics are shared conservatively and are not professional certifications or production-system claims.",
+      "km": "ទិដ្ឋភាពសង្ខេបអំពីជំនាញ ការអនុវត្ត និងវឌ្ឍនភាពក្នុងកម្រិតនិស្សិត។ ទិន្នន័យបង្ហាញដោយប្រុងប្រយ័ត្ន ហើយមិនមែនជាការអះអាងអំពីវិញ្ញាបនបត្រវិជ្ជាជីវៈ ឬប្រព័ន្ធផលិតកម្មទេ។"
+    },
+    "loaded": {
+      "en": "Dashboard content loaded.",
+      "km": "បានផ្ទុកទិន្នន័យផ្ទាំងគ្រប់គ្រងរួចរាល់។"
+    },
+    "footer": {
+      "en": "A read-only learning snapshot. No account, form, or private infrastructure data is used.",
+      "km": "ទិដ្ឋភាពសង្ខេបសម្រាប់ការសិក្សាដែលអាចមើលបានតែប៉ុណ្ណោះ។ មិនប្រើគណនី ទម្រង់បញ្ចូលទិន្នន័យ ឬទិន្នន័យហេដ្ឋារចនាសម្ព័ន្ធឯកជនទេ។"
+    },
+    "skillsEyebrow": {
+      "en": "Current level",
+      "km": "កម្រិតបច្ចុប្បន្ន"
+    },
+    "certificatesEyebrow": {
+      "en": "Courses completed",
+      "km": "វគ្គសិក្សាដែលបានបញ្ចប់"
+    },
+    "projectsEyebrow": {
+      "en": "Hands-on learning",
+      "km": "ការសិក្សាអនុវត្ត"
+    },
+    "roadmapEyebrow": {
+      "en": "Career path",
+      "km": "ផ្លូវអាជីព"
+    },
+    "topologyEyebrow": {
+      "en": "Demo network",
+      "km": "បណ្តាញសាកល្បង"
+    },
+    "hardeningEyebrow": {
+      "en": "Security habits",
+      "km": "ទម្លាប់សុវត្ថិភាព"
+    }
+  },
+  "sections": {
+    "skills": {
+      "en": "Skills in progress",
+      "km": "ជំនាញដែលកំពុងអភិវឌ្ឍ"
+    },
+    "certificates": {
+      "en": "Learning milestones",
+      "km": "សមិទ្ធផលនៃការសិក្សា"
+    },
+    "projects": {
+      "en": "Projects and practice",
+      "km": "គម្រោង និងការអនុវត្ត"
+    },
+    "roadmap": {
+      "en": "Career roadmap",
+      "km": "ផែនទីផ្លូវអាជីព"
+    },
+    "topology": {
+      "en": "Sanitized lab topology",
+      "km": "គំនូសបណ្តាញសាកល្បងដែលបានសម្អាតទិន្នន័យ"
+    },
+    "hardening": {
+      "en": "Hardening study checklist",
+      "km": "បញ្ជីសិក្សាការពង្រឹងសុវត្ថិភាព"
+    },
+    "kpiLabel": {
+      "en": "Key learning indicators",
+      "km": "សូចនាករសិក្សាសំខាន់ៗ"
+    }
+  },
+  "metrics": [
+    {
+      "label": {
+        "en": "Certificates",
+        "km": "វិញ្ញាបនបត្រ"
+      },
+      "value": 4,
+      "valueLabel": {
+        "en": "Four completed course certificates",
+        "km": "វិញ្ញាបនបត្រវគ្គសិក្សាដែលបានបញ្ចប់ចំនួនបួន"
+      },
+      "detail": {
+        "en": "Course certificates",
+        "km": "វិញ្ញាបនបត្រវគ្គសិក្សា"
+      }
+    },
+    {
+      "label": {
+        "en": "Projects",
+        "km": "គម្រោង"
+      },
+      "value": 5,
+      "valueLabel": {
+        "en": "Five learning projects",
+        "km": "គម្រោងសិក្សាចំនួនប្រាំ"
+      },
+      "detail": {
+        "en": "Learning and practice topics",
+        "km": "ប្រធានបទសិក្សា និងអនុវត្ត"
+      }
+    },
+    {
+      "label": {
+        "en": "Labs completed",
+        "km": "មន្ទីរពិសោធន៍ដែលបានបញ្ចប់"
+      },
+      "value": {
+        "en": "Not tracked",
+        "km": "មិនបានកត់ត្រា"
+      },
+      "valueLabel": {
+        "en": "Lab count is not tracked",
+        "km": "មិនបានកត់ត្រាចំនួនមន្ទីរពិសោធន៍"
+      },
+      "detail": {
+        "en": "No unverified total published",
+        "km": "មិនផ្សព្វផ្សាយចំនួនដែលមិនបានផ្ទៀងផ្ទាត់"
+      }
+    },
+    {
+      "label": {
+        "en": "Current focus",
+        "km": "ការផ្តោតបច្ចុប្បន្ន"
+      },
+      "value": {
+        "en": "CCNA 2",
+        "km": "CCNA 2"
+      },
+      "valueLabel": {
+        "en": "Current focus: CCNA 2",
+        "km": "ការផ្តោតបច្ចុប្បន្ន៖ CCNA 2"
+      },
+      "detail": {
+        "en": "Networking studies",
+        "km": "ការសិក្សាបណ្តាញ"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": {
+        "en": "Linux",
+        "km": "លីនុច"
+      },
+      "level": 50,
+      "ariaLabel": {
+        "en": "Linux learning progress",
+        "km": "វឌ្ឍនភាពសិក្សាលីនុច"
+      },
+      "levelText": {
+        "en": "Developing",
+        "km": "កំពុងអភិវឌ្ឍ"
+      }
+    },
+    {
+      "name": {
+        "en": "Networking",
+        "km": "បណ្តាញកុំព្យូទ័រ"
+      },
+      "level": 55,
+      "ariaLabel": {
+        "en": "Networking learning progress",
+        "km": "វឌ្ឍនភាពសិក្សាបណ្តាញកុំព្យូទ័រ"
+      },
+      "levelText": {
+        "en": "Developing",
+        "km": "កំពុងអភិវឌ្ឍ"
+      }
+    },
+    {
+      "name": {
+        "en": "Cybersecurity",
+        "km": "សន្តិសុខសាយប័រ"
+      },
+      "level": 20,
+      "ariaLabel": {
+        "en": "Cybersecurity learning progress",
+        "km": "វឌ្ឍនភាពសិក្សាសន្តិសុខសាយប័រ"
+      },
+      "levelText": {
+        "en": "Learning",
+        "km": "កំពុងសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "Cloud / AWS",
+        "km": "Cloud / AWS"
+      },
+      "level": 30,
+      "ariaLabel": {
+        "en": "Cloud and AWS learning progress",
+        "km": "វឌ្ឍនភាពសិក្សា Cloud និង AWS"
+      },
+      "levelText": {
+        "en": "Learning",
+        "km": "កំពុងសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "Databases",
+        "km": "មូលដ្ឋានទិន្នន័យ"
+      },
+      "level": 30,
+      "ariaLabel": {
+        "en": "Database learning progress",
+        "km": "វឌ្ឍនភាពសិក្សាមូលដ្ឋានទិន្នន័យ"
+      },
+      "levelText": {
+        "en": "Learning",
+        "km": "កំពុងសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "Web Hosting",
+        "km": "ការបង្ហោះគេហទំព័រ"
+      },
+      "level": 50,
+      "ariaLabel": {
+        "en": "Web hosting learning progress",
+        "km": "វឌ្ឍនភាពសិក្សាការបង្ហោះគេហទំព័រ"
+      },
+      "levelText": {
+        "en": "Developing",
+        "km": "កំពុងអភិវឌ្ឍ"
+      }
+    }
+  ],
+  "certificates": [
+    {
+      "name": {
+        "en": "Red Hat Linux Fundamentals",
+        "km": "មូលដ្ឋានគ្រឹះលីនុច Red Hat"
+      },
+      "issuer": {
+        "en": "Red Hat · Course certificate",
+        "km": "Red Hat · វិញ្ញាបនបត្រវគ្គសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "CCNA 1: Introduction to Networks",
+        "km": "CCNA 1៖ ការណែនាំអំពីបណ្តាញ"
+      },
+      "issuer": {
+        "en": "Cisco Networking Academy · Course certificate",
+        "km": "Cisco Networking Academy · វិញ្ញាបនបត្រវគ្គសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "Introduction to Cybersecurity",
+        "km": "ការណែនាំអំពីសន្តិសុខសាយប័រ"
+      },
+      "issuer": {
+        "en": "Cisco Networking Academy · Course certificate",
+        "km": "Cisco Networking Academy · វិញ្ញាបនបត្រវគ្គសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "Introduction to Modern AI",
+        "km": "ការណែនាំអំពី AI ទំនើប"
+      },
+      "issuer": {
+        "en": "Cisco Networking Academy · Course certificate",
+        "km": "Cisco Networking Academy · វិញ្ញាបនបត្រវគ្គសិក្សា"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "name": {
+        "en": "Web Hosting",
+        "km": "ការបង្ហោះគេហទំព័រ"
+      },
+      "status": {
+        "en": "In progress",
+        "km": "កំពុងអនុវត្ត"
+      }
+    },
+    {
+      "name": {
+        "en": "Ubuntu Server",
+        "km": "ម៉ាស៊ីនមេ Ubuntu"
+      },
+      "status": {
+        "en": "Practice",
+        "km": "អនុវត្ត"
+      }
+    },
+    {
+      "name": {
+        "en": "Networking · GNS3 / Packet Tracer",
+        "km": "បណ្តាញ · GNS3 / Packet Tracer"
+      },
+      "status": {
+        "en": "Practice",
+        "km": "អនុវត្ត"
+      }
+    },
+    {
+      "name": {
+        "en": "AWS",
+        "km": "AWS"
+      },
+      "status": {
+        "en": "Learning",
+        "km": "កំពុងសិក្សា"
+      }
+    },
+    {
+      "name": {
+        "en": "Database Fundamentals",
+        "km": "មូលដ្ឋានគ្រឹះមូលដ្ឋានទិន្នន័យ"
+      },
+      "status": {
+        "en": "Learning",
+        "km": "កំពុងសិក្សា"
+      }
+    }
+  ],
+  "roadmap": {
+    "stages": [
+      {
+        "name": {
+          "en": "Learn",
+          "km": "រៀន"
+        },
+        "current": false
+      },
+      {
+        "name": {
+          "en": "Practice",
+          "km": "អនុវត្ត"
+        },
+        "current": true,
+        "currentLabel": {
+          "en": "Current stage: Practice",
+          "km": "ដំណាក់កាលបច្ចុប្បន្ន៖ អនុវត្ត"
+        }
+      },
+      {
+        "name": {
+          "en": "Build Projects",
+          "km": "បង្កើតគម្រោង"
+        },
+        "current": false
+      },
+      {
+        "name": {
+          "en": "Gain Experience",
+          "km": "ទទួលបទពិសោធន៍"
+        },
+        "current": false
+      },
+      {
+        "name": {
+          "en": "IT Professional",
+          "km": "អ្នកជំនាញ IT"
+        },
+        "current": false
+      }
+    ]
+  },
+  "topology": {
+    "title": {
+      "en": "Example router, switch, and server network",
+      "km": "ឧទាហរណ៍បណ្តាញ Router, Switch និងម៉ាស៊ីនមេ"
+    },
+    "description": {
+      "en": "Sanitized teaching diagram using documentation-only IPv4 address ranges.",
+      "km": "គំនូសបណ្តាញសម្រាប់ការសិក្សាដែលប្រើតែជួរអាសយដ្ឋាន IPv4 សម្រាប់ឯកសារប៉ុណ្ណោះ។"
+    },
+    "copy": {
+      "en": "Example-only topology. All shown addresses use the documentation ranges 192.0.2.0/24, 198.51.100.0/24, and 203.0.113.0/24.",
+      "km": "គំនូសនេះសម្រាប់ឧទាហរណ៍ប៉ុណ្ណោះ។ អាសយដ្ឋានទាំងអស់ប្រើជួរអាសយដ្ឋានសម្រាប់ឯកសារ៖ 192.0.2.0/24, 198.51.100.0/24 និង 203.0.113.0/24។"
+    },
+    "caption": {
+      "en": "Illustrative lab diagram; addresses are reserved for documentation.",
+      "km": "គំនូសមន្ទីរពិសោធន៍សម្រាប់បង្ហាញ; អាសយដ្ឋានត្រូវបានបម្រុងទុកសម្រាប់ឯកសារ។"
+    },
+    "nodes": [
+      {
+        "x": 20,
+        "y": 82,
+        "width": 140,
+        "height": 86,
+        "lines": [
+          {
+            "en": "Router",
+            "km": "Router"
+          },
+          {
+            "en": "192.0.2.1",
+            "km": "192.0.2.1"
+          }
+        ]
+      },
+      {
+        "x": 220,
+        "y": 54,
+        "width": 220,
+        "height": 142,
+        "lines": [
+          {
+            "en": "Switch · VLANs",
+            "km": "Switch · VLAN"
+          },
+          {
+            "en": "VLAN 10 · 192.0.2.0/24",
+            "km": "VLAN 10 · 192.0.2.0/24"
+          },
+          {
+            "en": "VLAN 20 · 198.51.100.0/24",
+            "km": "VLAN 20 · 198.51.100.0/24"
+          }
+        ]
+      },
+      {
+        "x": 500,
+        "y": 82,
+        "width": 160,
+        "height": 86,
+        "lines": [
+          {
+            "en": "Server",
+            "km": "ម៉ាស៊ីនមេ"
+          },
+          {
+            "en": "203.0.113.10",
+            "km": "203.0.113.10"
+          }
+        ]
+      }
+    ]
+  },
+  "hardening": {
+    "copy": {
+      "en": "Study topics for practice environments—not a claim that a real production system has been audited or hardened.",
+      "km": "ប្រធានបទសម្រាប់អនុវត្តក្នុងបរិស្ថានសាកល្បង មិនមែនជាការអះអាងថាប្រព័ន្ធផលិតកម្មពិតត្រូវបានធ្វើសវនកម្ម ឬពង្រឹងសុវត្ថិភាពទេ។"
+    },
+    "practiceLabel": {
+      "en": "Study focus",
+      "km": "ប្រធានបទសិក្សា"
+    },
+    "items": [
+      {
+        "name": {
+          "en": "SSH key-only authentication",
+          "km": "ការផ្ទៀងផ្ទាត់ SSH ដោយប្រើសោតែប៉ុណ្ណោះ"
+        }
+      },
+      {
+        "name": {
+          "en": "Least privilege",
+          "km": "សិទ្ធិតិចបំផុតដែលចាំបាច់"
+        }
+      },
+      {
+        "name": {
+          "en": "UFW and network ACLs",
+          "km": "UFW និង ACL បណ្តាញ"
+        }
+      },
+      {
+        "name": {
+          "en": "Regular security patching",
+          "km": "ការដំឡើងបំណះសុវត្ថិភាពជាប្រចាំ"
+        }
+      },
+      {
+        "name": {
+          "en": "Tested backups",
+          "km": "ការបម្រុងទុកទិន្នន័យដែលបានសាកល្បង"
+        }
+      }
+    ]
+  }
+}

@@ -94,6 +94,7 @@ const khmerText = {
   "contact.email": "អ៊ីមែល",
   "contact.message": "សារ",
   "contact.send": "ផ្ញើសារ",
+  "contact.dashboard": "ចុចទីនេះដើម្បីមើលផ្ទាំងគ្រប់គ្រងរបស់ខ្ញុំ",
   "contact.linkedin": "LinkedIn",
   "contact.telegram": "តេឡេក្រាម",
   "footer.role": "និស្សិតគ្រប់គ្រងប្រព័ន្ធបណ្តាញ និងសន្តិសុខសាយប័រ",
@@ -548,14 +549,14 @@ $("#f").addEventListener("submit", (e) => {
     m = $("#m").value.trim(),
     em = $("#e");
   if (!n || !m || !em.checkValidity() || !em.value) {
-    $("#fs").style.color = "#2f80ed";
+    $("#fs").style.color = "#2563eb";
     $("#fs").textContent =
       currentLanguage === "km"
         ? "សូមបញ្ចូលឈ្មោះ អាសយដ្ឋានអ៊ីមែលត្រឹមត្រូវ និងសាររបស់អ្នក។"
         : "Please fill in your name, a valid email, and a message.";
     return;
   }
-  $("#fs").style.color = "#2f80ed";
+  $("#fs").style.color = "#2563eb";
   $("#fs").textContent =
     currentLanguage === "km"
       ? "កំពុងបើក Gmail…"
@@ -634,7 +635,7 @@ $("#f").addEventListener("submit", (e) => {
       vy: Math.sin(angle) * speed,
       length: 130 + Math.random() * 190,
       radius: 1.2 + Math.random() * 1.5,
-      hue: [188, 205, 218, 278][Math.floor(Math.random() * 4)],
+      hue: [188, 195, 205, 218][Math.floor(Math.random() * 4)],
       life: 0,
       duration: 1.7 + Math.random() * 1.2,
       sparkAt: 0,
@@ -661,7 +662,7 @@ $("#f").addEventListener("submit", (e) => {
         const other = networkNodes[j];
         const distance = Math.hypot(node.x - other.x, node.y - other.y);
         if (distance < 140) {
-          ctx.strokeStyle = `rgba(109,179,255,${0.16 * (1 - distance / 140)})`;
+          ctx.strokeStyle = `rgba(59,130,246,${0.16 * (1 - distance / 140)})`;
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
           ctx.lineTo(other.x, other.y);
@@ -669,8 +670,8 @@ $("#f").addEventListener("submit", (e) => {
         }
       }
       ctx.fillStyle = lightMode
-        ? "rgba(57,124,246,.38)"
-        : "rgba(109,179,255,.65)";
+        ? "rgba(37,99,235,.38)"
+        : "rgba(96,165,250,.65)";
       ctx.beginPath();
       ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
       ctx.fill();

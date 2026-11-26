@@ -13,13 +13,13 @@
         color-scheme: light;
         font-family:
           Inter, Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
-        color: #242033;
-        background: #f8f6fc;
+        color: #0f172a;
+        background: #f8fafc;
         font-synthesis: none;
         text-rendering: optimizeLegibility;
-        --purple: #8b3ee8;
-        --field: #f4f1f8;
-        --border: #e7e1ef;
+        --blue: #2563eb;
+        --field: #f1f5f9;
+        --border: #e2e8f0;
       }
 
       * {
@@ -34,8 +34,8 @@
         place-items: center;
         padding: 24px 16px;
         background:
-          radial-gradient(ellipse at 12% 10%, #f0e9fb 0, transparent 40%),
-          linear-gradient(145deg, #fff 4%, #f7f4fc 54%, #f0ebf9 100%);
+          radial-gradient(ellipse at 12% 10%, #eff6ff 0, transparent 40%),
+          linear-gradient(145deg, #fff 4%, #f8fafc 54%, #f1f5f9 100%);
       }
 
       button,
@@ -51,7 +51,7 @@
       button:focus-visible,
       input:focus-visible,
       textarea:focus-visible {
-        outline: 3px solid rgba(139, 62, 232, 0.32);
+        outline: 3px solid rgba(37, 99, 235, 0.32);
         outline-offset: 3px;
       }
 
@@ -59,17 +59,17 @@
         width: min(100%, 620px);
         padding: clamp(24px, 6vw, 48px);
         overflow: hidden;
-        border: 1px solid rgba(224, 217, 236, 0.9);
+        border: 1px solid rgba(226, 232, 240, 0.9);
         border-radius: 28px;
         background: rgba(255, 255, 255, 0.92);
         box-shadow:
-          0 28px 80px rgba(62, 38, 96, 0.11),
-          0 4px 14px rgba(62, 38, 96, 0.05);
+          0 28px 80px rgba(15, 23, 42, 0.11),
+          0 4px 14px rgba(15, 23, 42, 0.05);
       }
 
       h1 {
         margin: 0;
-        color: #252033;
+        color: #0f172a;
         letter-spacing: -0.035em;
       }
 
@@ -85,7 +85,7 @@
       .field label {
         display: block;
         margin: 0 0 7px;
-        color: #666273;
+        color: #64748b;
         font-size: 0.95rem;
         font-weight: 650;
       }
@@ -96,7 +96,7 @@
         width: 100%;
         border: 1px solid var(--border);
         background: var(--field);
-        color: #292438;
+        color: #334155;
         transition:
           border-color 160ms ease,
           box-shadow 160ms ease,
@@ -118,16 +118,16 @@
 
       .field input::placeholder,
       .field textarea::placeholder {
-        color: #aaa4b5;
+        color: #64748b;
         opacity: 1;
       }
 
       .field input:focus,
       .field textarea:focus {
-        border-color: #b278f1;
+        border-color: #2563eb;
         outline: none;
         background: #fff;
-        box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
       }
 
       .field [aria-invalid="true"] {
@@ -161,14 +161,14 @@
         margin: 3px auto 0;
         padding: 0 26px;
         border-radius: 999px;
-        background: linear-gradient(105deg, #a855f7, #6d28d9);
-        box-shadow: 0 12px 25px rgba(124, 58, 237, 0.24);
+        background: linear-gradient(105deg, #2563eb, #1d4ed8);
+        box-shadow: 0 12px 25px rgba(37, 99, 235, 0.24);
         color: #fff;
       }
 
       .primary-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 16px 30px rgba(124, 58, 237, 0.31);
+        box-shadow: 0 16px 30px rgba(37, 99, 235, 0.31);
       }
 
       .form-actions {
@@ -188,8 +188,8 @@
         padding: 13px 18px;
         transform: translateY(12px);
         border-radius: 14px;
-        background: #292238;
-        box-shadow: 0 12px 35px rgba(28, 20, 42, 0.22);
+        background: #0b1220;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, 0.22);
         color: #fff;
         opacity: 0;
         pointer-events: none;
